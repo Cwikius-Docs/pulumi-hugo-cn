@@ -1,8 +1,37 @@
-# pulumi-hugo
+# pulumi-hugo-cn
 
-A [Hugo](https://gohugo.io) module containing the Pulumi Hugo theme and website content.
+欢迎来到 Pulumi 中文文档项目（https://pulumi.ossez.com/），本项目是直接从官方的英文文档中 Fork 下来，并且直接翻译后及时更新的。
 
-This repository is consumed by https://github.com/pulumi/docs to produce the website you see at https://pulumi.com. If you're interested in contributing some docs or a blog post at https://pulumi.com/blog, you've come to the right place! 🙌
+翻译后的文档使用 Google FireBase 项目提供的服务进行部署，部署访问的地址为：https://pulumi.ossez.com/。
+
+我们使用了 Jenkins 来进行 CI，本想使用一些开源或者在线的 CI 工具的，但在调试的时候对我们的编译次数有限制，一些构建需要本地环境，使用虚拟环境的构建时间过长，因此我们就集使用 Jenkins 来进行部署了。如您还有什么好的建议，请联系管理员。
+
+## 中文本地化说明
+
+如果您有兴趣参与我们的小组和项目，请使用下面的联系方式和我们联系：
+
+| 联系方式名称  | 联系方式  |
+|---|---|
+| 电子邮件  | [service@ossez.com](mailto:service@ossez.com)  |
+| QQ 或微信  | 103899765  |
+| QQ 交流群 | 15186112 |
+| 社区论坛 | [https://www.ossez.com/](https://www.ossez.com/) |
+
+## 公众平台
+我们建议您通过社区论坛来和我们进行沟通，请关注我们公众平台上的账号
+
+### 微信公众号
+![](https://cdn.ossez.com/img/cwikius/cwikius-qr-wechat-search-w400.png)
+
+### 头条号
+我们也在头条号上创建了我们的公众号，请扫描下面的 QR 关注我们的头条号。
+
+![](https://cdn.ossez.com/img/cwikius/cwikus-qr-toutiao.png)
+
+
+[Hugo](https://gohugo.io) 模块包含有 Pulumi 主题和网站的内容。
+
+这个参考同时也被官方的 https://github.com/pulumi/docs 项目使用，用来创建你可以通过 https://pulumi.com 访问到的内容。如果你有兴趣对文档进行一些修改或者提交你的自己的博客内容到 https://pulumi.com/blog 链接中，那么你就来到了正确的地方了! 🙌
 
 ## Contributing
 
