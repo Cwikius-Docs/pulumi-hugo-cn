@@ -2,7 +2,7 @@
 
 欢迎来到 Pulumi 中文文档项目（https://pulumi.ossez.com/），本项目是直接从官方的英文文档中 Fork 下来，并且直接翻译后及时更新的。
 
-翻译后的文档使用 Google FireBase 项目提供的服务进行部署，部署访问的地址为：https://pulumi.ossez.com/。
+翻译后的文档使用 Google FireBase 项目提供的服务进行部署，部署访问的地址为：https://pulumi.ossez.com/
 
 我们使用了 Jenkins 来进行 CI，本想使用一些开源或者在线的 CI 工具的，但在调试的时候对我们的编译次数有限制，一些构建需要本地环境，使用虚拟环境的构建时间过长，因此我们就集使用 Jenkins 来进行部署了。如您还有什么好的建议，请联系管理员。
 
@@ -35,9 +35,9 @@
 
 ## 官方文档贡献
 
-First, be sure to read our [contributing guide](CONTRIBUTING.md) and review our [code of conduct](CODE_OF_CONDUCT.md).
+首先，请确保你已经阅读了我们的 [社区贡献指南](CONTRIBUTING.md) 同时也参考了我们的 [代码规范](CODE_OF_CONDUCT.md)。
 
-## Toolchain
+## 工具链
 
 We build the Pulumi website statically with Hugo, manage our Node.js dependencies with Yarn, and write most of our documentation in Markdown. Below is a list of the tools you'll need to run the website locally:
 
