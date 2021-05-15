@@ -7,7 +7,7 @@ install:
   - wget https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_0.83.1_Linux-64bit.deb
   - sudo dpkg -i hugo*.deb
   - wget -O /tmp/go.tar.gz https://golang.org/dl/go1.16.4.linux-amd64.tar.gz
-  - rm -rf /tmp/go && tar -C /tmp -xzf go.tar.gz
+  - rm -rf /tmp/go && tar -xzvf go.tar.gz
   - export PATH=$PATH:/tmp/go/bin
   - npm install -g firebase-tools
 script:
