@@ -9,6 +9,7 @@ install:
   - wget -O /tmp/go.tar.gz https://golang.org/dl/go1.16.4.linux-amd64.tar.gz
   - rm -rf /tmp/go && tar -xzvf /tmp/go.tar.gz
   - export PATH=$PATH:/tmp/go/bin
+  - go version
   - npm install -g firebase-tools
 script:
  - echo "Deploy To Firebase CI"
