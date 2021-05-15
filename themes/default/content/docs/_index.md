@@ -8,7 +8,7 @@ menu:
         weight: 3
 ---
 
-欢迎来到 Pulumi 中文文档！ These pages cover what Pulumi is, how to get started using it, and reference materials for its features and supported cloud providers.
+欢迎来到 Pulumi 中文文档！ 本页面对 Pulumi 是什么进行了说明，并且指导你如何开始使用 Pulumi。同时也对一些参考的文档和支持的云平台进行了说明。
 
 ### What is Pulumi?
 
