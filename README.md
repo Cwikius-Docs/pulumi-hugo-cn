@@ -33,7 +33,7 @@
 
 这个参考同时也被官方的 https://github.com/pulumi/docs 项目使用，用来创建你可以通过 https://pulumi.com 访问到的内容。如果你有兴趣对文档进行一些修改或者提交你的自己的博客内容到 https://pulumi.com/blog 链接中，那么你就来到了正确的地方了! 🙌
 
-## Contributing
+## 官方文档贡献
 
 First, be sure to read our [contributing guide](CONTRIBUTING.md) and review our [code of conduct](CODE_OF_CONDUCT.md).
 
