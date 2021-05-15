@@ -1,4 +1,4 @@
-language: node_js
+language: node_js go
 node_js:
   - 14
 go:
@@ -6,6 +6,9 @@ go:
 install:
   - wget https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_0.83.1_Linux-64bit.deb
   - sudo dpkg -i hugo*.deb
+  - wget https://golang.org/dl/go1.16.4.linux-amd64.tar.gz
+  - rm -rf /usr/local/go && tar -C /usr/local -xzf go1.16.4.linux-amd64.tar.gz
+  - export PATH=$PATH:/usr/local/go/bin
   - npm install -g firebase-tools
 script:
  - echo "Deploy To Firebase CI"
