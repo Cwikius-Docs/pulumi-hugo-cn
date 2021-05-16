@@ -45,7 +45,11 @@
 
 ## 工具链
 
-We build the Pulumi website statically with Hugo, manage our Node.js dependencies with Yarn, and write most of our documentation in Markdown. Below is a list of the tools you'll need to run the website locally:
+我们使用 Hugo 来构建 Pulumi 官方网站的静态文件。同时还使用了 Yarn 来管理 Node.js 使用的了依赖，文档的编写使用的是 Markdown 格式。
+
+下面列出了如果你在本地编译生成文档静态文件所需要的工具链。
+
+我们建议你的编译过程放在 Linux 平台上进行，如果你的操作系统中没有安装 make 工具的话，那么你还需要安装 make 工具。
 
 * [Go](https://golang.org/)
 * [Hugo](https://gohugo.io)
