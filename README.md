@@ -56,18 +56,22 @@
 * [Node.js](https://nodejs.org/en/)
 * [Yarn](https://classic.yarnpkg.com/en/)
 
-### CSS and JavaScript Tools
+### CSS 和 JavaScript 工具
 
-We also use a handful of tools for compiling and managing our CSS and JavaScript assets, including:
+我们同时也使用了很多工具来编译和管理我们的 CSS 和 JavaScript 资源文件。
+
+包括有下面的一些工具：
 
 * [Sass](https://sass-lang.com/)
 * [TailwindCSS](https://tailwindcss.com/)
 * [Stencil.js](https://stenciljs.com/)
 * [TypeScript](https://www.typescriptlang.org/)
 
-You don't need to install these tools individually or globally; the scripts below will handle everything for you. But if you'd like to contribute any CSS or JavaScript, you'll probably want to understand how to work with each of these tools as well.
+你并不需要单独或者全局安装上面的所有工具，我们在后面使用的脚本将会为你处理所有需要的工作。
 
-## Installing prerequisites
+但是如果你希望对官方的布局进行一些修改并且贡献的话，那么你可能需要对 CSS 和 JavaScript 进行提交，那么你需要对上面的这些工具是如何使用的需要有一些了解。
+
+## 安装自检
 
 Run `make ensure` to check for the appropriate tools and versions and install any dependencies. The script will let you know if you're missing anything important.
 
@@ -75,7 +79,7 @@ Run `make ensure` to check for the appropriate tools and versions and install an
 make ensure
 ```
 
-## Running Hugo locally
+## 本地运行 Hugo
 
 Once you've run `make ensure` successfully, you're ready to run the development server. If you're only planning on writing Markdown or working with Hugo layouts, this command should be all you need:
 
@@ -85,7 +89,7 @@ make serve
 
 You can browse the development server at http://localhost:1313, and any changes you make to content or layouts should be reloaded automatically.
 
-## Running Hugo with CSS and JavaScript support
+## 运行支持 CSS 和 JavaScript Hugo
 
 If you plan on making changes to CSS or JavaScript files, you'll probably want to use this command instead:
 
@@ -95,9 +99,11 @@ make serve-all
 
 The `serve-all` target runs Hugo, node-sass, and the Stencil development server concurrently, allowing you to make changes to Sass files, Stencil components, or TypeScript/JavaScript source files, and have those changes compiled and reloaded automatically as well.
 
-## Linting and testing
+## Linting 和 testing
 
-To check your code and your Markdown files for issues before submitting, run:
+Linting 代码的本意就是找出程序中的错误，这些错误包括潜在的语法错误，编译错误，拼写错误等
+
+这一步是为了让你在对代码提交之前检查你的代码和你的 Markdown 文件，并且找出可能存在的问题，运行下面的命令：
 
 ```
 make lint test
