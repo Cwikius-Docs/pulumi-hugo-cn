@@ -101,7 +101,7 @@ The `serve-all` target runs Hugo, node-sass, and the Stencil development server 
 
 ## Linting 和 testing
 
-Linting 代码的本意就是找出程序中的错误，这些错误包括潜在的语法错误，编译错误，拼写错误等
+Linting 代码的本意就是找出程序中的错误，这些错误包括潜在的语法错误，编译错误，拼写错误等。
 
 这一步是为了让你在对代码提交之前检查你的代码和你的 Markdown 文件，并且找出可能存在的问题，运行下面的命令：
 
