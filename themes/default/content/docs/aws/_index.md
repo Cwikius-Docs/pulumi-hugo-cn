@@ -1,5 +1,5 @@
 ---
-title: "How to use Pulumi with AWS"
+title: "如何在 AWS 上使用 Pulumi"
 meta_desc: "Use Pulumi and AWS to code, deploy, and manage cloud, serverless, and container apps and infrastructure"
 layout: aws-list
 ---

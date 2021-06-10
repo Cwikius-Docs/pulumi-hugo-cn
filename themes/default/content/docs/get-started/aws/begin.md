@@ -1,5 +1,5 @@
 ---
-title: Before You Begin | AWS
+title: 在开始使用之前 | AWS
 h1: Before You Begin
 linktitle: Before You Begin
 meta_desc: This page provides an overview on how to get started with Pulumi when starting an AWS project.
@@ -20,21 +20,21 @@ aliases: [
 ]
 ---
 
-Before you get started using Pulumi, let's run through a few quick steps to ensure your environment is set up correctly.
+在我们开始使用 Pulumi 之前，请快速运行下面的一些步骤来确定你的环境已经配置正确了。
 
-### Install Pulumi
+### 安装 Pulumi
 
 {{< install-pulumi >}}
 {{% notes "info" %}}
-All Windows examples in this tutorial assume you are running in PowerShell.
+在本指南中使用的所有示例都假设你是在 PowerShell 上运行的。
 {{% /notes %}}
 {{< /install-pulumi >}}
 
-Next, install the required language runtime, if you have not already.
+下一步，如果你还没有安装需要的语言运行环境的话，请先进行安装。
 
-### Install Language Runtime
+### 安装语言运行环境
 
-#### Choose Your Language
+#### 选择你的语言
 
 {{< chooser language "javascript,typescript,python,go,csharp" / >}}
 
@@ -54,11 +54,12 @@ Next, install the required language runtime, if you have not already.
 {{< install-dotnet >}}
 {{% /choosable %}}
 
-Finally, configure Pulumi with AWS.
+最后，将 Pulumi 配置使用 AWS。
 
-### Configure Pulumi to access your AWS account
+### 配置 Pulumi 来访问你的 AWS 账号
 
-Pulumi requires cloud credentials to manage and provision resources. You must use an IAM user account that has **Programmatic access** with rights to deploy and manage resources handled through Pulumi. In this guide, your IAM user must have the `s3:CreateBucket` IAM policy action granted.
+Pulumi 将会要求使用云平台访问的账号来对资源提供管理。你必须使用一个 IAM 用户账号，这个用户账号需要有 **程序访问（Programmatic access）** 权限来通过使用 Pulumi 
+在本指南中，你的 IAM 用户必须赋有 `s3:CreateBucket` IAM policy action 权限。
 
 If you have previously <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html" target="_blank">installed</a> and <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html" target="_blank">configured</a> the AWS CLI, Pulumi will respect and use your configuration settings.
 
