@@ -23,7 +23,7 @@
     "@stencil/redux": "^0.1.2",
     "@stencil/sass": "^1.1.1",
     "@types/uuid": "^8.0.0",
-    "redux": "^4.0.5",
+    "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "swiper": "^6.5.6",
