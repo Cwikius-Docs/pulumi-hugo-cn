@@ -333,10 +333,10 @@
   dependencies:
     typescript "3.8.2"
 
-"@stencil/redux@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@stencil/redux/-/redux-0.1.2.tgz#e60eae0286b9012e63ce4d332d0400e525f71754"
-  integrity sha512-HLASGyE7BJX/hJUatXBKjeHxH8EGh9M5U6FpCUiIkxWuBXdEVL2oQOwOgm7QPe3yRgN6i8dEKVXD5Vv4ZnNZ1Q==
+"@stencil/redux@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@stencil/redux/-/redux-0.2.0.tgz#5f9ae08b6a70fe52b990e5d597b511a7ef1bb7f7"
+  integrity sha512-isikSfMNFBMYVPFzhvlwDkEdjKJQrcbZgPGN84UXIoCYwQee5OQ2k22hF40GCLkjP5oG/lR36jdQIf9JU3mG/g==
 
 "@stencil/sass@^1.1.1":
   version "1.1.1"
