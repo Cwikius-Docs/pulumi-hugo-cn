@@ -73,7 +73,7 @@
 
 ## 安装自检
 
-Run `make ensure` to check for the appropriate tools and versions and install any dependencies. The script will let you know if you're missing anything important.
+运行 `make ensure` 来对你当前的环境进行检查，确定已经安装了正确的依赖和版本。这个脚本能够让你了解在当前的环境中你还有什么依赖需要进行安装。
 
 ```
 make ensure
