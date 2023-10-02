@@ -19,15 +19,15 @@
     "build-components": "yarn --cwd components run build"
   },
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^2.0.6",
-    "autoprefixer": "^9.6.0",
+    "@fullhuman/postcss-purgecss": "^3.1.0",
+    "autoprefixer": "^10.0.0",
     "chokidar-cli": "^2.1.0",
     "clipboard-polyfill": "^2.8.1",
     "concurrently": "^5.2.0",
-    "cssnano": "^4.1.10",
+    "cssnano": "^5.0.0",
     "node-sass": "^4.14.1",
-    "postcss-cli": "^6.1.3",
-    "tailwindcss": "^1.0.4",
+    "postcss-cli": "^8.0.0",
+    "tailwindcss": "^2.2.0",
     "typescript": "^3.9.6"
   }
 }
