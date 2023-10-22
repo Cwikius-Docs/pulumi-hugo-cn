@@ -3343,10 +3343,10 @@ supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-swiper@^6.5.6:
-  version "6.5.6"
-  resolved "https://registry.yarnpkg.com/swiper/-/swiper-6.5.6.tgz#4d1dc5cd124696dd765818f2484a1ec8e0d3d3bc"
-  integrity sha512-oKVshbF0vhdMFJXtcNH8vLpmyCHc7VvvIlOUafyazzlYzCRJmI80FxoIBWKzSqDyy8EXRn7Iy78p9o4I1Bww/Q==
+swiper@^6.8.4:
+  version "6.8.4"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-6.8.4.tgz#938fed4144f4d7952fbf9c44e5832d133a4de794"
+  integrity sha512-O+buF9Q+sMA0H7luMS8R59hCaJKlpo8PXhQ6ZYu6Rn2v9OsFd4d1jmrv14QvxtQpKAvL/ZiovEeANI/uDGet7g==
   dependencies:
     dom7 "^3.0.0"
     ssr-window "^3.0.0"
