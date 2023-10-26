@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2.0.6",
-    "autoprefixer": "^9.6.0",
+    "autoprefixer": "^9.8.8",
     "chokidar-cli": "^2.1.0",
     "clipboard-polyfill": "^2.8.1",
     "concurrently": "^5.2.0",
