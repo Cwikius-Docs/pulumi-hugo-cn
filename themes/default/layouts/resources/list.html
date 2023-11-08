@@ -104,9 +104,9 @@
 
 
                     <!-- create values to determine if date is upcoming -->
-                    {{ $nowUnix := now.UnixMilli }}
+                    {{ $nowUnix := now.UnixNano  }}
                     <!-- add 24 hours to event date to list it for an extra day -->
-                    {{ $eventDateUnix := (add (.date | time.AsTime).UnixMilli (duration "hour" 24).Milliseconds) }}
+                    {{ $eventDateUnix := (add (.date | time.AsTime).UnixNano  (duration "hour" 24).Milliseconds) }}
 
 
                     <!-- Set the values based on the type of the page. -->
