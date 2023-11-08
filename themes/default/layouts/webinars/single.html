@@ -13,7 +13,7 @@
 
 {{ define "main" }}
     <!-- time variables to remove registration forms from past events -->
-    {{ $nowUnix := now().UnixMilli }}
+    {{ $nowUnix := now.UnixNano }}
     <!-- add 24 hours to event date to list it for an extra day -->
     {{ $eventDateUnix := (add (.Params.main.sortable_date | time.AsTime).UnixMilli (duration "hour" 24).Milliseconds) }}
     {{ $timePassed := gt $nowUnix $eventDateUnix }}
