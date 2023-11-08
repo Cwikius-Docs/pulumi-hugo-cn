@@ -95,7 +95,7 @@ sections:
 
 Pulumi 是一个 <a href="https://github.com/pulumi/pulumi" target="_blank">开源（open source）</a> 系统基础架构代码化工具。
 这个工具被用来创建，部署和管理云计算平台基础架构。
-Pulumi 能在基础计算平台上工作，例如 VMs，网络和数据库，同时还能够在更加现代化的架构上进行工作，包括有容器，Kubernetes 集群和无服务方法（serverless functions）。 
+Pulumi 能在基础计算平台上工作，例如 VMs，网络和数据库，同时还能够在更加现代化的架构上进行工作，包括有容器，Kubernetes 集群和无服务方法（serverless functions）。
 Pulumi 能够广泛支持公有，私有和混合云服务提供商。
 
 
@@ -150,5 +150,5 @@ Pulumi 能够广泛支持公有，私有和混合云服务提供商。
 有关任何问题或者反馈，请访问官方的 [community Slack channel](https://slack.pulumi.com),
 [GitHub](https://github.com/pulumi), 或者 [support@pulumi.com](mailto:support@pulumi.com)。
 
-有关本中文版本文档的翻译，支持，使用，请访问 [GitHub 中文文档源代码](https://github.com/cwiki-us-docs/pulumi-hugo-cn), 
+有关本中文版本文档的翻译，支持，使用，请访问 [GitHub 中文文档源代码](https://github.com/cwiki-us-docs/pulumi-hugo-cn),
 中文社区的 Pulumi 版块 [https://www.ossez.com](https://www.ossez.com)，以及我们中文项目中提供的微信公众号。
