@@ -1,6 +1,6 @@
 ---
 # Name of the webinar.
-title: "Azure Infrastructure as Software with TypeScript"
+title: "Getting Started with Azure and Infrastructure as Code"
 meta_desc: "In this workshop, you’ll use the Azure native provider to build infrastructure using TypeScript SDK and examine some of the features not previously possible."
 
 # A featured webinar will display first in the list.
@@ -36,25 +36,30 @@ block_external_search_index: false
 # webinar, use the external URL as the value here.
 url_slug: "getting-started-with-azure-native"
 
+# Webinar pages support multiple session via the 'multiple' property.
+# multiple:
+#     - datetime: 2021-10-21T09:00:00-07:00
+#       hubspot_form_id: 7de43dee-4699-46e9-9ce3-9a6fffd56aa5
+
 # The content of the hero section.
 hero:
     # The title text in the hero. This also serves as the pages H1.
-    title: "Azure: Unlocking Azure with Infrastructure as Software with TypeScript"
+    title: "Getting Started with Azure and Infrastructure as Code"
     # The image the appears on the right hand side of the hero.
     image: "/icons/containers.svg"
 
 # Content for the left hand side section of the page.
 main:
     # Webinar title.
-    title: "Azure: Unlocking Azure with Infrastructure as Software with TypeScript"
+    title: "Getting Started with Azure and Infrastructure as Code"
     # URL for embedding a URL for ungated webinars.
     youtube_url: "https://www.youtube.com/embed/yzTSUDp2KXU"
     # Sortable date. The datetime Hugo will use to sort the webinars in date order.
-    sortable_date: 2021-04-28T09:00:00-07:00
+    sortable_date: 2022-06-01T09:00:00-07:00
     # Duration of the webinar.
-    duration: "1 hour"
+    duration: "90 minutes"
     # Datetime of the webinar.
-    datetime: "April 28th, 2021"
+    datetime: "OCTOBER 21st, 2021"
     # Description of the webinar.
     description: |
         Microsoft Azure’s product offering is continuously evolving, and infrastructure tools often can’t keep up with the speed of innovation. Pulumi’s Azure Native provider is built directly from the Azure API, bringing power of familiar programming languages to Azure without sacrificing on latest features.
@@ -63,8 +68,10 @@ main:
 
     # The webinar presenters
     presenters:
-        - name: Lee Briggs
-          role: Community Engineer, Pulumi
+        - name: Matt Stratton
+          role: Staff Developer Advocate, Pulumi
+        - name: April Edwards
+          role: Senior Cloud Advocate, Microsoft
 
     # A bullet point list containing what the user will learn during the webinar.
     learn:
@@ -74,5 +81,5 @@ main:
 # The right hand side form section.
 form:
     # HubSpot form id.
-    hubspot_form_id: 3d988d22-21a0-4ec9-8255-8ddd03a197e6
+    hubspot_form_id: "a6e6eab6-add6-4182-81fd-9bff4e61dace"
 ---

@@ -1,26 +1,37 @@
 ---
+title_tag: "Learn Pulumi: Key Concepts, Tutorials, Best Practices"
 title: Learn Pulumi
-description: Courses, tutorials, examples, and more to help you get the most out of Pulumi.
-meta_desc: Courses, tutorials, examples, and more to help you get the most out of Pulumi.
+description: |
+    Courses, tutorials, examples, and more to help you get the most out of
+    Pulumi.
+meta_desc: Learn all the key concepts of Pulumi, along with best practices and architectural patterns with these curated tutorials.
 menu:
     header:
         weight: 0 # Change this to 4 to have LEARN appear in the header bar.
         identifier: learn
         name: Learn
 modules:
-    title: Modules
+    title: Pathways
     description: |
-        Here's a bit of text that'll go at the top of the page. It's intended to give you some
-        information, as text generally is, and to introduce you to what you're looking at, and uh,
-        you know, such as.
+        Pathways are learning progressions that you can follow to learn more
+        about using Pulumi.
 tutorials:
     title: Tutorials
     description: |
-        Here's a bit of text that'll go along with this section. It'll have a little info, etc.
-        You get the idea.
+        Tutorials are series of hands-on activities that help you along your
+        learning journey with Pulumi.
 
-# Exclude from search-engine indexing for now.
-block_external_search_index: true
+# There are 2 trailing spaces appended to each line in the paragraphs below
+# in order to force a new line to limit the line length to 75 characters.
+overview: |
+    <h2 class="learn-h2">Welcome to Learn Pulumi!</h2>
+
+    Learn all the concepts of Pulumi, along with best practices and  
+    architectural patterns.
+
+    Each tutorial will step you through exploring Pulumi and completing a  
+    project. Start with Pulumi Fundamentals to get comfortable with  
+    vocabulary, then try another pathway to explore more!
 ---
 
-This is some content that goes with the page as a whole. You know, if we need it. Or something.
+Ipsum lorem

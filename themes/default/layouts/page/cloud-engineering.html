@@ -1,5 +1,5 @@
 {{ define "hero" }}
-    {{ partial "hero" (dict "title" .Params.title )}}
+    {{ partial "hero" (dict "title" .Params.title ) }}
 {{ end }}
 
 {{ define "main" }}
@@ -14,7 +14,7 @@
             <div class="w-full lg:w-2/3 bg-gray-200 text-center p-6 lg:p-16 lg:rounded-2xl">
                 <div class="max-w-xl mx-auto">
                     <h2>{{ .Params.best_practices.title }}</h2>
-                    <p class="text-gray-600">{{ .Params.best_practices.description }}</p>
+                    <p class="text-gray-600">{{ .Params.best_practices.description | markdownify }}</p>
                 </div>
             </div>
         </section>
@@ -171,7 +171,7 @@
         </section>
 
         <section id="case-studies" class="w-full my-16 hidden lg:block relative">
-             <div class="shape-background cloud-engineering-case-studies-section">
+            <div class="shape-background cloud-engineering-case-studies-section">
                 <div class="shape-container">
                     <div class="circle-left"></div>
                 </div>
@@ -204,7 +204,7 @@
             </div>
         </section>
         <section id="case-studies" class="w-full my-16 overflow-hidden lg:hidden relative">
-             <div class="shape-background cloud-engineering-case-studies-section">
+            <div class="shape-background cloud-engineering-case-studies-section">
                 <div class="shape-container">
                     <div class="circle-left"></div>
                 </div>

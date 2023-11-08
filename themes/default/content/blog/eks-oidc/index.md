@@ -2,7 +2,7 @@
 date: "2020-06-02"
 title: "Access Control for Pods on Amazon EKS"
 authors: ["mike-metral"]
-tags: ["aws", "Kubernetes"]
+tags: ["aws", "Kubernetes", "eks", "rbac"]
 meta_desc: "Amazon EKS clusters can use IAM roles and policies for Pods to assign fine-grained access control of AWS services."
 meta_image: cluster.png
 ---
@@ -227,5 +227,5 @@ or join our [Community Slack](https://slack.pulumi.com/) channel if you have any
 [k8s-dynamic-webhook]: https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers
 [eks-webhook]: https://github.com/aws/amazon-eks-pod-identity-webhook/
 [k8s-sa]: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
-[pulumi-k8s]: {{< relref "/docs/intro/cloud-providers/kubernetes" >}}
-[p-get-started]: {{< relref "/docs/get-started/kubernetes" >}}
+[pulumi-k8s]: /registry/packages/kubernetes/
+[p-get-started]: /docs/clouds/kubernetes/get-started/

@@ -45,7 +45,7 @@ sections:
     - id: get-started
       label: Get Started
     - id: contact
-      label: Contact Us
+      label: Talk to a human
 
 examples:
     - id: code-api
@@ -259,6 +259,6 @@ contact_us_form:
         name_title: Site Reliability Engineer, Cockroach Labs
         content: |
             We are building a distributed-database-as-a-service product that runs on Kubernetes clusters across
-            multiple public clouds including GCP, AWS and others. Pulumi's declarative model, the support for real
+            multiple public clouds including Google Cloud, AWS and others. Pulumi's declarative model, the support for real
             programming languages, and the uniform workflow on any cloud make our SRE team much more efficient.
 ---

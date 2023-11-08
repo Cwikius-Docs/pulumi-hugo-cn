@@ -2,20 +2,20 @@
 title: "Protecting Your APIs with Lambda Authorizers and Pulumi"
 date: "2019-04-24"
 meta_desc: "With Pulumi's new AWSX package, you can quickly define a Lambda and an AWS Lambda authorizer to protect it in three easy steps."
-meta_image: "lambda-authorizer.jpg"
+meta_image: "lambda-authorizer.png"
 authors: ["erin-krengel"]
-tags: ["Serverless","AWS"]
+tags: ["Serverless","AWS", "lambda", "api-gateway"]
 ---
 
 Creating serverless applications just got even easier! You can now
 protect your application APIs in just three easy steps. We've already
-posted about how [easy it is to create serverless apps in Pulumi]({{< relref "easy-serverless-apps-and-infrastructure-real-events-real-code" >}}).
+posted about how [easy it is to create serverless apps in Pulumi](/blog/easy-serverless-apps-and-infrastructure-real-events-real-code/).
 Now, we're helping you simplify protecting those apps with API
 Gateway and Lambda authorizers.
 
 With Pulumi's new [AWSX](https://github.com/pulumi/pulumi-awsx) package, you
 can quickly define a Lambda and an AWS Lambda authorizer to protect it.
-We're once again harnessing the power of [Lambdas as Lambdas]({{< relref "lambdas-as-lambdas-the-magic-of-simple-serverless-functions" >}})
+We're once again harnessing the power of [Lambdas as Lambdas](/blog/lambdas-as-lambdas-the-magic-of-simple-serverless-functions/)
 to allow developers to focus on writing code.
 
 Today, we will walkthrough creating a simple serverless app using AWS
@@ -80,7 +80,7 @@ will create our API Gateway and Hello World Lambda. In Step 2, we will
 set up the logic for our Lambda authorizer. And finally in Step 3, we
 will bring it all together by telling API Gateway to use our authorizer.
 
-![lambda_authorizer](./lambda-authorizer.jpg)
+![lambda_authorizer](./lambda-authorizer.png)
 
 ### 1 - Define Your Routes
 
@@ -287,8 +287,6 @@ enable developers to get their code production ready faster.
 
 Get going with these resources:
 
-- [Getting Started]({{< relref "/docs/get-started" >}})
+- [Getting Started](/docs/get-started/)
 - [Serverless REST API on AWS](https://github.com/pulumi/examples/tree/master/aws-ts-apigateway)
-
-To learn more about using Pulumi and Lambda authorizers
-[here](https://github.com/pulumi/pulumi-awsx/tree/master/nodejs/awsx/apigateway#lambda-authorizers).
+- [Examples of Lambda authorizers in the AWSX repository](https://github.com/pulumi/pulumi-awsx/tree/master/awsx-classic/apigateway#lambda-authorizers)

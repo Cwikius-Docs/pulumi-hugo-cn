@@ -5,7 +5,7 @@ authors: ["alex-clemmer"]
 tags: ["Kubernetes","Azure"]
 date: "2018-10-31"
 meta_desc: "In this post, we run a Pulumi program that manages both Azure and Kubernetes resources and dependencies, and deploys a Node.js Helm chart."
-meta_image: "helm-pulumi-deploy.gif"
+meta_image: "helm-pulumi-deploy.png"
 ---
 
 The Helm community is one of the brightest spots in the infrastructure
@@ -116,6 +116,6 @@ can make the best use of existing tools such as Helm, and also reduce
 the friction caused by multiple deployment tools and models across
 complex architectures.
 
-- Find out more about our [Azure]({{< relref "/partner/azure" >}}) and
-  [Kubernetes]({{< relref "/topics/kubernetes" >}}) support
+- Find out more about our [Azure](/azure/) and
+  [Kubernetes](/kubernetes/) support
 - Join the Slack community at <https://slack.pulumi.com>

@@ -3,9 +3,9 @@ title: "Data science on demand: spinning up a Wallaroo cluster"
 h1: "Data science on demand: spinning up a Wallaroo cluster is easy with Pulumi"
 date: "2018-11-02"
 meta_desc: "Find out how Wallaroo powered their cluster provisioning with Pulumi, for data science on demand."
-meta_image: "tty-fast.gif"
+meta_image: "tty-fast.png"
 authors: ["marc-holmes", "simon-zelazny"]
-tags: ["guest-post"]
+tags: ["guest-post", "data-science"]
 ---
 
 *This guest post is from Simon Zelazny of
@@ -72,7 +72,7 @@ Let's jump into it!
 
 First of all, if you'd like to follow along (and spend some money
 provisioning EC2 servers), please
-[download and set up Pulumi]({{< relref "/docs/get-started/install" >}}).
+[download and set up Pulumi](/docs/install/).
 
 Next, [clone the wallaroo blog examples repo](https://github.com/WallarooLabs/wallaroo_blog_examples) and
 navigate to `provisioned-classifier`. If you followed along with the
@@ -87,16 +87,15 @@ freshly-provisioned cluster in the EC2 cloud:
 make up run-cluster get-results down INPUT_LINES=1000000 CLUSTER_SIZE=3
 ```
 
-![tty-fast](./tty-fast.gif)
+![tty-fast](https://www.pulumi.com/uploads/content/blog/data-science-on-demand-spinning-up-a-wallaroo-cluster-is-easy-with-pulumi/tty-fast.gif)
 
 Let's break that down and see what's really going on here.
 
 1. `make up CLUSTER_SIZE=3` configures the cluster to consist of 3
 machines, and delegates to `pulumi up` the actual business of spinning
 up the infrastructure. Our physical cluster will contain 3 nodes for
-processing, and one extra metrics_host node for hosting our [Metrics
-UI](https://docs.wallaroolabs.com/book/metrics/metrics-ui.html), and
-collecting results.
+processing, and one extra metrics_host node for hosting our Metrics
+UI, and collecting results.
 
 2. Once provisioning is complete, the next make
 task: `run-cluster INPUT_LINES=1000000` uses our Ansible playbooks to
@@ -229,15 +228,13 @@ distinction between the two is only relevant at cluster startup.
 output of our computation. This is the `data_receiver`, provided as part
 of a Wallaroo installation.
 
-4) The metrics UI -- Our [Elixir-powered realtime dashboard](https://blog.wallaroolabs.com/2018/04/choosing-elixirs-phoenix-to-power-a-real-time-web-ui/).
+4) The metrics UI -- Our Elixir-powered realtime dashboard.
 
 Our Ansible playbook takes care of coordinating the launch of the
 various components and making sure that their input, output and control
 ports match up. In particular, that the cluster initializer starts up
 knowing the total number of workers in the cluster, and every other
 worker connects to the initializer's internal IP and control port.
-[See here](https://docs.wallaroolabs.com/book/running-wallaroo/running-wallaroo.html)
-if you're interested in a detailed discussion of clustering.
 
 This is what ends up running on the servers when we launch our Ansible
 playbooks:
@@ -248,8 +245,7 @@ Once the cluster is up and running, and the initializer node's
 [tcp source](https://github.com/WallarooLabs/wallaroo_blog_examples/blob/master/provisioned-classifier/classifier/classifier.py#L17)
 is listening for connections, we start up the `sender` and instruct it to
 send a stream of data to the TCP Source. In a realistic batch scenario,
-this sender could be implemented as
-a [Connector](https://docs.wallaroolabs.com/book/python/using-connectors.html) that
+this sender could be implemented as a Connector that
 reads a particular file from a remote filesystem or S3. For our
 purposes, we'll simulate this by generating a set number of CSV lines
 on-demand, and then shutting down.

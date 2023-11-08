@@ -7,7 +7,7 @@ meta_desc: In this bi-monthly workshop, you will learn the fundamentals of Infra
 featured: false
 
 # If the video is pre-recorded or live.
-pre_recorded: false
+pre_recorded: true
 
 # If the video is part of the PulumiTV series. Setting this value to true will list the video in the "PulumiTV" section.
 pulumi_tv: false
@@ -20,7 +20,7 @@ unlisted: false
 
 # Gated webinars will have a registration form and the user will need
 # to fill out the form before viewing.
-gated: true
+gated: false
 
 # The layout of the landing page.
 type: webinars
@@ -68,7 +68,7 @@ main:
 
         **Prerequisites**
 
-        To successfully complete all the exercises you will need to have [Docker](https://docs.docker.com/get-docker/) installed on your machine. You can also install the [Pulumi CLI](/docs/get-started/install/) ahead of time, but we will walk you through the install process during the session.
+        To successfully complete all the exercises you will need to have [Docker](https://docs.docker.com/get-docker/) installed on your machine. You can also install the [Pulumi CLI](/docs/install/) ahead of time, but we will walk you through the install process during the session.
 
 
     # The webinar presenters
@@ -82,7 +82,7 @@ main:
         - How to install Pulumi
         - Configuring your development environment
         - Choose your Pulumi language
-        - An introduction to the Pulumi state & the Pulumi console
+        - An introduction to the Pulumi state & the Pulumi Service
         - An introduction to Pulumi config
         - Storing sensitive data in Pulumi securely
         - Provision your first resources

@@ -34,13 +34,13 @@ In addition to the core infrastructure as code features, Pulumi's SDK offers:
 
 Using Pulumi in conjunction with the Pulumi service delivers the following additional features:
 
-* **Pulumi Console**: a dashboard for gaining visibility into and managing your deployments.
+* **Pulumi Service**: a dashboard for gaining visibility into and managing your deployments.
 * **Identity**: user and organization identity provider integrations with GitHub, GitLab, Atlassian, or SAML/SSO, including Active Directory, Okta, Google G Suite, and others.
 * **Role based access controls**: team management, also integrated with your identity provider.
 * **REST API and Webhooks**: a fully programmable web API for advanced automation scenarios.
 * **CI/CD Integrations**: automated deployment integrations with Azure DevOps, AWS Code Services, CircleCI, Codefresh, GitHub, GitLab, Google Cloud Build, Jenkins, Travis, and others.
 
-The Pulumi service is available as a free Community Edition as well as advanced Team and Enterprise SaaS editions for larger teams looking for robust enterprise capabilities.
+The Pulumi Service is available as a free Individual Edition as well as advanced Team and Enterprise SaaS editions for larger teams looking for robust enterprise capabilities.
 
 ## Why Pulumi?
 
@@ -85,7 +85,7 @@ The Pulumi 1.0 milestone signals completeness, stability, and compatibility, and
 
 If you're already a Pulumi user, simply upgrade in the usual ways.
 
-If this is your first time using Pulumi, [give it a try today](https://pulumi.com/docs/get-started). It is open source and free to use.
+If this is your first time using Pulumi, [give it a try today](https://pulumi.com/docs/quickstart). It is open source and free to use.
 
 For more information about Pulumi Team and Enterprise editions, visit [our products page](https://pulumi.com/product).
 

@@ -45,7 +45,7 @@ sections:
     - id: get-started
       label: Get Started
     - id: contact
-      label: Contact Us
+      label: Talk to a human
 
 examples:
     - title: Deploy Nginx to AWS Fargate
@@ -73,7 +73,7 @@ examples:
 
           export let url = web.endpoint.hostname;
       cta:
-          url: /docs/get-started
+          url: /docs/quickstart
           label: GET STARTED
 
     - title: Deploying with a custom build
@@ -104,7 +104,7 @@ examples:
           FROM nginx
           COPY ./www /usr/share/nginx/html
       cta:
-          url: /docs/get-started
+          url: /docs/quickstart
           label: GET STARTED
 
     - title: Creating a Kubernetes cluster
@@ -134,40 +134,47 @@ examples:
           // Export the cluster's kubeconfig.
           export const kubeconfig = cluster.kubeconfig;
       cta:
-          url: /docs/get-started
+          url: /docs/quickstart
           label: GET STARTED
 
     - title: Deploy containers to Microsoft ACI
       body: >
-          The <code>@pulumi/azure</code> library provides fine-grained control of Azure resources. In this example,
+          The <code>@pulumi/azure-native</code> library provides fine-grained control of Azure resources. In this example,
           we deploy a simple linux container to Microsoft ACI, in the West US zone.
       code: |
-          import * as azure from "@pulumi/azure";
+          import * as containerinstance from "@pulumi/azure-native/containerinstance";
+          import * as resources from "@pulumi/azure-native/resources";
 
-          const resourceGroup = new azure.core.ResourceGroup("resourcegroup", {
+          const resourceGroup = new resources.ResourceGroup("resourcegroup", {
               location: "West US",
           });
 
-          const containerGroup = new azure.containerservice.Group("containergroup", {
-              location: resourceGroup.location,
+          const imageName = "mcr.microsoft.com/azuredocs/aci-helloworld";
+          const containerGroup = new containerinstance.ContainerGroup("containerGroup", {
               resourceGroupName: resourceGroup.name,
-              ipAddressType: "public",
-              osType: "linux",
-              containers: [
-                  {
-                      name: "hw",
-                      image: "microsoft/aci-helloworld:latest",
-                      cpu: 0.5,
-                      memory: 1.5,
-                      port: 80
+              osType: "Linux",
+              containers: [{
+                  name: "acilinuxpublicipcontainergroup",
+                  image: imageName,
+                  resources: {
+                      requests: {
+                          cpu: 1.0,
+                          memoryInGB: 1.5,
+                      },
                   },
-              ],
-              tags: {
-                  "environment": "testing",
-              },
+                  ports: [{ port: 80 }],
+              }],
+              ipAddresses: [{
+                  ports: [{
+                    port: 80,
+                    protocol: "Tcp",
+                  }],
+                  type: "Public",
+              }],
+              restartPolicy: "always",
           });
       cta:
-          url: /docs/get-started
+          url: /docs/quickstart
           label: GET STARTED
 
     - title: Invoke a long-running container as a task
@@ -221,7 +228,7 @@ examples:
 
           exports.bucketName = videos.bucket;
       cta:
-          url: /docs/get-started
+          url: /docs/quickstart
           label: GET STARTED
 
 contact_us_form:
@@ -234,6 +241,6 @@ contact_us_form:
         name_title: Site Reliability Engineer, Cockroach Labs
         content: |
             We are building a distributed-database-as-a-service product that runs on Kubernetes clusters across multiple
-            public clouds including GCP, AWS and others. Pulumi's declarative model, the support for familiar programming
+            public clouds including Google Cloud, AWS and others. Pulumi's declarative model, the support for familiar programming
             languages, and the uniform workflow on any cloud make our SRE team much more efficient.
 ---

@@ -1,6 +1,39 @@
 [[awards]]
-title = "21 Companies to Watch in 2021"
+title = "Fastest-Growing Companies in America"
 featured = true
+img = "/logos/press/awards/inc-5000.png"
+url = "https://www.inc.com/inc5000/2023"
+
+[[awards]]
+title = "Redpoint InfraRed 100, 2023"
+featured = true
+img = "/logos/press/awards/infrared-100.png"
+url = "https://www.redpoint.com/infrared/100/"
+
+[[awards]]
+title = "Top Open Source Startups, 2023"
+featured = true
+img = "/logos/press/awards/traxcn-logo.png"
+
+[[awards]]
+title = "Best Innovation in Coding Tools, 2022"
+featured = true
+img = "/logos/press/awards/devies-2022.png"
+
+[[awards]]
+title = "Top Open Source Tech Startups 2021"
+featured = false
+img = "/logos/press/awards/tracxn-emerging-startups.png"
+
+[[awards]]
+title = "Coolest Open-Source Tools Of 2021"
+featured = false
+img = "/logos/press/crn.png"
+url = "https://www.crn.com/slide-shows/applications-os/the-10-coolest-open-source-software-tools-of-2021-so-far-/8"
+
+[[awards]]
+title = "21 Companies to Watch in 2021"
+featured = false
 img = "/logos/press/awards/builtin-seattle.png"
 url = "https://www.builtinseattle.com/2021/04/22/21-seattle-companies-to-watch-2021"
 
@@ -20,11 +53,11 @@ url = "https://torstenvolk.medium.com/ema-best-of-2020-top-3-acquisitions-vc-rou
 title = "Top 20 Edge Cloud Companies"
 featured = false
 img = "/logos/press/ngpcap.png"
-url = "https://www.ngpcap.com/news/edge-cloud-a-gold-lining-on-the-horizon-1"
+url = "https://web.archive.org/web/20210731161324/https://www.ngpcap.com/news/edge-cloud-a-gold-lining-on-the-horizon-1"
 
 [[awards]]
 title = "10 Hottest Kubernetes Startups Of 2020"
-featured = true
+featured = false
 img = "/logos/press/crn.png"
 url = "https://www.crn.com/slide-shows/cloud/the-10-hottest-kubernetes-startups-of-2020/7"
 
@@ -32,17 +65,16 @@ url = "https://www.crn.com/slide-shows/cloud/the-10-hottest-kubernetes-startups-
 title = "Gartner Cool Vendor 2020"
 featured = true
 img = "/logos/press/awards/gartner-cool-vendor.png"
-url = "https://www.gartner.com/doc/reprints?id=1-1Z160QCQ&ct=200514&st=sb"
 
 [[awards]]
 title = "IDC Innovator 2020"
 featured = true
 img = "/logos/press/awards/idc-innovator.png"
-url = "https://www.idc.com/getdoc.jsp?containerId=US44895219"
+url = "https://info.pulumi.com/press-release/gartner-cool-vendor-5_28_2020?_gl=1*vmx058*_ga*MTMwODkyMzA0MS4xNjgxNTgwNjkx*_ga_FQHG5CVY2D*MTY4Mjk1OTczMy4xNS4wLjE2ODI5NTk3MzMuNjAuMC4w"
 
 [[awards]]
 title = "Top Startups of 2019"
-featured = false
+featured = true
 img = "/logos/press/businessinsider.png"
 url = "https://www.businessinsider.com/18-hottest-enterprise-startups-from-seattles-booming-tech-scene-2019-12"
 

@@ -11,6 +11,7 @@ pre_recorded: false
 pulumi_tv: false
 preview_image: /images/webinar/pulumi_workshop.jpg
 unlisted: true
+block_external_search_index: true
 gated: true
 type: webinars
 external: false
@@ -24,11 +25,11 @@ main:
   duration: 2 1/2 hours
   datetime: Thu Oct 29, 2020 AT 07:00AM PT
   description: >-
-    Want to learn how to use the only Infrastructure as Code (IaC) tool that
+    Want to learn how to use the only [Infrastructure as Code](/what-is/what-is-infrastructure-as-code/) (IaC) tool that
     supports 100% of Azure capabilities?
 
 
-    In this workshop, the Pulumi team will show you how to define, deploy and manage Azure resources using Infrastructure as Code through a series of hands-on labs. The techniques work for any cloud -- Azure, AWS, and GCP. You'll be able to leverage your favorite languages including Python, Go, JavaScript, TypeScript, and C# instead of YAML or domain-specific languages.
+    In this workshop, the Pulumi team will show you how to define, deploy and manage Azure resources using Infrastructure as Code through a series of hands-on labs. The techniques work for any cloud -- Azure, AWS, and Google Cloud. You'll be able to leverage your favorite languages including Python, Go, JavaScript, TypeScript, and C# instead of YAML or domain-specific languages.
 
 
     After completing this workshop, you'll be up and running with IaC fundamentals, modern application architectures across many clouds, and best-practices that are ready for production environments. You'll also be ready to empower your development teams to be more productive -- continuously deploying both their applications and infrastructure.

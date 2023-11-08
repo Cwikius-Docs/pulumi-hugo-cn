@@ -7,6 +7,8 @@ authors:
     - sophia-parafina
 tags:
     - policy-as-code
+    - s3
+    - elasticsearch
 ---
 
 Modern applications have brought many benefits and improvements, including the ability to scale and rapid iterations to update software. However, this has come at the cost of complexity. Modern infrastructure is composed of many resources that require detailed configuration to work correctly and securely. Even managed solutions from cloud service providers need additional configuration to ensure that services are secure and free of defects. Cloud providers, such as AWS, do allow you to create policies to ensure that applications are secure, but they are specific to resources that are already deployed. A significant benefit of Policy as Code is the ability to verify and spot problems before deploying your infrastructure.
@@ -19,9 +21,9 @@ What do many of the most innovative companies in the modern cloud era have in co
 
 ![S3 buckets open to public](Slurp-Amazon-AWS-S3-Bucket-Enumerator.png)
 
-Pulumi's CrossGuard helps customers adhere to security best practices by checking the final state of a deployment against a set of policies and revealing any non-compliant services. CrossGuard is an SDK for writing policies for services, and it includes best practices playbooks for cloud providers such as AWS, Azure, and Google Cloud Platform. The [Getting Started with PaC]({{< relref "/docs/get-started/crossguard" >}}) covers the case of leaking S3 buckets, but let’s do a quick review with an example showing how we can detect a leaky bucket before it gets deployed.
+Pulumi's CrossGuard helps customers adhere to security best practices by checking the final state of a deployment against a set of policies and revealing any non-compliant services. CrossGuard is an SDK for writing policies for services, and it includes best practices playbooks for cloud providers such as AWS, Azure, and Google Cloud Platform. The [Getting Started with PaC](/docs/using-pulumi/crossguard/get-started/) covers the case of leaking S3 buckets, but let’s do a quick review with an example showing how we can detect a leaky bucket before it gets deployed.
 
-> Note: If you haven’t installed Pulumi, follow the [Pulumi Getting Started]({{< relref "/docs/get-started/install" >}})
+> Note: If you haven’t installed Pulumi, follow the [Pulumi Getting Started](/docs/install/)
 Start by creating an S3 bucket with Pulumi.
 
 ```bash
@@ -119,7 +121,7 @@ const example = new aws.elasticsearch.Domain("example", {
 });
 ```
 
-In this example, we’ll use [AWSGuard]({{< relref "/docs/guides/crossguard/awsguard" >}}), which is a set of best practice policies for AWS. First, create a directory, change into it, and create a new policy.
+In this example, we’ll use [AWSGuard](/docs/using-pulumi/crossguard/awsguard/), which is a set of best practice policies for AWS. First, create a directory, change into it, and create a new policy.
 
 ```bash
 $ mkdir awsguard && cd awsguard

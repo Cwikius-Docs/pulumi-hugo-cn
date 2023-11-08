@@ -2,13 +2,14 @@
 title: Convert Your Terraform to a Modern Language
 url: /tf2pulumi
 layout: tf2pulumi
-linktitle: tf2pulumi
+linktitle: Terraform to Pulumi
 menu:
   converters:
     identifier: tf2pulumi
     weight: 4
+aliases:
+    - /migrate/tf2pulumi
 meta_desc: See what your Terraform HCL would look like in a modern language thanks to Pulumi.
-
 examples:
     - name: AWS EC2 Instance
       filename: main.tf
@@ -59,7 +60,7 @@ examples:
             name = "internal"
             resource_group_name = azurerm_resource_group.example.name
             virtual_network_name = azurerm_virtual_network.example.name
-            address_prefix = "10.0.2.0/24"
+            address_prefixes = ["10.0.2.0/24"]
         }
 
         resource "azurerm_network_interface" "example" {
@@ -113,9 +114,6 @@ examples:
             initial_node_count = 1
 
             master_auth {
-                username = ""
-                password = ""
-
                 client_certificate_config {
                     issue_client_certificate = false
                 }

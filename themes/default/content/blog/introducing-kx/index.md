@@ -4,8 +4,7 @@ authors: ["levi-blackstone"]
 tags: ["Kubernetes"]
 meta_desc: "The Kubernetes Extensions (kx) library for Pulumi is designed to simplify the declaration of Kubernetes resources, and make the API easier to use."
 date: "2019-11-14"
-
-meta_image: "feature.png"
+meta_image: feature.png
 ---
 
 Kubernetes provides a rich, standards-based API that works across cloud and on-premise
@@ -19,7 +18,7 @@ we’re introducing the [Kubernetes Extensions (kx) library][kx-repo] for Pulumi
 designed to simplify the declaration of Kubernetes resources, and make the API easier for
 everyone to use.
 
-![kx + watch mode](kx.gif)
+![kx + watch mode](https://www.pulumi.com/uploads/content/blog/introducing-kx/kx.gif)
 
 ## Kubernetes YAML: The cloud assembly language
 
@@ -75,7 +74,7 @@ let us know what you think!
 
 If you'd like to learn about Pulumi and how to manage your
 infrastructure and Kubernetes through code,
-[click here to get started today]({{< relref "/docs/get-started" >}}). Pulumi is open
+[click here to get started today](/docs/get-started/). Pulumi is open
 source and free to use.
 
 As always, you can check out our code on
@@ -86,6 +85,6 @@ join our [Community Slack](https://slack.pulumi.com/) channel if you have
 any questions, need support, or just want to say hello.
 
 <!-- markdownlint-disable url -->
-[crosswalk-announce-blog]: {{< relref "/blog/crosswalk-kubernetes" >}}
+[crosswalk-announce-blog]: /blog/crosswalk-kubernetes/
 [kx-repo]: https://github.com/pulumi/pulumi-kubernetesx
 <!-- markdownlint-enable url -->

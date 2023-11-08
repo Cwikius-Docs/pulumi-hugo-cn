@@ -4,7 +4,7 @@ authors: ["praneet-loke"]
 tags: ["continuous-delivery"]
 date: "2018-12-03"
 meta_desc: "Pulumi supports signing in with your GitLab! Invite GitLab group members, integrate with your CI pipeline, and link your projects, branches, and commits."
-meta_image: "gl-2.gif"
+meta_image: "gl-2.png"
 ---
 
 We are very pleased to announce that [Pulumi](/) now
@@ -45,7 +45,7 @@ You should see a **People** tab. Select the People tab.
 
 > - You will see the People tab if *you* added the organization on
 >   Pulumi or if you are an Owner of the GitLab group on
->   [gitlab.com](http://gitlab.com).
+>   [gitlab.com](https://gitlab.com).
 > - Members must have an active and valid role in your GitLab group,
 >   so that you may invite them.
 
@@ -56,8 +56,8 @@ would collaborate on a project on GitLab.
 
 ## Running Pulumi on GitLab
 
-Pulumi can be run in [many CI/CD environments]({{< relref "/docs/guides/continuous-delivery" >}}). Pulumi can be easily
-integrated in your [CI pipeline on GitLab]({{< relref "/docs/guides/continuous-delivery/gitlab-ci" >}}), too.
+Pulumi can be run in [many CI/CD environments](/docs/using-pulumi/continuous-delivery/). Pulumi can be easily
+integrated in your [CI pipeline on GitLab](/docs/using-pulumi/continuous-delivery/gitlab-ci/), too.
 
 ## Deep-linking to your GitLab projects, branches and commits
 
@@ -67,7 +67,7 @@ and uses that information to enhance your experience on
 `app.pulumi.com`.
 
 Here's an example of a project hosted on
-[gitlab.com](http://gitlab.com).
+[gitlab.com](https://gitlab.com).
 
 ![gl-3](./gl-3.png)
 
@@ -76,12 +76,12 @@ commit-hash, and the branch in which this stack was updated.
 
 ![gl-4](./gl-4.png)
 
-## FAQs
+## FAQ
 
 ### I use my GitHub identity to login into GitLab. How do I do that with Pulumi?
 
 Click the **GitLab** sign-in button on <app.pulumi.com>, Pulumi
-will redirect you to [gitlab.com](http://gitlab.com) where GitLab will
+will redirect you to [gitlab.com](https://gitlab.com) where GitLab will
 present you with the sign-in options to login into your GitLab account.
 At that point, you may choose any of the sign-in options GitLab provides
 to sign-in.
@@ -91,9 +91,9 @@ to sign-in.
 Yes. Signing-in with a GitLab account will create a new account. That
 means, your stacks and activity will stay with the other account. You
 can migrate them by performing a
-[`pulumi stack export`]({{< relref "/docs/reference/cli/pulumi_stack_export" >}})
+[`pulumi stack export`](/docs/cli/commands/pulumi_stack_export)
 from your source stack and then importing it using
-[`pulumi stack import`]({{< relref "/docs/reference/cli/pulumi_stack_import" >}})
+[`pulumi stack import`](/docs/cli/commands/pulumi_stack_import)
 in a new stack in your GitLab-based account.
 
 If you would like to add your GitLab identity to your _existing_ Pulumi account, you can

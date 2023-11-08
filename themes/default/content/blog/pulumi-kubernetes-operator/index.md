@@ -2,7 +2,7 @@
 date: "2020-08-12"
 title: "Introducing the Pulumi Kubernetes Operator"
 authors: ["mike-metral"]
-tags: ["Kubernetes", "Continuous-Delivery"]
+tags: ["Kubernetes", "Continuous-Delivery", "operators"]
 meta_desc: "Introducing the Pulumi Kubernetes Operator: Deploy infrastructure in Pulumi Stacks"
 meta_image: operator.png
 ---
@@ -34,11 +34,11 @@ languages, or through YAML manifests and `kubectl`.
 You can also [get started][get-started] with Pulumi and create a new [managed Kubernetes cluster](https://www.pulumi.com/docs/tutorials/kubernetes/#clusters) on [Amazon EKS][aws-eks], [Google GKE][gcp-gke], or [Azure AKS][azure-aks] if you don't have an existing cluster.
 
 [aws-eks]: https://aws.amazon.com/eks/
-[gcp-gke]: https://cloud.google.com/kubernetes-engine
+[gcp-gke]: https://cloud.google.com/kubernetes-engine/
 [azure-aks]: https://azure.microsoft.com/en-us/services/kubernetes-service/
-[get-started]: https://www.pulumi.com/docs/get-started/kubernetes
+[get-started]: https://www.pulumi.com/docs/clouds/kubernetes/get-started/
 [k8s-ext-pattern]: https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
-[deploy-op]: https://git.io/JJX6a
+[deploy-op]: https://github.com/pulumi/pulumi-kubernetes-operator#deploy-the-operator/
 
 ## How it Works
 
@@ -89,7 +89,7 @@ The `Stack` [CustomResourceDefinition (CRD)][k8s-crd] encapsulates an existing P
 infrastructure project in a Git repo, a specific commit SHA to deploy, and any
 additional settings to control the Pulumi update run.
 
-These settings include your Pulumi API access token, environment variables,
+These settings include your [Pulumi API access token](/docs/pulumi-cloud/accounts#access-tokens), environment variables,
 config and secrets, and lifecycle controls for the update.
 
 ### Deploying an NGINX Stack on Kubernetes
@@ -125,10 +125,11 @@ const mystack = new k8s.apiextensions.CustomResource("my-stack", {
     kind: 'Stack',
     spec: {
         accessTokenSecret: accessToken.metadata.name,
-        stack: "<YOUR_ORG>/nginx/dev",
+        stack: "<YOUR_ORG>/k8s-nginx/dev",
         initOnCreate: true,
-        projectRepo: "https://github.com/metral/pulumi-nginx",
-        commit: "2b0889718d3e63feeb6079ccd5e4488d8601e353",
+        projectRepo: "https://github.com/pulumi/examples",
+        repoDir: "kubernetes-ts-nginx",
+        commit: "e2e5eb426dbf5b57c50bba0f8eb54fe982ceddb1",
         destroyOnFinalize: true,
     }
 });
@@ -154,10 +155,11 @@ my_stack = apiextensions.CustomResource("my-stack",
     kind="Stack",
     spec={
         "access_token_secret": access_token.metadata["name"],
-        "stack": "<YOUR_ORG>/nginx/dev",
+        "stack": "<YOUR_ORG>/k8s-nginx/dev",
         "init_on_create": True,
-        "project_repo": "https://github.com/metral/pulumi-nginx",
-        "commit": "2b0889718d3e63feeb6079ccd5e4488d8601e353",
+        "project_repo": "https://github.com/pulumi/examples",
+        "repo_dir: "kubernetes-ts-nginx",
+        "commit": "e2e5eb426dbf5b57c50bba0f8eb54fe982ceddb1",
         "destroy_on_finalize": True,
     }
 )
@@ -226,10 +228,11 @@ class MyStack : Stack
             Spec = new StackSpecArgs
             {
                 AccessTokenSecret = accessToken.Metadata.Apply(m => m.Name),
-                Stack = "<YOUR_ORG>/nginx/dev",
+                Stack = "<YOUR_ORG>/k8s-nginx/dev",
                 InitOnCreate = true,
-                ProjectRepo = "https://github.com/metral/pulumi-nginx",
-                Commit = "2b0889718d3e63feeb6079ccd5e4488d8601e353",
+                ProjectRepo = "https://github.com/pulumi/examples",
+                RepoDir = "kubernetes-ts-nginx",
+                Commit = "e2e5eb426dbf5b57c50bba0f8eb54fe982ceddb1",
                 DestroyOnFinalize = true,
             }
         });
@@ -274,10 +277,11 @@ func main() {
             OtherFields: kubernetes.UntypedArgs{
                 "spec": map[string]interface{}{
                     "accessTokenSecret": accessToken.Metadata.Name(),
-                    "stack":             "<YOUR_ORG>/nginx/dev",
+                    "stack":             "<YOUR_ORG>/k8s-nginx/dev",
                     "initOnCreate":      true,
-                    "projectRepo":       "https://github.com/metral/pulumi-nginx",
-                    "commit":            "2b0889718d3e63feeb6079ccd5e4488d8601e353",
+                    "projectRepo":       "https://github.com/pulumi/examples",
+                    "repoDir":           "kubernetes-ts-nginx",
+                    "commit":            "e2e5eb426dbf5b57c50bba0f8eb54fe982ceddb1",
                     "destroyOnFinalize": true,
                 },
             },
@@ -559,7 +563,7 @@ to ship new software easily and reliably. Kubernetes API resources like
 [Deployments][k8s-deployment] are used to model stateless apps and operate their lifecycles
 e.g. recreate app replicas, or perform a rolling update.
 
-A common approach that most teams rely on is the [Blue / Green][blue-green] deployment.
+A common approach that most teams rely on is the Blue / Green deployment.
 This starts with an initial version of the app, and then deploys an updated version
 alongside the initial version. Once ready, traffic is switched over from the
 initial version to the new version with no downtime.
@@ -628,10 +632,9 @@ the video clip below for a demo.
 {{< youtube "nQZr3uquc-c" >}}
 
 [blue-green-example]: https://github.com/metral/pulumi-blue-green/blob/master/index.ts
-[k8s-deployment]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment
-[blue-green]: https://en.wikipedia.org/wiki/Blue-green_deployment
-[k8s-service]: https://kubernetes.io/docs/concepts/services-networking/service
-[blue-green-walkthrough]: https://github.com/pulumi/pulumi-kubernetes-operator/tree/master/examples/blue-green
+[k8s-deployment]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+[k8s-service]: https://kubernetes.io/docs/concepts/services-networking/service/
+[blue-green-walkthrough]: https://github.com/pulumi/pulumi-kubernetes-operator/tree/master/examples/blue-green/
 
 ## Wrap-Up
 
@@ -650,19 +653,19 @@ containers, serverless, and Kubernetes across cloud providers and cloud native s
 Check out the [GitHub repo][pulumi-k8s-op] to experiment deploying the operator
 and some test Stacks.
 
-Learn more about how [Pulumi works with Kubernetes](https://www.pulumi.com/docs/intro/cloud-providers/kubernetes/), and [Get Started](https://www.pulumi.com/docs/get-started/kubernetes/) if you're new.
+Learn more about how [Pulumi works with Kubernetes](https://www.pulumi.com/registry/packages/kubernetes/), and [Get Started](https://www.pulumi.com/docs/clouds/kubernetes/get-started/) if you're new.
 
 You can help to shape this experience directly by
 providing feedback on [GitHub](https://github.com/pulumi/pulumi-kubernetes-operator/). We love to hear from our users!
 
-You can explore more content by checking out [PulumiTV on YouTube](http://youtube.com/pulumitv), work through
+You can explore more content by checking out [PulumiTV on YouTube](https://www.youtube.com/pulumitv/), work through
 Kubernetes [tutorials](https://www.pulumi.com/docs/tutorials/kubernetes/) to dive deeper, and join the [Community Slack](https://slack.pulumi.com/) to engage
 with users and the Pulumi team.
 
-[pulumi-k8s-op]: https://github.com/pulumi/pulumi-kubernetes-operator
-[pulumi-k8s-nginx]: https://github.com/metral/pulumi-nginx
-[pulumi-aws-eks]: https://github.com/metral/pulumi-aws-eks
-[p-examples]: https://github.com/pulumi/examples
-[stack]:{{< relref "/docs/intro/concepts/stack" >}}
-[pulumi-config]:{{< relref "/docs/intro/concepts/config" >}}
-[pulumi-providers]:{{< relref "/docs/intro/cloud-providers" >}}
+[pulumi-k8s-op]: https://github.com/pulumi/pulumi-kubernetes-operator/
+[pulumi-k8s-nginx]: https://github.com/pulumi/examples/tree/master/kubernetes-ts-nginx/
+[pulumi-aws-eks]: https://github.com/metral/pulumi-aws-eks/
+[p-examples]: https://github.com/pulumi/examples/
+[stack]: /docs/concepts/stack/
+[pulumi-config]: /docs/concepts/config/
+[pulumi-providers]: /registry/

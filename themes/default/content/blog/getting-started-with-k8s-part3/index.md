@@ -1,7 +1,7 @@
 ---
 title: "Getting Started With Kubernetes: Advanced Deployment"
 date: 2020-07-09
-meta_desc: "A tutorial for getting started with Kubernetes using Infrastructure as Code."
+meta_desc: "Part 3 of a 3-part tutorial for getting started with Kubernetes using Infrastructure as Code."
 meta_image: getting-started.png
 authors:
     - sophia-parafina
@@ -16,8 +16,8 @@ Welcome to the third article in a series using infrastructure as code to deploy 
 
 This series walks you through:
 
-- [Building a Kubernetes cluster on cloud providers]({{< relref "/blog/getting-started-with-k8s-part1" >}})
-- [Basic application deployment]({{< relref "/blog/getting-started-with-k8s-part2" >}})
+- [Building a Kubernetes cluster on cloud providers](/blog/getting-started-with-k8s-part1/)
+- [Basic application deployment](/blog/getting-started-with-k8s-part2/)
 - Advance application deployment and Helm charts
 - Stateful applications
 - Networking
@@ -25,7 +25,7 @@ This series walks you through:
 
 This article reviews three types of application deployment scenarios with commonly used examples. The first scenario is a [12-factor](https://12factor.net/) microservices multi-tier application consisting of multiple frontend and backend services backed by databases and a messaging queue to handle requests. The second scenario takes the Kubernetes guestbook and turns the Service and Deployment into a single component, demonstrating another pattern for organizing your stack. The third scenario shows how to deploy a popular web application using a [Helm](https://helm.sh/), the package manager for Kubernetes.
 
-In this article, we’ll assume that we already have a Kubernetes cluster available. You will have to set the [context](https://www.pulumi.com/docs/intro/cloud-providers/kubernetes/setup/#kubernetes-configuration) with *kubectl* to deploy the examples in this article. Because of Kubernetes’ OpenAPI, we can use the same Typescript application code on any compliant instance.
+In this article, we’ll assume that we already have a Kubernetes cluster available. You will have to set the [context](https://www.pulumi.com/registry/packages/kubernetes/installation-configuration/#kubernetes-configuration) with *kubectl* to deploy the examples in this article. Because of Kubernetes’ OpenAPI, we can use the same Typescript application code on any compliant instance.
 
 ## Sock Shop Microservices
 
@@ -219,7 +219,7 @@ Although we encapsulate the deployment in a single large script, we can improve 
 
 ## Deploying Guestbook as a Component
 
-We can abstract objects, such as Deployments and Services, into components to create our resources. [ComponentResource]({{< relref "/docs/reference/pkg/nodejs/pulumi/pulumi#ComponentResource" >}}) is Pulumi construct or resource that can aggregate other resources into a combined resource. Let’s take a look at how we implement the [Guestbook with components](https://github.com/pulumi/examples/tree/master/kubernetes-ts-guestbook/components).
+We can abstract objects, such as Deployments and Services, into components to create our resources. [ComponentResource](/docs/reference/pkg/nodejs/pulumi/pulumi#ComponentResource) is Pulumi construct or resource that can aggregate other resources into a combined resource. Let’s take a look at how we implement the [Guestbook with components](https://github.com/pulumi/examples/tree/master/kubernetes-ts-guestbook/components).
 
 The Kubernetes [GuestBook](https://kubernetes.io/docs/tutorials/stateless-application/guestbook/) is a canonical example of a stateless application. It consists of multiple PHP frontend services backed by Redis replicas and a lead Redis database to store guestbook entries. In the previous example, we created a Deployment and a Service for each microservice in the application. Although this is a valid pattern for deploying an application in Kubernetes, it doesn’t take full advantage of the capabilities of infrastructure as code.
 
@@ -368,5 +368,5 @@ Using a Helm chart to deploy an application is the simplest solution if it’s a
 This article demonstrated three ways to deploy an application in Kubernetes. The applications we examined are primarily stateless with no persistent storage or volumes. In the next installment, we’ll examine [stateful services](https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/) that require persistent storage such as a database. Until the next post, learn more about Kubernetes with these resources.
 
 - Watch educational content on [Pulumi TV](https://www.youtube.com/pulumitv)
-- Learn more about Pulumi's [support for Kubernetes]({{< relref "/docs/intro/cloud-providers/kubernetes" >}})
-- Practice [Kubernetes Tutorials]({{< relref "/docs/tutorials/kubernetes" >}}) using Pulumi
+- Learn more about Pulumi's [support for Kubernetes](/registry/packages/kubernetes/)
+- Practice [Kubernetes Tutorials](/registry/packages/kubernetes/how-to-guides/) using Pulumi

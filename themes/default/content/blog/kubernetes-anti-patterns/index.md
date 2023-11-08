@@ -9,7 +9,7 @@ tags:
     - kubernetes
 ---
 
-In software development, an anti-pattern is defined as an apparent solution that has unintended or negative consequences. The other side of anti-patterns is that they also offer solutions. Let's look at [container](https://codefresh.io/containers/docker-anti-patterns/) and [Kubernetes](https://medium.com/better-programming/10-antipatterns-for-kubernetes-deployments-e97ce1199f2d) anti-patterns and how to avoid them with infrastructure as code.
+In software development, an anti-pattern is defined as an apparent solution that has unintended or negative consequences. The other side of anti-patterns is that they also offer solutions. Let's look at [container](https://codefresh.io/containers/docker-anti-patterns/) and [Kubernetes](https://betterprogramming.pub/10-antipatterns-for-kubernetes-deployments-e97ce1199f2d) anti-patterns and how to avoid them with infrastructure as code.
 
 <!--more-->
 
@@ -110,7 +110,7 @@ By default, if a resource must be replaced, Pulumi will attempt to create a new 
 
 Pods not bound to a ReplicaSet or Deployment will not be rescheduled in the event of a node failure. A Deployment with a ReplicaSet ensures that the specified number of Pods is always available and a strategy to replace Pods (such as RollingUpdate) is preferable to creating Pods directly.
 
-Pulumi's policy as code solution, Crossguard, lets you create a policy that checks if there are naked Pods. Learn more about [Crossguard]({{< relref "/docs/guides/crossguard" >}}).
+Pulumi's policy as code solution, Crossguard, lets you create a policy that checks if there are naked Pods. Learn more about [Crossguard](/docs/using-pulumi/crossguard/).
 
 ```typescript
 const policies = new PolicyPack("best-practices", {
@@ -242,7 +242,7 @@ interface AwsTagsPolicyConfig {
 
 ```
 
-Read more about tagging resources on the [Pulumi blog]({{< relref "/blog/automatically-enforcing-aws-resource-tagging-policies" >}}).
+Read more about tagging resources on the [Pulumi blog](/blog/automatically-enforcing-aws-resource-tagging-policies/).
 
 ## Automate Best Practices
 
@@ -250,6 +250,6 @@ Infrastructure as code provides fine-grained control over resources and helps yo
 
 Learn how to manage Kubernetes with code with these resources:
 
-[Kubernetes Tutorials]({{< relref "/docs/tutorials/kubernetes" >}})
-[Crosswalk for Kubernetes]({{< relref "/docs/guides/crosswalk/kubernetes" >}})
-[Crossguard - Policy as Code]({{< relref "/docs/guides/crossguard" >}})
+[Kubernetes Tutorials](/registry/packages/kubernetes/how-to-guides/)
+[Crosswalk for Kubernetes](/docs/clouds/kubernetes/guides/)
+[Crossguard - Policy as Code](/docs/using-pulumi/crossguard/)

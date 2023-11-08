@@ -1,254 +1,201 @@
 ---
-# The below values need updating.
-title: Pulumi - Modern Infrastructure as Code
+title: Pulumi - Infrastructure as Code in any Programming Language
 meta_desc: Pulumi's open source infrastructure as code SDK enables you to create, deploy, and manage infrastructure on any cloud, using your favorite languages.
 
 hero:
-  title: [ "Cloud Engineering", "for Everyone" ]
-  description: Modern Infrastructure as Code for Developers and Infrastructure Teams. From Open Source to Enterprise.
+  title: [ "Open Source", "Infrastructure as Code" ]
+  description: |
+    Manage infrastructure, secrets, and configurations intuitively on any cloud.
   cta_text: Get Started
+  cta_link: /docs/get-started/
+  secondary_cta_text: Talk to a human
+  secondary_cta_link: /contact/?form=sales
 
-overview:
-  title: [ "Your cloud.", "Your language.", "Your way." ]
+code_faster:
+  title: Code and ship faster
   description: |
-    Build, deploy, and manage modern cloud applications and infrastructure using familiar languages, tools, and engineering practices.
-  logos:
-    languages:
-      - /logos/tech/typescript.svg
-      - /logos/tech/dot-net.svg
-      - /logos/tech/go.svg
-      - /logos/tech/python.svg
-      - /logos/tech/javascript.svg
-      - /logos/tech/f-sharp.svg
-    clouds:
-      - /logos/tech/aws.svg
-      - /logos/tech/azure-logo.svg
-      - /logos/tech/gcp-logo.svg
-      - /logos/tech/kubernetes.svg
-      - /logos/tech/digitalocean.svg
-      - /logos/tech/alibaba.svg
-    identity:
-      - /logos/tech/github.svg
-      - /logos/tech/atlassian.svg
-      - /logos/tech/ci-cd/gitlab-ci.svg
-      - /logos/tech/ci-cd/circleci.svg
-      - /logos/tech/ci-cd/jenkins.svg
-      - /logos/tech/ci-cd/spinnaker.svg
-      - /logos/tech/ci-cd/teamcity.svg
-      - /logos/tech/ci-cd/travis-ci.svg
+    Author infrastructure code using programming languages you know and love. Write statements to define infrastructure using your IDE with autocomplete, type checking, and documentation.
 
-build:
-  title: Build
+    Test your code with unit tests and deliver it through CI/CD pipelines to validate and deploy to any cloud.
+
+ai:
+  title: Boost productivity with AI
+  image: /images/home/ai-graphic.svg
+  alt: AI prompted to 'Give me an AWS static website behind a CloudFront CDN' and outputting Pulumi code
   description: |
-    Build cloud applications and infrastructure by combining the safety and reliability of infrastructure as code with the power of familiar programming languages and tools.
-  items:
-    - title: Flexible and expressive
-      description: Loops, conditionals, functions, classes, and more.
+    Want help writing infrastructure code? Use Pulumi AI to generate code for your desired infrastructure – all through natural language commands.
 
-    - title: Be productive
-      description: Gets things done in seconds rather than hours.
+    Ask Pulumi AI to iterate on your code to make changes and add new resources.
 
-    - title: Share and reuse
-      description: Define and consume patterns and practices to reduce boilerplate.
-
-use_cases:
-  - title: All architectures welcome
-    icon: nodes
-    icon_color: purple
-    description: "Choose from over 50 cloud providers, including public, private, and hybrid architectures."
-
-  - title: Modernize your approach
-    icon: download-from-cloud
-    icon_color: yellow
-    description: "Adopt serverless, containers, and managed services, and bring them closer to development."
-
-  - title: Adopt Kubernetes
-    icon: guage
-    icon_color: salmon
-    description: "Get up and running with clusters, supporting infrastructure, and application workloads."
-
-deploy:
-  title: Deploy
+embed:
+  title: Embed IaC anywhere
+  image: /images/home/automation-api-diagram.svg
+  alt: a flowchart with arrows going from Automation API program to Infrasctucture as Code programs to Pulumi Engine deploys stacks
   description: |
-    Deploy cloud applications and infrastructure faster and with confidence, using one shared approach that works for day one and beyond for the entire team.
-  items:
-    - title: Infrastructure and applications together
-      description: Unify shipping your entire cloud software stack.
+    With Automation API, embed Pulumi in your applications to power custom cloud infrastructure automation. No CLI - just code so you can manage 10x more resources.
 
-    - title: Deploy with confidence
-      description: Validate every change with testing and built-in policies.
+    Package cloud architectures into reusable libraries that reduce complex infrastructure down to a few lines of code.
 
-    - title: Automate worldwide delivery
-      description: Scale up your delivery with advanced automation as you grow.
-
-manage:
-  title: Manage
+secrets:
+  title: Tame configuration and secrets sprawl
+  image: /images/product/esc-homepage-screenshot.png
+  alt: a screenshot of Pulumi ESC
   description: |
-    Manage cloud applications and infrastructure with a shared platform that helps teams adopt Cloud Engineering through collaboration, visibility, and policies and controls.
-  items:
-    - title: Secure by default
-      description: Automatic encryption for secrets and state.
-
-    - title: Empower with guardrails
-      description: Identity plus policy as code ensures continuous compliance.
-
-    - title: See who changed what, when
-      description: Full change visibility and auditing across your entire organization.
-
-benefits:
-  title: The benefits of using Pulumi
-  items:
-    - title: Tame modern cloud complexity
-      icon: code-window
-      icon_color: salmon
-      description: |
-        One consistent approach to cloud engineering provides full access to over 50 cloud providers 
-        and works for the entire team as you scale up, eliminating accidental complexity.
-
-    - title: Bring the cloud closer to application development
-      icon: download-from-cloud
-      icon_color: violet
-      description: |
-        Leverage a rich and programmable cloud interface, with reusable packages that abstract
-        away complexity, to bring cloud concepts closer to your application architectures.
-
-    - title: Use engineering practices with infrastructure
-      icon: exchange
-      icon_color: blue
-      description: |
-        Adopt infrastructure as code automation, combined with tried and true software engineering
-        practices—including modularity, testing, and CI/CD—to do more with less.
-    - title: Foster collaboration and innovate faster
-      icon: lightning
-      icon_color: yellow
-      description: |
-        Unite developers, infrastructure teams, and security engineers around a common platform
-        so that everyone can speak the same language and ship quickly and reliably.
+    Easy-to-use single source of truth for all configurations with guardrails. Seamlessly adopt short-lived dynamic secrets. Never have downtime over changed configurations because you can change once and have it updated everywhere. Enforce least-privileged access through role-based access controls.
 
 customer_logos:
-  title: Leading engineering organizations are building with Pulumi
+  title: You’ll be in good company
   logos:
-    - items:
-      - snowflake
-      - tableau
-      - atlassian
-      - fauna
-      - ware2go
-    - items:
-      - mindbody
-      - sourcegraph
-      - fenergo
-      - kenshoo
-      - lemonade
-    - items:
-      - clearsale
-      - angellist
-      - webflow
-      - supabase
-      - ro
+    - name: mercedes-benz
+      link: /case-studies/mercedes-benz
+    - name: snowflake
+      link: /case-studies/snowflake
+    - name: lemonade
+      link: /case-studies/lemonade
+    - name: cockroach-labs
+    - name: meta
+    - name: webflow
+    - name: bluenile
+    - name: dutchie
+      link: https://youtu.be/X1qetq7PjjY
+    - name: panther-labs
+      link: /case-studies/panther-labs
+    - name: univision
+    - name: washington-trust
+      link: https://youtu.be/Q63ZaX340M4
+    - name: nubank
+    - name: docker
+
+customer_quotes:
+  panther:
+    text: |
+      “Our developers needed a fast, modular, and testable platform for managing cloud infrastructure. <b>Nothing is better than having standard programming languages for building and managing infrastructure</b>”
+    author: Austin Byers, Principal Platform Engineer
+    logo: panther-labs
+  starburst:
+    text: |
+      “Pulumi let us build and <b>automate cloud infrastructure projects</b> at a scale that simply wasn’t imaginable using prior-generation infrastructure as code technologies”
+    author: Matt Stephenson, Senior Principal Software Engineer
+    logo: starburst
+  snowflake:
+    text: |
+      “Pulumi helped our team to ship a new product faster. We needed <b>one tool to setup and manage multi-cloud, multi-region Kubernetes clusters</b> that infrastructure and applications teams could use collaboratively”
+    author: Justin Fitzhugh, VP of Cloud Platform Engineering
+    logo: snowflake
 
 get_started:
   tweets:
-    - username: matticala
-      avatar: https://pbs.twimg.com/profile_images/1289826906024693766/LOdbjWdW_400x400.jpg
-      link: https://twitter.com/matticala/status/1369038327341531140
+    -
+      source: twitter
+      username: "@BryanMigliorisi"
+      avatar: https://pbs.twimg.com/profile_images/752334791782039552/BsVNGBaV_400x400.jpg
+      link: https://twitter.com/BryanMigliorisi/status/1450123026901651460
       text: |
-        With @PulumiCorp I said goodbye to #YAML and JSON supersets. I went back to what I love: #code. Code. End to end. Functional, even. #Kubernetes is pleasant again.
-
-    - username: MartinDotNet
-      avatar: https://pbs.twimg.com/profile_images/1142779028937596934/NsX3gdIU_400x400.png
-      link: https://twitter.com/MartinDotNet/status/1367118630564020225
+        There is no way around the fact that devops is complicated but @PulumiCorp is a game changer for me.  Blows away CloudForamtion, TerraForm, CDK, etc.
+    -
+      source: twitter
+      username: "@krangarajan"
+      avatar: https://pbs.twimg.com/profile_images/837774934805925888/I51_kI-H_400x400.jpg
+      link: https://twitter.com/krangarajan/status/1580618068203479040
       text: |
-        I'd like to congratulate @PulumiCorp on an AWESOME CLI experience... it's just beautiful
-
-    - username: monde_
-      avatar: https://pbs.twimg.com/profile_images/1478919095/converse_400x400.png
-      link: https://twitter.com/monde_/status/1355031516934332418?s=20
+        Continuing on my thread about @PulumiCorp from a while ago: holy shit I am a convert. I needed to setup a staging environment that was mostly identical to prod, and once I trued up our Pulumi stack with AWS, it took *minutes* to do this. How have I lived without this until now?
+    -
+      source: twitter
+      username: "@Vetium"
+      avatar: https://pbs.twimg.com/profile_images/1197754531335016449/etr4hfpJ_400x400.jpg
+      link: https://twitter.com/Vetium/status/1589452885149900800
       text: |
-        I'm actually learning more about TS/JS with Pulumi. It really has been a joy to use. Kudos to the team for making such an awesome tool!
+        Without a doubt the most approachable tool in the IaaC space is
+        @PulumiCorp.
 
-    - username: claudiordgz
-      avatar: https://pbs.twimg.com/profile_images/985903897750507525/RH_psYD__400x400.jpg
-      link: https://twitter.com/claudiordgz/status/1384692096729157635
+        Somewhat enjoying provisioning a scheduled run of a Lambda.
+    -
+      source: twitter
+      username: "@justedagain"
+      avatar: https://pbs.twimg.com/profile_images/1576905831626440706/wigR9_hF_400x400.jpg
+      link: https://twitter.com/justedagain/status/1583063827524251649
       text: |
-        Being able to build infrastructure in TypeScript brings tears of joy to my eyes
-
-        thank you @PulumiCorp
-
-    - username: JanDamaschke
-      avatar: https://pbs.twimg.com/profile_images/1317179630638477314/592UdUFD_400x400.jpg
-      link: https://twitter.com/JanDamaschke/status/1354861632082636805
-      text: |
-        I just spent a few hours getting used to @PulumiCorp SDK and I am already asking myself why I ever used #Terraform 😂  Real Infrastructure as Code all the way 💪 😍
-
-    - username: eliostruyf
-      avatar: https://pbs.twimg.com/profile_images/1271544070591168513/gnS95qjC_400x400.jpg
-      link: https://twitter.com/eliostruyf/status/1379896780381372422?s=20
-      text: |
-       First, run of my new #dev environment. Love how easy it is with @PulumiCorp ❤️ 🚀 #InfrastructureAsCode
-
-    - username: BrandonBloom
-      avatar: https://pbs.twimg.com/profile_images/1007413949925548032/8FmwYujD_400x400.jpg
-      link: https://twitter.com/BrandonBloom/status/1344398906617073664
-      text: |
-        Just Pulumi-ified a ton of random AWS resources & it feels so good.
-
-    - username: sheeshee
-      avatar: https://pbs.twimg.com/profile_images/458182231433826304/JQafPBkU_400x400.png
-      link: https://twitter.com/sheeshee/status/1377562831948746756
-      text: |
-        I've been playing around with Pulumi a bit and I have to say this is really quite well done. The documentation is very polished and all tutorials I tried worked exactly copy paste out of the box.
-
-    - username: rawkode
-      avatar: https://pbs.twimg.com/profile_images/1353335680043249668/pl0F8NOm_400x400.jpg
-      link: https://twitter.com/rawkode/status/1368151631922073600
-      text: |
-        Pulumi and Helm work like toast and cheese, great together 😀
-
-    - username: TorstenVolk
-      avatar: https://pbs.twimg.com/profile_images/1575782906/110930-ENMA-115240-web_400x400.jpg
-      link: https://twitter.com/TorstenVolk/status/1381716012131876869
-      text: |
-        #Pulumi is the fast growing new kit on the block. Great convo with @PulumiCorp at what the (near) future holds in terms of platform capabilities. Very exciting. #cloudengineering #devops #gitops @ema_research
-
-    - username: Frassle
-      avatar: https://pbs.twimg.com/profile_images/1571260219/62070_434673459681_571169681_5323786_3642098_n_400x400.jpg
-      link: https://twitter.com/Frassle/status/1355296248992038912
-      text: |
-        Save yourselves from the yaml, use pulumi
-
-
-    - username: ItemLevel1
-      avatar: https://pbs.twimg.com/profile_images/655703310545125376/7cI9yEyP_400x400.jpg
-      link: https://twitter.com/ItemLevel1/status/1354888953166487555
-      text: |
-        Congratulations Joe. Loved the idea of pulumi since I did a talk with one of the first releases. I genuinely think this model is the future inside DevOps and out
-
-    - username: hossambarakat_
-      avatar: https://pbs.twimg.com/profile_images/731626626396520448/TDFYZwmH_400x400.jpg
+        The developer experience of Pulumi is just sublime. As a prior Terraform user, the grass is substantially greener on this side. I'm so glad I made the switch two years back. Using Terraform for my current use case would be a massive downgrade.
+    -
+      source: twitter
+      username: "@hossambarakat_"
+      avatar: https://pbs.twimg.com/profile_images/1578466430739271681/FZnNwxcA_400x400.jpg
       link: https://twitter.com/hossambarakat_/status/1357640859018162176
       text: |
         Give Pulumi a shot and you will never look back @PulumiCorp
-
-    - username: randompunter
-      avatar: https://pbs.twimg.com/profile_images/1355647898076250127/D9pez57M_400x400.jpg
-      link: https://twitter.com/randompunter/status/1353040630121975808
+    -
+      source: twitter
+      username: "@matticala"
+      avatar: https://pbs.twimg.com/profile_images/1289826906024693766/LOdbjWdW_400x400.jpg
+      link: https://twitter.com/matticala/status/1369038327341531140
       text: |
-        Really liking Pulumi's .NET binary  support. Don't have to copy source code around environment pipelines and don't have to deal with runtime/sdk/re-compilation nonsense on deployment hosts / agents. Just native exe's ftw.
-
-    - username: samcogan
-      avatar: https://pbs.twimg.com/profile_images/970774602669412353/reTcugpM_400x400.jpg
-      link: https://twitter.com/samcogan/status/1350392939755802627
+        With @PulumiCorp I said goodbye to #YAML and JSON supersets.
+        I went back to what I love: #code.
+        Code. End to end. Functional, even.
+        #Kubernetes is pleasant again.
+    -
+      source: twitter
+      username: "@ddoomen"
+      avatar: https://pbs.twimg.com/profile_images/1591057460940480517/d0xy4n3b_400x400.jpg
+      link: https://twitter.com/ddoomen/status/1644343201459740673
       text: |
-        Been using Pulumi to write C# IaC for a while now, very much prefer it to HCL.
-
-    - username: omerlh
-      avatar: https://pbs.twimg.com/profile_images/1021467583193796608/9odUKQCb_400x400.jpg
-      link: https://twitter.com/omerlh/status/1369281453213769736
+        Deploying cloud resources using @PulumiCorp is just amazing. Why would anybody bother with JSON, YAML or some other DSL?
+    -
+      source: twitter
+      username: "@Meliora245"
+      avatar: https://pbs.twimg.com/profile_images/1536753333972525056/WN2SVAmq_400x400.jpg
+      link: https://twitter.com/Meliora245/status/1633110529420976130
       text: |
-        Pulumi ❤️❤️❤️❤️
+        Been using Pulumi with Typescript for a IaaC managing k8s and stateful databases. Don't see myself going back to using terraform after this.
+    -
+      source: twitter
+      username: "@rybavery"
+      avatar: https://pbs.twimg.com/profile_images/1146562967317520385/wuPwKFUZ_400x400.jpg
+      link: https://twitter.com/rybavery/status/1576987704189128704
+      text: |
+        our team at @devseed is now gravitating toward using https://pulumi.com/docs/concepts/vs/terraform/ instead of terraform because it's all in python so it is easier to onboard new people to the tool and makes it easier to manage the same infra definition in different test, staging, and deploy envs.
+    -
+      source: twitter
+      username: "@SparkyCodes"
+      avatar: https://pbs.twimg.com/profile_images/1564710917014802433/k0QzTysD_400x400.jpg
+      link: https://twitter.com/SparkyCodes/status/1572999315919978502
+      text: |
+        It wouldn't have been possible to build Sparky without @PulumiCorp. Shout out to the team and community for helping us get up and running!
+    -
+      source: twitter
+      username: "@0xksure"
+      avatar: https://pbs.twimg.com/profile_images/1560526743865360384/QBkajFhq_400x400.jpg
+      link: https://twitter.com/0xksure/status/1570769681434415104
+      text: |
+        ok so pulumi is awesome. almost no clicking, just scripting go and up
+    -
+      source: twitter
+      username: "@krangarajan"
+      avatar: https://pbs.twimg.com/profile_images/837774934805925888/I51_kI-H_400x400.jpg
+      link: https://twitter.com/krangarajan/status/1564712184717881344
+      text: |
+        New gig uses @PulumiCorp to manage AWS infra. Initially I was skeptical and was tempted to go back to Terraform, but after using pulumi imports and discovering the ability to write tests easily, I'm a convert. (1/4)
+    -
+      source: twitter
+      username: "@swarupdonepudi"
+      avatar: https://pbs.twimg.com/profile_images/1581098587034771457/9HrxXWw4_400x400.jpg
+      link: https://twitter.com/swarupdonepudi/status/1644820071167201280
+      text: |
+        I love @PulumiCorp so much because it is like 50% of the reason why we dared to build https://planton.cloud.
 
-  title: Get started today
-  description: Pulumi is open source and free to get started. Deploy your first stack today.
-  cta_text: Get Started
+        An equivalent of 50K lines of declarative infra code has been put behind APIs to support the features on the platform with https://www.pulumi.com/docs/using-pulumi/automation-api/
+    -
+      source: twitter
+      username: "@iamjmoa"
+      avatar: https://pbs.twimg.com/profile_images/1529025993893195777/Wo8EXvLO_400x400.jpg
+      link: https://twitter.com/iamjmoa/status/1624702662456352768
+      text: |
+        Today is a good day.
+
+        Finished no-code website builder.
+
+        Managed to automate deploying a website created with said builder with @PulumiCorp
+
+  title: Built by engineers for engineers. Open source.
+  description: "[Join us](/community) in the community, and let’s build together."
 ---

@@ -12,15 +12,48 @@ overview:
 use_cases:
     title: Use Cases
     items:
+        - name: Internal developer portals
+          description: |
+            Create internal developer portals (IDPs) to enable developers to quickly provision approved infrastructure, boosting productivity with pre-configured architectures, automated testing, and deployment adhering to organizational standards.
+
+            [Learn more about Pulumi for Platform Teams](/product/internal-developer-platforms/)
+
         - name: Shared services platforms
           case_studies:
+            - name: Atlassian
+              link: /case-studies/atlassian
             - name: Mercedes-Benz
               link: /case-studies/mercedes-benz
             - name: Lemonade
               link: /case-studies/lemonade
           description: |
-            Create reusable infrastructure components or self-service infrastructure platforms that empower your application developers to easily and quickly deploy 
-            and use infrastructure they need to build applications.
+            Create reusable infrastructure components or self-service infrastructure platforms
+            that empower your application developers to easily and quickly deploy and use
+            infrastructure they need to build applications.
+
+            [Learn more about shared services platforms](/solutions/shared-services-platforms/)
+
+        - name: Infrastructure CI/CD
+          case_studies:
+            - name: Atlassian
+              link: /case-studies/atlassian/
+            - name: Panther Labs
+              link: /case-studies/panther-labs/
+          description: |
+            Automate your infrastructure provisioning and management through a CI/CD pipeline. Run all infrastructure updates through a standard set of unit and integration tests, allowing reduced errors, greater security, and increased delivery velocity.
+
+            [Learn more about Infrastructure CI/CD](/solutions/infrastructure-ci-cd/)
+
+        - name: Terraform Migration
+          case_studies:
+            - name: Lemonade
+              link: /case-studies/lemonade/
+            - name: Panther Labs
+              link: /case-studies/sans-institute/
+          description: |
+            Modernize how your teams provision and manage infrastructure in order to adapt to the changes in technologies (containers, serverless), architectures (distributed), and software release automation associated with the cloud.
+
+            [Learn more about Terraform migration](/solutions/terraform-migration/)
 
         - name: Greenfield modern applications
           case_studies:
@@ -29,23 +62,25 @@ use_cases:
             - name: Menta Network
               link: /case-studies/menta-network
           description: |
-            Use Pulumi to develop your next greenfield application that uses modern cloud technologies, like containers and serverless. Pulumi is designed for building 
+            Use Pulumi to develop your next greenfield application that uses modern cloud technologies, like containers and serverless. Pulumi is designed for building
             these types of complex and distributed applications.
 
         - name: AI and ML workloads
           description: |
-            Easily provision and maintain machine learning (ML) batch jobs and data processing pipelines. Pulumi provides an easy and automated way to deploy ML stacks 
-            for data scientists and developers. 
+            Easily provision and maintain machine learning (ML) batch jobs and data processing pipelines. Pulumi provides an easy and automated way to deploy ML stacks
+            for data scientists and developers.
+
+            [Learn more about AI and ML](/solutions/ai/)
 
         - name: Migrate from an existing infrastructure tool
           description: |
-            Adopt Pulumi when your existing infrastructure provisioning tool has reached its limits. Pulumi provides YAML or JSON file converters or you can use Pulumi 
+            Adopt Pulumi when your existing infrastructure provisioning tool has reached its limits. Pulumi provides YAML or JSON file converters or you can use Pulumi
             alongside existing tools.
 
         - name: On-premises to cloud migration
           description: |
-            Simplify your cloud migration with Modern Infrastructure-as-Code. Pulumi lets you model and automate the provisioning of infrastructure being migrated 
-            to the cloud to increase speed and success. 
+            Simplify your cloud migration with Universal Infrastructure-as-Code. Pulumi lets you model and automate the provisioning of infrastructure being migrated
+            to the cloud to increase speed and success.
 
 architectures:
     title: Common Architecture Types
@@ -78,7 +113,7 @@ architectures:
               link: /case-studies/learning-machine
 
         - name: Server-based
-          cta_link: /docs/tutorials/aws/ec2-webserver
+          cta_link: /registry/packages/aws/how-to-guides/ec2-webserver
           cta_text: Learn More
           description: |
             Define and manage cloud infrastructure using server-based architectures, such as compute and database instances.
@@ -108,14 +143,14 @@ personas:
               icon: code
               icon_color: purple
               description: |
-                Define infrastructure as code using familiar languages and IDEs: JavaScript,
-                TypeScript, Python, Go, and .NET.
+                Define [infrastructure as code](/what-is/what-is-infrastructure-as-code/) using
+                familiar languages and IDEs: JavaScript, TypeScript, Python, Go, .NET, Java, and YAML.
             - title: Cloud programming model
               icon: program
               icon_color: yellow
               description: |
                 Use a programming model designed to make you maximally productive across any cloud,
-                AWS, Azure, GCP, or Kubernetes.
+                AWS, Azure, Google Cloud, or Kubernetes.
             - title: Real abstractions for the cloud
               icon: abstract-shapes
               icon_color: salmon
@@ -126,7 +161,7 @@ personas:
     devops:
         label: DevOps / Infra Teams
         items:
-            - title: Modern Infrastructure as Code
+            - title: Universal Infrastructure as Code
               icon: code-window
               icon_color: purple
               description: |
@@ -175,7 +210,7 @@ personas:
               icon: clouds
               icon_color: yellow
               description: |
-                Build multi-cloud applications with a single workflow across all clouds &mdash; AWS, Azure, GCP, Kubernetes, hybrid or on-premises.
+                Build multi-cloud applications with a single workflow across all clouds &mdash; AWS, Azure, Google Cloud, Kubernetes, hybrid or on-premises.
             - title: Enterprise-Grade
               icon: buildings
               icon_color: salmon

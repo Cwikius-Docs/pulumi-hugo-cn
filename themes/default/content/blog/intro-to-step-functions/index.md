@@ -15,7 +15,7 @@ tags:
 
 ## Just the basics
 
-Let’s start with a hello world function in an AWS Lambda. You can start the [example from Github](https://github.com/pulumi/examples/tree/master/aws-py-stepfunctions) by clicking on the `Deploy with Pulumi` button. A new project page is created automatically in Pulumi console, click on `Create Project` to get started. Follow the steps to copy the project locally. As with any Python project, we recommend creating a virtual environment to store project-specific dependencies.
+Let’s start with a hello world function in an AWS Lambda. You can start the [example from Github](https://github.com/pulumi/examples/tree/master/aws-py-stepfunctions) by selecting the `Deploy with Pulumi` button. A new project page is created automatically in the Pulumi Service, select `Create Project` to get started. Follow the steps to copy the project locally. As with any Python project, we recommend creating a virtual environment to store project-specific dependencies.
 
 ```bash
 $ python3 -m venv venv
@@ -133,9 +133,9 @@ nice_fn = lambda_.Function('niceFunction',
 )
 ```
 
-Finally, we need to update the state machine with a new workflow that includes our new function. The state machine takes three arguments, a name, an IAM role, and the workflow as a JSON document. The code to get the ARN names is Pulumi specific and requires an explanation if you are not familiar with the [Pulumi programming model]({{< relref "/docs/intro/concepts" >}}).
+Finally, we need to update the state machine with a new workflow that includes our new function. The state machine takes three arguments, a name, an IAM role, and the workflow as a JSON document. The code to get the ARN names is Pulumi specific and requires an explanation if you are not familiar with the [Pulumi programming model](/docs/concepts/).
 
-Instance properties of a resource are called outputs, which behave much like [promises](https://en.wikipedia.org/wiki/Futures_and_promises). This method is necessary because outputs may not be fully available until a resource is fully provisioned. To get the value of a resource, Pulumi has the `apply` method, which has a call back that receives the raw value and computes a new output. `Apply` is how we get the lambda ARN names in the workflow document. The [Output.all]({{< relref "/docs/intro/concepts/inputs-outputs" >}}) method joins a list of Outputs that we can apply to a Python lambda.
+Instance properties of a resource are called outputs, which behave much like [promises](https://en.wikipedia.org/wiki/Futures_and_promises). This method is necessary because outputs may not be fully available until a resource is fully provisioned. To get the value of a resource, Pulumi has the `apply` method, which has a call back that receives the raw value and computes a new output. `Apply` is how we get the lambda ARN names in the workflow document. The [Output.all](/docs/concepts/inputs-outputs/) method joins a list of Outputs that we can apply to a Python lambda.
 
 We add a new step function by changing the `HelloWorld` step to call the ‘Nice’ step with the tag `”Next” : “Nice”`. We add the “Nice” step and end the workflow. Here’s how the state machine is configured when adding another step.
 

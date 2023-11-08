@@ -43,6 +43,11 @@ hero:
     # The image the appears on the right hand side of the hero.
     image: "/icons/containers.svg"
 
+# Webinar pages support multiple session via the 'multiple' property.
+multiple:
+    - datetime: 2021-10-21T12:00:00-07:00
+      hubspot_form_id: 3d0bc178-ef35-4424-8cc2-93c34ac6a089
+
 # Content for the left hand side section of the page.
 main:
     # Webinar title.
@@ -50,11 +55,11 @@ main:
     # URL for embedding a URL for ungated webinars.
     youtube_url: "https://www.youtube.com/embed/24qnvC-dvvw"
     # Sortable date. The datetime Hugo will use to sort the webinars in date order.
-    sortable_date: 2021-05-20T09:00:00-07:00
+    sortable_date: 2021-10-21T12:00:00-07:00
     # Duration of the webinar.
-    duration: "2 hours"
+    duration: "1 hour"
     # Datetime of the webinar.
-    datetime: "MAY 20, 2020"
+    datetime: "OCTOBER 21st, 2020"
     # Description of the webinar.
     description: |
         Pulumi’s Automation API opens new horizons for infrastructure provisioning. In this workshop, you’ll examine the powerful new capabilities of Pulumi’s latest feature by building a Python & Flask web application that lets developers deploy applications at the click of a button.
@@ -62,15 +67,11 @@ main:
     # The webinar presenters
     presenters:
         - name: Lee Briggs
-          role: Community Engineer, Pulumi
+          role: Sr. Solutions Architect, Pulumi
+
 
     # A bullet point list containing what the user will learn during the webinar.
     learn:
         - How to create cloud infrastructure with Pulumi's Automation API.
         - How to build a self-service cloud platform for deploying applications.
-
-# The right hand side form section.
-form:
-    # HubSpot form id.
-    hubspot_form_id: 39b7f824-0903-485a-87b4-aa06ecb2b140
 ---

@@ -298,8 +298,8 @@ Note that this example deploys resources first into DigitalOcean (a Kubernetes `
 
 Check out the full [DigitalOcean Kubernetes Cluster in C#](https://github.com/pulumi/examples/blob/master/digitalocean-cs-k8s/Program.cs) example for more details.
 
-![Pulumi Console - Digital Ocean and Kubernetes Resources](./do-kubernetes-resources.png)
+![Digital Ocean and Kubernetes Resources](./do-kubernetes-resources.png)
 
 ## Conclusion
 
-Kubernetes support is one of several significant new additions to the Pulumi .NET support, and [many more improvements](https://github.com/pulumi/pulumi/issues/3470) are in progress over the coming weeks. [Get started]({{< relref "/docs/get-started/kubernetes" >}}) with Kubernetes and .NET today, and let us know what you think!
+Kubernetes support is one of several significant new additions to the Pulumi .NET support, and [many more improvements](https://github.com/pulumi/pulumi/issues/3470) are in progress over the coming weeks. [Get started](/docs/clouds/kubernetes/get-started/) with Kubernetes and .NET today, and let us know what you think!

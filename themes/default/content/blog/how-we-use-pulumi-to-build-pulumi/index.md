@@ -175,12 +175,12 @@ We serve three properties as static content from S3, each described
 using Pulumi. One of these is
 [https://get.pulumi.com](https://get.pulumi.com/) which hosts downloads
 of our `pulumi` CLI installer. It's a very simple program, and even
-better - it's open source at <http://github.com/pulumi/get.pulumi.com>.
+better - it's [open source on GitHub](https://github.com/pulumi/get.pulumi.com).
 It combines AWS S3, CloudFront and Route53.
 
 ![image-7](./image-7.png)
 
-This infrastructure is deployed and managed using the Pulumi console at
+This infrastructure is deployed and managed using the Pulumi Service at
 [app.pulumi.com](https://app.pulumi.com/), allowing us to track the
 history of deployments and changes to the infrastructure and quickly
 jump in to the resources defined by this stack in the AWS console.
@@ -189,8 +189,8 @@ jump in to the resources defined by this stack in the AWS console.
 
 ## Conclusion
 
-Treating cloud infrastructure as software has changed how we think about
-infrastructure engineering. Using Pulumi for both traditional cloud
+Treating cloud [infrastructure as software](/what-is/what-is-infrastructure-as-software/)
+has changed how we think about infrastructure engineering. Using Pulumi for both traditional cloud
 infrastructure as well as to get application code and supporting service
 infrastructure into production provides a simple workflow and the
 ability to create simple high-level APIs to make new services easy to

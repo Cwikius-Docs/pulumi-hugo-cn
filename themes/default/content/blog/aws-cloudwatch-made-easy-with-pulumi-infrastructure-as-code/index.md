@@ -13,7 +13,7 @@ and visualizations directly inside your Pulumi application.
 As cloud applications tend to be long-lived, we think it's vital that it
 be possible to get regular insights on the performance of the
 application at all times. Using
-[Crosswalk for AWS]({{< relref "/docs/guides/crosswalk/aws" >}}) Pulumi applications
+[Crosswalk for AWS](/docs/clouds/aws/guides/) Pulumi applications
 allow you to easily define and visualize the appropriate
 [metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/working_with_metrics.html)
 that show the health of your services, create
@@ -91,10 +91,10 @@ two resources. That's very simple to do:
 
 Then, we want to get information about how long these functions are
 taking. With Pulumi's
-[Crosswalk]({{< relref "/docs/guides/crosswalk/aws" >}}) APIs it's simple
+[Crosswalk](/docs/clouds/aws/guides/) APIs it's simple
 to get at this information. Inside all the main "Crosswalk for AWS"
 modules are exposed
-[Metrics]({{< relref "/docs/reference/pkg/nodejs/pulumi/awsx/cloudwatch#Metric" >}})
+[Metrics](/docs/reference/pkg/nodejs/pulumi/awsx/classic/cloudwatch/#Metric)
 for almost anything you might ever need. In this case, we want to know
 how long those Functions are taking so we can get that information as
 follows:
@@ -137,7 +137,7 @@ of the health of this app:
         ],
     });
 
-The [Crosswalk for AWS API for dashboards](https://github.com/pulumi/pulumi-awsx/tree/master/nodejs/awsx/cloudwatch#dashboards)
+The [Crosswalk for AWS API for dashboards](https://github.com/pulumi/pulumi-awsx/tree/master/awsx-classic/cloudwatch#dashboards)
 gives a lot of options for building up a dashboard programmatically.
 There are a wealth of Widgets and Annotations to expose the full power
 of Cloudwatch's dashboards to your app in a simple to use manner.
@@ -164,6 +164,6 @@ We hope these new Crosswalk for AWS APIs will be just as useful for you!
 For more information on Pulumi Crosswalk for AWS checkout other related
 content:
 
-1. [Pulumi Crosswalk for AWS Announcement]({{< relref "introducing-pulumi-crosswalk-for-aws-the-easiest-way-to-aws" >}})
-2. [Mapbox IOT-as-Code with Pulumi Crosswalk for AWS]({{< relref "mapbox-iot-as-code-with-pulumi-crosswalk-for-aws" >}})
-3. [Pulumi Crosswalk for AWS Documentation]({{< relref "/docs/guides/crosswalk/aws" >}})
+1. [Pulumi Crosswalk for AWS Announcement](/blog/introducing-pulumi-crosswalk-for-aws-the-easiest-way-to-aws/)
+2. [Mapbox IOT-as-Code with Pulumi Crosswalk for AWS](/blog/mapbox-iot-as-code-with-pulumi-crosswalk-for-aws/)
+3. [Pulumi Crosswalk for AWS Documentation](/docs/clouds/aws/guides/)

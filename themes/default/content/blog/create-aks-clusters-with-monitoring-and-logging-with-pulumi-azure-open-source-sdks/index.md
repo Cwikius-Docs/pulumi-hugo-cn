@@ -17,9 +17,9 @@ write this as a simple example using Pulumi SDKs.
 
 ## Prerequisites
 
-1. [Install `pulumi` CLI]({{< relref "/docs/get-started/install" >}})
-    and set up your [*Azure credentials*]({{< relref "/docs/get-started/azure" >}})
-2. Initialize a new [Pulumi project]({{< relref "/docs/intro/concepts/project" >}}) from available
+1. [Install `pulumi` CLI](/docs/install/)
+    and set up your [*Azure credentials*](/docs/clouds/azure/get-started/)
+2. Initialize a new [Pulumi project](/docs/concepts/projects/) from available
     templates. We use **`****`azure-typescript`****`** template here to
     install all dependencies and save the configuration.
 
@@ -122,10 +122,9 @@ export const kubeconfig = k8sCluster.kubeConfigRaw;
 
 Log queries are used to retrieve any log data from Azure Monitor.
 Whether you're
-[analyzing data in the portal](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/portals),
+[analyzing data in the portal](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/portals), or
 [configuring an alert rule](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-metric)
-to be notified of a particular condition, or retrieving data using the
-[Azure Monitor Logs API](https://dev.loganalytics.io/), you will use a
+to be notified of a particular condition, you will use a
 query to specify the data you want.
 
 We will now enable monitoring and logging by default for the cluster and
@@ -190,4 +189,4 @@ For more examples visit our [GitHub examples](https://github.com/pulumi/examples
 
 If you want to additionally look at how to integrate Azure DevOps with
 Pulumi, check out our other post
-[CI/CD made easy with Pulumi and Azure Pipelines]({{< relref "cd-made-easy-with-pulumi-and-azure-pipelines" >}}).
+[CI/CD made easy with Pulumi and Azure Pipelines](/blog/cd-made-easy-with-pulumi-and-azure-pipelines).

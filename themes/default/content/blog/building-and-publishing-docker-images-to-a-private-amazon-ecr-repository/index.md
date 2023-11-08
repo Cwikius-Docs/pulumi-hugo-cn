@@ -20,7 +20,7 @@ need to operate your own container repositories or worry about scaling
 the underlying infrastructure. ECR hosts your images in a highly
 available and scalable architecture, allowing you to reliably deploy
 containers for your applications. In this article, we'll see how
-[Pulumi Crosswalk for AWS]({{< relref "/crosswalk/aws" >}}) lets you use
+[Pulumi Crosswalk for AWS](/crosswalk/aws/) lets you use
 infrastructure as code to easily build, publish, and pull from private
 ECR repositories.
 <!--more-->
@@ -122,11 +122,16 @@ EKS):
 
 ```typescript
 // common code from before trimmed out
-const repository = new awsx.ecr.Repository("repo");
+const repository = new awsx.ecr.Repository("repo", {
+    forceDelete: true,
+});
 
 // Invoke 'docker' to actually build the DockerFile that is in the 'app' folder relative to
 // this program. Once built, push that image up to our personal ECR repo.
-const image = repository.buildAndPushImage("./app")
+const image = new awsx.ecr.Image("image", {
+    repositoryUrl: repository.url,
+    path: `./app`,
+});
 
 const service = new awsx.ecs.FargateService("service", {
     // ... common code from before trimmed out
@@ -164,7 +169,7 @@ out at the end of the day exactly what changes needed to be made. From
 the above we can see just the creation of the Repository components, and
 the updates of the Service to now use it. A nice minimal change that
 exactly matches our intuition around what would happen. If necessary,
-the `.buildAndPushImage` operation can also take many more options to
+the `awsx.ecr.Image` resource can also take many more options to
 control what's happening with `docker`. Options around tagging and
 caching can be configured, and the `docker` command line can also just
 be augmented if necessary to handle advanced scenarios.
@@ -200,7 +205,7 @@ manually going and cleaning up the stale garbage in the future.
 
 ## Next Steps
 
-We've shown how [Pulumi Crosswalk for AWS]({{< relref "/crosswalk/aws" >}})
+We've shown how [Pulumi Crosswalk for AWS](/crosswalk/aws/)
 can create a tight developer inner
 loop for building, publishing, and consuming Docker images, using
 private ECR repositories, while keeping all your ECS or EKS services and
@@ -213,10 +218,10 @@ sync.
 Pulumi is open source and free to use. For more information on Getting
 Started, check out:
 
-1. [AWS QuickStart]({{< relref "/docs/get-started/aws" >}})
-2. [Pulumi Crosswalk for AWS Announcement]({{< relref "introducing-pulumi-crosswalk-for-aws-the-easiest-way-to-aws" >}})
-3. [Mapbox IOT-as-Code with Pulumi Crosswalk for AWS]({{< relref "mapbox-iot-as-code-with-pulumi-crosswalk-for-aws" >}})
-4. [Pulumi Crosswalk for AWS Documentation for ECS, EKS, ELB, and more]({{< relref "/docs/guides/crosswalk/aws" >}})
+1. [AWS QuickStart](/docs/clouds/aws/get-started/)
+2. [Pulumi Crosswalk for AWS Announcement](/blog/introducing-pulumi-crosswalk-for-aws-the-easiest-way-to-aws/)
+3. [Mapbox IOT-as-Code with Pulumi Crosswalk for AWS](/blog/mapbox-iot-as-code-with-pulumi-crosswalk-for-aws/)
+4. [Pulumi Crosswalk for AWS Documentation for ECS, EKS, ELB, and more](/docs/clouds/aws/guides/)
 
 We think there's no easier way to do containers in a tight inner
 development loop, and we hope you agree!

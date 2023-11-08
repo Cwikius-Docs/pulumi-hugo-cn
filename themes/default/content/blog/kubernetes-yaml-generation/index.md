@@ -8,7 +8,8 @@ authors:
     - levi-blackstone
 tags:
     - kubernetes
-    
+    - yaml
+
 ---
 
 Stop writing Kubernetes YAML by hand, and start using the power of familiar programming languages! Pulumi can
@@ -16,7 +17,7 @@ generate Kubernetes manifests that easily integrate into existing CI/CD workflow
 
 <!--more-->
 
-While Pulumi has [excellent support](https://www.pulumi.com/docs/get-started/kubernetes/) for deploying and updating
+While Pulumi has [excellent support](https://www.pulumi.com/docs/clouds/kubernetes/get-started/) for deploying and updating
 Kubernetes resources on a cluster, many users have asked for the option to render YAML that they can integrate into
 existing workflows. The [v1.5.4](https://github.com/pulumi/pulumi-kubernetes/releases/tag/v1.5.4) release of
 `pulumi-kubernetes` adds the [renderYamlToDirectory](https://www.pulumi.com/docs/reference/pkg/nodejs/pulumi/kubernetes/#ProviderArgs-renderYamlToDirectory)
@@ -89,7 +90,7 @@ const service = deployment.createService({
 });
 ```
 
-Now, run `pulumi update`, and Pulumi renders these resources to YAML. The update process resolves [Outputs]({{< relref "/docs/intro/concepts/inputs-outputs" >}})
+Now, run `pulumi update`, and Pulumi renders these resources to YAML. The update process resolves [Outputs](/docs/concepts/inputs-outputs/)
 as usual, so that the manifests can include other infrastructure configuration specified in your program. The rendered
 manifests are kept in sync with changes to the program on each update.
 
@@ -128,12 +129,12 @@ to protect the rendered files.
 ## Learn More
 
 If you'd like to learn about Pulumi and how to manage your
-infrastructure and Kubernetes through code, [get started today]({{< relref "/docs/get-started" >}}). Pulumi is open
+infrastructure and Kubernetes through code, [get started today](/docs/get-started/). Pulumi is open
 source and free to use.
 
 For further examples on how to use Pulumi to create Kubernetes
 clusters, or deploy workloads to a cluster, check out the rest of the
-[Kubernetes tutorials]({{< relref "/docs/tutorials/kubernetes" >}}).
+[Kubernetes tutorials](/registry/packages/kubernetes/how-to-guides/).
 
 As always, you can check out our code on
 [GitHub](https://github.com/pulumi), follow us on

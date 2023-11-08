@@ -10,7 +10,7 @@ tags:
 ---
 
 {{% notes type="info" %}}
-The next-generation Azure provider is now [Azure-Native]({{< relref "/blog/full-coverage-of-azure-resources-with-azure-native" >}}).
+The next-generation Azure provider is now [Azure-Native](/blog/full-coverage-of-azure-resources-with-azure-native/).
 {{% /notes %}}
 
 We are excited to announce the beta release of a next generation Microsoft Azure provider for Pulumi. Azure has been a rapidly growing cloud platform among Pulumi users over the last year, and with the next generation Azure provider, we are doubling down on providing the best support possible for the Azure platform in Pulumi. We designed the new provider to expose the entire API surface of Azure to developers and operators, now and forever.
@@ -184,7 +184,7 @@ func main() {
 
 {{% /chooser %}}
 
-API documentation is available at [Azure NextGen API Reference](/docs/reference/pkg/azure-nextgen) and includes more than 1,000 resource examples.
+API documentation is available at [Azure NextGen API Reference](/registry/packages/azure-native/api-docs/) and includes more than 1,000 resource examples.
 
 ## Integrated with Azure Ecosystem
 
@@ -252,4 +252,4 @@ Several larger examples are available in the Pulumi Examples repo:
 - Web Application with Azure Container Instances: [TypeScript](https://github.com/pulumi/examples/tree/master/azure-ts-aci), [C#](https://github.com/pulumi/examples/tree/master/azure-cs-aci), [Python](https://github.com/pulumi/examples/tree/master/azure-py-aci), [Go](https://github.com/pulumi/examples/tree/master/azure-go-aci)
 - Web Server Using Azure Virtual Machine: [TypeScript](https://github.com/pulumi/examples/tree/master/azure-ts-webserver), [Python](https://github.com/pulumi/examples/tree/master/azure-py-webserver)
 
-You can browse [API reference docs](https://www.pulumi.com/docs/reference/pkg/azure-nextgen/) with inline examples or explore the [Pulumi Azure NextGen SDKs](https://github.com/pulumi/pulumi-azure-nextgen) repository.
+You can browse [API reference docs](/registry/packages/azure-native/api-docs/) with inline examples or explore the [Pulumi Azure NextGen SDKs](https://github.com/pulumi/pulumi-azure-nextgen) repository.

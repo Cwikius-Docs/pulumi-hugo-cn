@@ -30,7 +30,7 @@ Before proceeding, you need to answer three questions:
 
 - Which operating system to use for building cloud resources: macOS, Windows, or Linux?
 - Which cloud provider are you using? This guide covers AWS, Azure, and Google Cloud.
-- Which programming language will you use? Pulumi supports Node.js (JavaScript and Typescript), Python 3.6 or higher, Golang, and .NET (C#, F#, and VB).
+- Which programming language will you use? Pulumi supports Node.js (JavaScript and Typescript), Python 3.7 or higher, Golang, and .NET (C#, F#, and VB).
 
 Once you've made these choices, you can follow this guide in a choose-your-own-adventure style.
 
@@ -51,7 +51,7 @@ If you are uncomfortable with downloading and running an online shell script (wi
 {{% /choosable %}}
 
 {{% choosable os windows %}}
-[Chocolatey](https://chocolatey.org/) is a popular package manager for Windows. It should be installed using an [administrative shell](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/).
+[Chocolatey](https://chocolatey.org/) is a popular package manager for Windows. It should be installed using an [administrative shell](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-10/).
 
 Make sure that [`Get-ExecutionPolicy`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.1) is not restricted.
 
@@ -426,7 +426,7 @@ $ brew install node
 
 {{< chooser os "macos,windows,linux" >}}
 {{% choosable os macos %}}
-MacOS includes Python; however, versions shipped before December 2019 have Python 2.7 installed, which is deprecated. Pulumi requires Python 3.6 or higher. Use brew to install Python, which installs it at `/usr/bin/local/python3`.
+MacOS includes Python; however, versions shipped before December 2019 have Python 2.7 installed, which is deprecated. Pulumi requires Python 3.7 or higher. Use brew to install Python, which installs it at `/usr/bin/local/python3`.
 
 ```bash
 $ brew install python
@@ -575,7 +575,7 @@ macOS Sierra (10.12) or later is required.
 You can install Pulumi through the [Homebrew package manager](https://brew.sh/):
 
 ```bash
-$ brew install pulumi
+$ brew install pulumi/tap/pulumi
 ```
 
 This will install the `pulumi` CLI to the usual place (often `/usr/local/bin/pulumi`) and add it to your path.
@@ -666,7 +666,7 @@ v{{< latest-version >}}
 
 Congratulations! You have a fully configured environment, and you're ready to jump into cloud engineering. You can maintain your development environment using the package manager to add or update your toolset. Your code editor provides a modern development platform that takes advantage of all the advances in software engineering. Your coding experience will be more productive and less frustrating.
 
-What are the next steps? Begin with Pulumi's [Getting Started]({{< relref "/docs/get-started" >}}). You can skip the configuration sections and jump straight into your [first project]({{< relref "/docs/get-started/aws/create-project" >}}). Once you're done with your first project, try out example projects on [Github](https://github.com/pulumi/examples). You can start with simple projects using the `pulumi` CLI, such as deploying a web server on AWS with python.
+What are the next steps? Begin with Pulumi's [Getting Started](/docs/get-started/). You can skip the configuration sections and jump straight into your [first project](/docs/clouds/aws/get-started/). Once you're done with your first project, try out example projects on [Github](https://github.com/pulumi/examples). You can start with simple projects using the `pulumi` CLI, such as deploying a web server on AWS with python.
 
 ```bash
 $ pulumi new https://github.com/pulumi/examples/tree/master/aws-py-webserver
@@ -678,4 +678,4 @@ This command will download the project from Github, create a virtual environment
 $ pulumi new https://github.com/pulumi/examples/tree/master/azure-py-aks
 ```
 
-You can use the examples as a starting point for building your cloud infrastructure and add resources documented on Pulumi's [API reference]({{< relref "/docs/reference/pkg" >}}) and [Guides]({{< relref "/docs/guides" >}}).
+You can use the examples as a starting point for building your cloud infrastructure and add resources documented on Pulumi's [Registry](/registry/) and [Guides](/docs/guides/).

@@ -7,6 +7,8 @@ authors:
     - sophia-parafina
 tags:
     - AWS
+    - ec2
+    - virtual-machines
 ---
 
 Whether you're migrating to the cloud or have existing infrastructure, cloud spend can be a significant barrier to your success. Too small of a budget could prevent your organization from meeting your performance metrics. You can use different strategies to reduce cloud spend, such as using [Spot Instances](https://aws.amazon.com/ec2/spot/), which cost less than On-Demand Instances or scaling your infrastructure based on peak usage times.
@@ -149,4 +151,4 @@ Duration: 2m30s
 
 Before jumping to the next thing, let's review what we've done. Using infrastructure as code enables changing your infrastructure as new technology becomes available. You can experiment rapidly to see if this configuration can meet your performance metrics and remain within your cloud spend budget. Blue/green deployment is straightforward because you are just swapping components on a known and proven infrastructure. These are just some of the advantages of using infrastructure as code.
 
-So what is the next step? In a future article, well demonstrate how to build your own ARM-based container images using Docker's `buildx` CLI plugin. Until then, you can learn more about Pulumi and infrastructure as code with our [Getting Started]({{< relref "/docs/get-started" >}}) tutorials.
+So what is the next step? In a future article, well demonstrate how to build your own ARM-based container images using Docker's `buildx` CLI plugin. Until then, you can learn more about Pulumi and infrastructure as code with our [Getting Started](/docs/get-started/) tutorials.

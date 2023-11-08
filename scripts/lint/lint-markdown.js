@@ -4,7 +4,7 @@ const markdownlint = require("markdownlint");
 const path = require("path");
 
 /**
- * REGEX for grabbing the the front matter of a Hugo markdown file. Example:
+ * REGEX for grabbing the front matter of a Hugo markdown file. Example:
  *
  *     ---
  *     ...props
@@ -30,7 +30,7 @@ function checkPageTitle(title) {
             return "Page title exceeds 60 characters";
         }
     } else {
-        return "Page title is not a valid string"
+        return "Page title is not a valid string";
     }
     return null;
 }
@@ -52,11 +52,31 @@ function checkPageMetaDescription(meta) {
         } else if (metaLength < 50) {
             return "Meta description is too short. Must be at least 50 characters";
         } else if (metaLength > 160) {
-            return "Meta descripiton is too long. Must be shorter than 160 characters";
+            return "Meta description is too long. Must be shorter than 160 characters";
         }
     } else {
         return "Meta description is not a valid string";
     }
+    return null;
+}
+
+/**
+ * checkMetaImage validates that all meta images are png files in order ensure
+ * compatibility when shared on social media platforms.
+ *
+ * @param {string} image The meta image file for a given page
+ */
+function checkMetaImage(image) {
+    if (!image) {
+        return null;
+    }
+
+    const regex = /\.([0-9a-z]+)(?:[\?#]|$)/i;
+    const extension = regex.exec(image)[1];
+    if (extension !== "png") {
+        return `Meta image, '${image}', must be a png file.`;
+    }
+
     return null;
 }
 
@@ -68,46 +88,45 @@ function checkPageMetaDescription(meta) {
  * @param {Object} [result] The result object returned after finishing searching.
  * @returns {Object} The markdown file paths to search and an error object for the files front matter.
  */
-function searchForMarkdown(paths, result) {
-    // If the result arg does not exist we should create it.
-    if (!result) {
-        result = {
-            files: [],
-            frontMatter: {},
+function searchForMarkdown(paths) {
+    var result = {
+        files: [], // list of file paths
+        frontMatter: {}, // file path => { error: string } | { title: string, metaDescription: string }
+    };
+
+    while (paths.length > 0) {
+        // Grab the first file in the list and generate
+        // its full path.
+        const file = paths.shift();
+        const fullPath = path.resolve(__dirname, file);
+
+        // Check if the path is a directory
+        const isDirectory = fs.statSync(fullPath).isDirectory();
+
+        // Get the file suffix so we can grab the markdown files.
+        const fileParts = file.split(".");
+        const fileSuffix = fileParts[fileParts.length - 1];
+
+        // Ignore auto generated docs.
+        if (file.indexOf("/content/docs/reference/pkg") > -1) {
+            continue;
         }
-    }
-    // Grab the first file in the list and generate
-    // its full path.
-    const file = paths[0];
-    const fullPath = path.resolve(__dirname, file);
 
-    // Check if the path is a directory
-    const isDirectory = fs.statSync(fullPath).isDirectory();
+        // If the path is a directory we want to add the contents of the directory
+        // to the list.
+        if (isDirectory) {
+            fs.readdirSync(fullPath).forEach(function (file) {
+                paths.push(fullPath + "/" + file);
+            });
+            continue;
+        }
 
-    // Get the file suffix so we can grab the markdown files.
-    const fileParts = file.split(".");
-    const fileSuffix = fileParts[fileParts.length - 1];
-
-    // Ignore auto generated docs.
-    if (file.indexOf("/content/docs/reference/pkg") > -1) {
-        const remaining = paths.slice(1, paths.length);
-        return searchForMarkdown(remaining, result);
-    }
-    // If the path is a directory we want to add the contents of the directory
-    // to the list.
-    if (isDirectory) {
-        const contents = fs.readdirSync(fullPath).map(function (file) {
-            return fullPath + "/" + file;
-        });
-        paths[0] = contents;
-
-        // Flatten the array.
-        const newPaths = [].concat.apply([], paths);
-        return searchForMarkdown(newPaths, result);
         // Else check if the file suffix is a markdown
         // and add it the resulting file list.
-    }
-    if (fileSuffix === "md") {
+        if (fileSuffix !== "md") {
+            continue;
+        }
+
         try {
             // Read the file contents so we can grab the file header.
             const content = fs.readFileSync(fullPath, "utf8");
@@ -134,6 +153,7 @@ function searchForMarkdown(paths, result) {
                     error: null,
                     title: checkPageTitle(obj.title),
                     metaDescription: checkPageMetaDescription(obj.meta_desc),
+                    metaImage: checkMetaImage(obj.meta_image),
                 };
                 result.files.push(fullPath);
             }
@@ -146,12 +166,6 @@ function searchForMarkdown(paths, result) {
             result.files.push(fullPath);
         }
     }
-
-    // If there are remaining paths in the list, keep going.
-    const remaining = paths.slice(1, paths.length);
-    if (remaining.length > 0) {
-        return searchForMarkdown(remaining, result);
-    }
     return result;
 }
 
@@ -162,7 +176,7 @@ function searchForMarkdown(paths, result) {
  * @param {string} parentPath The path to search for markdown files
  */
 function getMarkdownFiles(parentPath) {
-    const fullParentPath = path.resolve(__dirname, parentPath)
+    const fullParentPath = path.resolve(__dirname, parentPath);
     const dirs = fs.readdirSync(fullParentPath).map(function (dir) {
         return path.join(parentPath, dir);
     });
@@ -209,6 +223,12 @@ function groupLintErrorOutput(result) {
                     ruleDescription: frontMatterErrors.metaDescription,
                 });
             }
+            if (frontMatterErrors.metaImage) {
+                lintErrors.push({
+                    lineNumber: "File Header",
+                    ruleDescription: frontMatterErrors.metaImage,
+                });
+            }
         }
 
         if (lintErrors.length > 0) {
@@ -246,7 +266,7 @@ const opts = {
         MD040: false,
         // Allow hard tabs.
         MD010: false,
-        // Allow puncuation in headers.
+        // Allow punctuation in headers.
         MD026: false,
         // Allow dollars signs in code blocks without values
         // immediately below the command.
@@ -264,7 +284,30 @@ const opts = {
         MD028: false,
         // Allow indentation in unordered lists.
         MD007: false,
+        // Allow bare URLs.
+        MD034: false,
     },
+    customRules: [
+        {
+            names: ["relref"],
+            description: "Hugo relrefs are no longer supported. Use standard [Markdown](/links) instead",
+            tags: ["hugo-relref"],
+            function: (params, onError) => {
+                params.tokens
+                    .filter(token => {
+                        return token.type === "inline";
+                    })
+                    .forEach(inline => {
+                        const line = inline.content;
+                        if (line.match(/{{<[ ]?relref ".+"[ ]?>}}/)) {
+                            onError({
+                                lineNumber: inline.lineNumber,
+                            });
+                        }
+                    });
+            },
+        },
+    ],
 };
 
 // Lint the markdown files.
@@ -274,19 +317,23 @@ const result = markdownlint.sync(opts);
 const errors = groupLintErrorOutput(result);
 
 // Get the total number of errors.
-const errorsArray = errors.map(function (err) { return err.errors });
+const errorsArray = errors.map(function (err) {
+    return err.errors;
+});
 const errorsCount = [].concat.apply([], errorsArray).length;
 
 // Create the error output string.
-const errorOutput = errors.map(function (err) {
-    let msg = err.path + ":\n";
-    for (let i = 0; i < err.errors.length; i++) {
-        const error = err.errors[i];
-        msg += "Line " + error.lineNumber + ": " + error.ruleDescription;
-        msg += error.errorDetail ? " [" + error.errorDetail + "].\n" : ".\n";
-    }
-    return msg;
-}).join("\n");
+const errorOutput = errors
+    .map(function (err) {
+        let msg = err.path + ":\n";
+        for (let i = 0; i < err.errors.length; i++) {
+            const error = err.errors[i];
+            msg += "Line " + error.lineNumber + ": " + error.ruleDescription;
+            msg += error.errorDetail ? " [" + error.errorDetail + "].\n" : ".\n";
+        }
+        return msg;
+    })
+    .join("\n");
 
 // If there are errors output the error string and exit
 // the program with an error.

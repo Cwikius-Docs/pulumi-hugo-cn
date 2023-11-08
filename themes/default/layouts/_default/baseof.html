@@ -1,10 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US" prefix="og: http://ogp.me/ns#">
     {{ partial "head.html" . }}
     <body class="section-{{ .Section }}">
         <pulumi-root></pulumi-root>
         {{ partial "header.html" . }}
-
         {{ block "hero" . }}
         {{ end }}
         <main>
@@ -12,7 +11,16 @@
             {{ end }}
         </main>
 
-        {{ partial "footer.html" . }}
-        {{ partial "scripts.html" . }}
+        {{ block "footer" . }}
+            {{ partial "footer.html" . }}
+            <noscript>
+                <img src="https://ws.zoominfo.com/pixel/61f9917376ed81001a80e653" width="1" height="1" style="display: none;" />
+            </noscript>
+        {{ end }}
     </body>
+    <!-- Propensity tag (propensity_analytics.js) -->
+    <script src="https://cdn.propensity.com/propensity/propensity_analytics.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        propensity("propensity-001436");
+    </script>
 </html>

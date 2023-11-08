@@ -4,8 +4,7 @@ authors: ["marc-holmes"]
 tags: ["Serverless"]
 meta_desc: "This tutorial shows how to use Pulumi to build a complete serverless application using JavaScript. No YAML needed."
 date: "2018-07-05"
-
-meta_image: "code-completion.gif"
+meta_image: "code-completion.png"
 ---
 
 In this tutorial, we'll use Pulumi to build a
@@ -23,12 +22,12 @@ only JavaScript', we're not kidding:
 Pulumi also supports containers (including Kubernetes), managed
 services, infrastructure and everything else in between that you might
 need for building cloud applications. Better than that, you can even
-[combine them all in the same program]({{< relref "build-a-video-thumbnailer-with-pulumi-using-lambdas-containers-and-infrastructure-on-aws" >}}).
+[combine them all in the same program](/blog/build-a-video-thumbnailer-with-pulumi-using-lambdas-containers-and-infrastructure-on-aws/).
 <!--more-->
 
 ## Our first serverless app in 5 lines of JavaScript
 
-After [installing the Pulumi CLI]({{< relref "/docs/get-started/install" >}}), just run
+After [installing the Pulumi CLI](/docs/install/), just run
 the following to create your new serverless JavaScript app:
 
     mkdir firstapp && cd firstapp
@@ -80,7 +79,7 @@ This approach avoided significant amounts of configuration (YAML, or
 point-and-click). Pulumi also supports containers (including
 Kubernetes), managed services, infrastructure and everything else in
 between that you might need for building cloud applications.
-[Get started with Pulumi]({{< relref "/docs/get-started" >}}).
+[Get started with Pulumi](/docs/get-started/).
 
 ## Why JavaScript for serverless programming?
 
@@ -126,17 +125,17 @@ gains from better tooling support. In particular:
 - **Reusable components.** Build on top of base classes, and share for
   easy reuse, standard configurations and so on.
 
-![code-completion](./code-completion.gif)
+![code-completion](https://www.pulumi.com/uploads/content/blog/building-your-first-serverless-app-using-only-javascript/code-completion.gif)
 
 ## Want more?
 
 To learn more take a look at more tutorials and example code:
 
 - Our origin story: [Hello, Pulumi!](http://joeduffyblog.com/2018/06/18/hello-pulumi/)
-- Tutorial: [Deploying Containers with Pulumi]({{< relref "deploying-production-ready-containers-with-pulumi" >}})
-- Tutorial: [Build a video thumbnailer using AWS Lambda, Fargate, and S3 in JavaScript]({{< relref "build-a-video-thumbnailer-with-pulumi-using-lambdas-containers-and-infrastructure-on-aws" >}})
-- [Pulumi Quickstart]({{< relref "/docs/get-started" >}})
+- Tutorial: [Deploying Containers with Pulumi](/blog/deploying-production-ready-containers-with-pulumi/)
+- Tutorial: [Build a video thumbnailer using AWS Lambda, Fargate, and S3 in JavaScript](/blog/build-a-video-thumbnailer-with-pulumi-using-lambdas-containers-and-infrastructure-on-aws/)
+- [Pulumi Quickstart](/docs/get-started/)
 - [Pulumi Community Slack](https://slack.pulumi.com)
 - [Pulumi Examples on GitHub](https://github.com/pulumi/examples)
-- [Node.js and Pulumi]({{< relref "/docs/intro/languages/javascript" >}})
-- [Node.js Examples for AWS and Azure]({{< relref "/blog/running-a-serverles-nodejs-http-server-on-aws-and-azure" >}})
+- [Node.js and Pulumi](/docs/languages-sdks/javascript/)
+- [Node.js Examples for AWS and Azure](/blog/running-a-serverles-nodejs-http-server-on-aws-and-azure/)

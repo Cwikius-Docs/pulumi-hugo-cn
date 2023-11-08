@@ -4,10 +4,10 @@ date: 2020-09-04
 meta_desc: Creating and quickly deploying a PERN stack application to the cloud Using Pulumi
 meta_image: meta.png
 authors: ["vova-ivanov"]
-tags: ["aws", "typescript", "containers"]
+tags: ["aws", "typescript", "containers", "docker"]
 ---
 
-In this blog post, we will explore PERN stack applications and deploy one to AWS. *PERN* is an acronym for PostgreSQL, Express, React, and Node. A PERN stack application is a project that uses PostgreSQL, Express as an application framework, React as a user interface framework, and runs on Node. We will also use [Pulumi Crosswalk]({{< relref "/docs/guides/crosswalk/aws" >}}) to reduce the amount of code and provide a quick and straightforward path for deploying the application.
+In this blog post, we will explore PERN stack applications and deploy one to AWS. *PERN* is an acronym for PostgreSQL, Express, React, and Node. A PERN stack application is a project that uses PostgreSQL, Express as an application framework, React as a user interface framework, and runs on Node. We will also use [Pulumi Crosswalk](/docs/clouds/aws/guides/) to reduce the amount of code and provide a quick and straightforward path for deploying the application.
 
 <!--more-->
 
@@ -26,11 +26,11 @@ PERN projects have four distinct tiers:
 An advantage of infrastructure as code is that the application and infrastructure deployment can use the same language. As React and the other components use NodeJS, we'll use it for our infrastructure by writing it in TypeScript. The first step is to create a new directory and initialize a Pulumi project with `pulumi new aws-typescript`.
 
 ```bash
-$ mkdir aws-pern-voting-app && cd aws-pern-voting-app
+$ mkdir aws-ts-pern-voting-app && cd aws-ts-pern-voting-app
 $ pulumi new aws-typescript
 ```
 
-This tutorial was written for the [aws-pern-voting-app example](https://github.com/pulumi/examples/tree/master/aws-pern-voting-app) but will work with any other PERN stack application. The example uses two folders to hold the client and server tiers and a Dockerfile that builds images that run as containers in AWS.
+This tutorial was written for the [aws-ts-pern-voting-app example](https://github.com/pulumi/examples/tree/master/aws-ts-pern-voting-app) but will work with any other PERN stack application. The example uses two folders to hold the client and server tiers and a Dockerfile that builds images that run as containers in AWS.
 
 To deploy our PERN stack, the project requires several configuration variables, which we set using `pulumi config set`. The variables are used to configure the PostgreSQL admin account, a user account for initializing the schema and table, and the database's region.
 
@@ -50,7 +50,7 @@ The `package.json` file lists the libraries used by the project. We will add the
 "pg": "^8.3.3"
 ```
 
-Our project uses a Dynamic Provider to help create tables and Schemas. It offers the same features as our [MySQL provider]({{< relref "/blog/deploying-mysql-schemas-using-dynamic-providers" >}}), but for PostgreSQL.
+Our project uses a Dynamic Provider to help create tables and Schemas. It offers the same features as our [MySQL provider](/blog/deploying-mysql-schemas-using-dynamic-providers/), but for PostgreSQL.
 
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
@@ -344,4 +344,4 @@ In this example, I explained the basic principles behind PERN stack applications
 
 Next week, I'll demonstrate how to integrate applications with Kubernetes, and seamlessly deploy them to EKS using Pulumi.
 
-The blog post's code can be [found on Github](https://github.com/pulumi/examples/tree/master/aws-pern-voting-app).
+The blog post's code can be [found on Github](https://github.com/pulumi/examples/tree/master/aws-ts-pern-voting-app).

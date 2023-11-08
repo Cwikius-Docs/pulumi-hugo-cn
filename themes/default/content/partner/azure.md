@@ -1,18 +1,18 @@
 ---
-title: Modern Infrastructure as Code for Microsoft Azure | Pulumi
+title: Cloud Engineering with Azure
 layout: azure
 url: /azure
 
-meta_desc: Modern Infrastructure as Code on the Azure cloud with Pulumi gives you huge productivity gains and a unified programming model for developers and operators.
+meta_desc: Universal Infrastructure as Code on the Azure cloud with Pulumi gives you huge productivity gains and a unified programming model for developers and operators.
 
 hero:
-    title: Modern Infrastructure as Code for 100% of Microsoft Azure
+    title: Universal Infrastructure as Code for 100% of Microsoft Azure
     description: |
-        Pulumi's infrastructure as code SDK helps create, deploy, and manage 100% of your
-        Microsoft Azure infrastructure, including containers, serverless functions, and
-        infrastructure using modern programming languages.
+        Pulumi's [infrastructure as code](/what-is/what-is-infrastructure-as-code/) SDK
+        helps create, deploy, and manage 100% of your Microsoft Azure infrastructure, including
+        containers, serverless functions, and infrastructure using modern programming languages.
     cta_text: See what's new
-    cta_url: "/blog/full-coverage-of-azure-resources-with-azure-native"
+    cta_url: "/registry/packages/azure-native/"
     ide:
         tabs:
             - title: index.ts
@@ -94,15 +94,89 @@ hero:
                     }
                 }
 
+            - title: Pulumi.yaml
+              language: yaml
+              code: |
+                name: azure-storage-account
+                runtime: yaml
+                description: A simple Pulumi program.
+                resources:
+                  resourcegroup:
+                    type: azure-native:resources:ResourceGroup
+                  sa:
+                    type: azure-native:storage:StorageAccount
+                    properties:
+                      resourceGroupName: ${resourcegroup.name}
+                      kind: 'StorageV2'
+                      sku: { name: 'Standard_LRS' }
+
+            - title: Main.java
+              language: java
+              code: |
+                package com.pulumi.example.infra;
+
+                import com.pulumi.Context;
+                import com.pulumi.Exports;
+                import com.pulumi.Pulumi;
+                import com.pulumi.azurenative.resources.ResourceGroup;
+                import com.pulumi.azurenative.storage.StorageAccount;
+                import com.pulumi.azurenative.storage.StorageAccountArgs;
+                import com.pulumi.azurenative.storage.enums.Kind;
+                import com.pulumi.azurenative.storage.enums.SkuName;
+                import com.pulumi.azurenative.storage.inputs.SkuArgs;
+
+                public class Main {
+
+                    public static void main(String[] args) {
+                        Pulumi.run(Main::stack);
+                    }
+
+                    private static Exports stack(Context ctx) {
+                        var resourceGroup = new ResourceGroup("linux-fn-rg");
+
+                        var storageAccount = new StorageAccount("linux-fn-sa", StorageAccountArgs.builder()
+                                .resourceGroupName(resourceGroup.name())
+                                .kind(Kind.StorageV2)
+                                .sku(SkuArgs.builder()
+                                        .name(SkuName.Standard_LRS)
+                                        .build())
+                                .build());
+
+                        return ctx.exports();
+                    }
+                }
+
+customer_logos:
+  title: Powering top engineering teams
+  logos:
+    - items:
+      - snowflake
+      - tableau
+      - atlassian
+      - fauna
+      - sans
+    - items:
+      - mindbody
+      - sourcegraph
+      - fenergo
+      - skai
+      - lemonade
+    - items:
+      - clearsale
+      - angellist
+      - webflow
+      - supabase
+      - ro
+
 azure_overview:
-  title: Modern Infrastructure as Code on Azure
+  title: Universal Infrastructure as Code on Azure
   list:
-    - Define infrastructure in JavaScript, TypeScript, Python, Go, or any .NET language, including C#, F#, and VB.
+    - Define infrastructure in JavaScript, TypeScript, Python, Go, Java, YAML, or any .NET language, including C#, F#, and VB.
     - Increase your productivity using the full ecosystem of dev tools such as IDE auto-completion, type & error checking, linting, refactoring, and test frameworks to validate all of your Azure resources.
     - Keep your cloud secure and in compliance by enforcing policies on every deployment.
     - Codify best practices and policies then share them with your team or community as self-service architectures.
   cta: Learn More
-  cta_url: "/blog/full-coverage-of-azure-resources-with-azure-native"
+  cta_url: "/blog/full-coverage-of-azure-resources-with-azure-native/"
 
 arm2pulumi:
   title: ARM &rarr; Pulumi
@@ -112,7 +186,7 @@ arm2pulumi:
     If you can deploy a resource with ARM templates, you can deploy it with the Pulumi Azure provider!
 
   cta: Learn More
-  cta_url: "/docs/guides/adopting/from_azure"
+  cta_url: "/docs/using-pulumi/adopting-pulumi/migrating-to-pulumi/from-azure/"
 
 detail_sections:
   - title: 100% API Coverage
@@ -121,7 +195,7 @@ detail_sections:
         Resource Manager giving you the full power of Azure at your fingertips. Every
         property of each resource is always represented in the SDKs.
     cta: Learn More
-    cta_url: "/blog/full-coverage-of-azure-resources-with-azure-native"
+    cta_url: "/registry/packages/azure-native/"
     items:
         - title: Everything In One Place
           icon: cloud-with-nodes
@@ -145,12 +219,12 @@ detail_sections:
 
   - title: Always Up to Date
     description: |
-        Pulumi's Microsoft Azure provider is designed to stay up-to-date with additions and changes
+        Pulumi's Microsoft Azure Native provider is designed to stay up-to-date with additions and changes
         to Azure APIs. The `azure-native` SDK is generated automatically from the Azure API
         specifications published by Microsoft, which means you'll always have access to the latest
         Azure features and improvements.
     cta: Learn More
-    cta_url: "/blog/full-coverage-of-azure-resources-with-azure-native"
+    cta_url: "/blog/full-coverage-of-azure-resources-with-azure-native/"
     items:
         - title: Auto Generated
           icon: cycle
@@ -170,21 +244,21 @@ detail_sections:
         - title: All Languages
           icon: code
           icon_color: yellow
-          description: The Pulumi Azure provider is available in all Pulumi languages, including JavaScript, TypeScript, Python, Go, and .NET Core. All SDKs are open source on GitHub and available as npm, NuGet, PyPI, and Go modules.
+          description: The Pulumi Azure Native provider is available in all Pulumi languages, including JavaScript, TypeScript, Python, Go, .NET, Java, and YAML. All SDKs are open source on GitHub and available as npm, NuGet, PyPI, and Go modules.
 
 superpowers:
   - title: Multi Cloud
     cta: Learn more
-    cta_url: "/docs/get-started/azure"
+    cta_url: "/docs/clouds/azure/get-started/"
     icon_type: cloud
     description: |
         Pulumi allows you to use top programming languages across all public clouds with support
-        for dozens of popular infrastructure service providers including private and hybrid clouds
-        helping ensure any multi-cloud strategy is succesful one.
+        for over 60 popular infrastructure service providers including private and hybrid clouds
+        helping ensure any multi-cloud strategy is successful.
 
   - title: Reduce Provisioning Time
     cta: Learn more
-    cta_url: "/docs/get-started/azure"
+    cta_url: "/docs/clouds/azure/get-started/"
     icon_type: provisioning
     description: |
         With Pulumi you are able to take advantage of the features of programming languages,
@@ -193,7 +267,7 @@ superpowers:
 
   - title: Automate Delivery
     cta: Learn more
-    cta_url: "/docs/guides/continuous-delivery"
+    cta_url: "/docs/using-pulumi/continuous-delivery/"
     icon_type: delivery
     description: |
         You can integrate Pulumi directly with your favorite CI/CD and SCM systems to
@@ -202,16 +276,16 @@ superpowers:
 
   - title: Smart Architecture
     cta: Learn more
-    cta_url: "/docs/intro/concepts"
+    cta_url: "/product/packages/"
     icon_type: architecture
     description: |
         YAML and templated DSLs force you to write the same boilerplate code over and over.
-        Pulumi’s Azure libraries allows you to codify those patterns and best practices so
+        Pulumi Packages allow you to codify those patterns and best practices so
         you can stop reinventing the wheel and start inventing the platforms of the future.
 
   - title: Be Proactive, Not Reactive
     cta: Learn more
-    cta_url: "/docs/guides/crossguard"
+    cta_url: "/docs/using-pulumi/crossguard/"
     icon_type: policy
     description: |
         When you enable Pulumi's Policy as Code feature, you instantly gain the power to
@@ -220,7 +294,7 @@ superpowers:
 
   - title: Reduce Deployment Complexity
     cta: Learn more
-    cta_url: "/docs/guides/testing"
+    cta_url: "/docs/using-pulumi/testing/"
     icon_type: testing
     description: |
         Deploying untested code can lead to some unexpected results. Pulumi lets you take advantage
@@ -237,6 +311,6 @@ contact_us_form:
         name_title: Site Reliability Engineer, Cockroach Labs
         content: |
             We are building a distributed-database-as-a-service product that runs on Kubernetes clusters across
-            multiple public clouds including GCP, AWS and others. Pulumi's declarative model, the support for real
+            multiple public clouds including Google Cloud, AWS and others. Pulumi's declarative model, the support for real
             programming languages, and the uniform workflow on any cloud make our SRE team much more efficient.
 ---

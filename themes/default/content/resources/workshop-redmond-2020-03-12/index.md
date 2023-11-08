@@ -9,6 +9,8 @@ aliases:
 
 # Events with unlisted as true will not be shown on the event list
 unlisted: true
+# don't index on unlisted resources
+block_external_search_index: true
 
 # The layout of the landing page.
 type: events
@@ -31,7 +33,7 @@ event:
     # This is only displayed on event specific pages.
     time: "5:30PM - 8:30PM (PT)"
     # The event description shown on the event list page.
-    description: "Join us as we walk through Infrastructure as Code concepts via a series of hands-on labs. Topics covered include IaC fundamentals, in addition to application architectures and how to use IaC to create, update, and manage them."
+    description: "Join us as we walk through [Infrastructure as Code](/what-is/what-is-infrastructure-as-code/) concepts via a series of hands-on labs. Topics covered include IaC fundamentals, in addition to application architectures and how to use IaC to create, update, and manage them."
     # The calendly registrtion url for event specific pages.
     calendly_url: "https://calendly.com/pulumi/redmond?month=2020-03"
     # The cost of an event.
@@ -42,7 +44,7 @@ event:
 
 The hardest part of taking your application to the cloud is configuring the infrastructure: clusters, DNS, firewalls, load balancers, IAM, storage, logging, and performance monitoring, often spanning private, public, and hybrid cloud architectures.
 
-In this workshop, the Pulumi team will show you how to tackle these challenges using Infrastructure as Code (IaC) through a series of hands-on labs. We’ll demonstrate how easy it is to get started with IaC using C# and Azure, however, the techniques work for any cloud - Azure, AWS, and GCP. You’ll be able to leverage your favorite languages including Python, Go, JavaScript, TypeScript, and C# instead of YAML or domain-specific languages.
+In this workshop, the Pulumi team will show you how to tackle these challenges using Infrastructure as Code (IaC) through a series of hands-on labs. We’ll demonstrate how easy it is to get started with IaC using C# and Azure, however, the techniques work for any cloud - Azure, AWS, and Google Cloud. You’ll be able to leverage your favorite languages including Python, Go, JavaScript, TypeScript, and C# instead of YAML or domain-specific languages.
 
 After completing this workshop, you'll be up and running with IaC fundamentals, modern application architectures across many clouds, and Kubernetes best-practices that are ready for production environments. You'll also be ready to empower your development teams to be more productive - continuously deploying both their applications and infrastructure.
 

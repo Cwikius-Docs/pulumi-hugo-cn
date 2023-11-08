@@ -5,7 +5,7 @@ date: "2019-10-17"
 meta_desc: "How to architect your AWS infrastructure to optimize team collaboration with Pulumi Stack References"
 meta_image: "application-architecture.png"
 authors: ["paul-stack"]
-tags: ["AWS"]
+tags: ["aws", "stack-reference"]
 ---
 
 In this post, we will talk about the best way to architect your Pulumi applications. We are going to build out the following
@@ -37,7 +37,7 @@ $ tree -d -L 1
 ```
 
 This means all of the work required for the networking components can be in the network project. We can use
-[Stack References]({{< relref "/docs/intro/concepts/stack#stackreferences" >}}) in Pulumi
+[Stack References](/docs/concepts/stack#stackreferences) in Pulumi
 to expose any required information from the networking layer, to the database and application layers.
 
 Let's create the networking project.
@@ -139,7 +139,7 @@ reusable `VPC` class` is a more efficient way of building out infrastructure tha
 take advantage of relating the resources to the correct parent to build out graph.
 
 We take it one step further, and be able to peer the VPCs. TypeScript, again, gives us the ability to do this in a
-concise manner by using a [member function](http://www.typescriptlang.org/docs/handbook/classes.html#public-private-and-protected-modifiers). The member function of the VPC class looks as follows:
+concise manner by using a [member function](https://www.typescriptlang.org/docs/handbook/classes.html#public-private-and-protected-modifiers). The member function of the VPC class looks as follows:
 
 ```typescript
 public configurePeering(args: PeerToArgs) {
@@ -448,9 +448,9 @@ Once the resources have been deleted, then we can follow the interactive prompt 
 
 In this post, we have discussed how we would break our infrastructure into logically grouped projects and how we share
 information between these projects. You can find a runable version of this infrastructure in our
-[examples](https://github.com/pulumi/examples/tree/master/aws-stackreference-architecture) repository.
+[examples](https://github.com/pulumi/examples/tree/master/aws-ts-stackreference-architecture) repository.
 
 This demonstrates the suggested way of architecting Pulumi applications both for operability and collaboration.
 
 You can try this code today get started with Pulumi today at [https://www.pulumi.com](/) and
-following the [Getting Started]({{< relref "/docs/get-started/aws" >}}) for managing AWS resources with Pulumi.
+following the [Getting Started](/docs/clouds/aws/get-started/) for managing AWS resources with Pulumi.

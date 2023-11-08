@@ -2,7 +2,7 @@
 title: "Building new Pulumi projects and stacks from templates"
 date: "2018-10-01"
 meta_desc: "This blog shows how to build Pulumi projects and stacks from templates."
-meta_image: "new-project-ui-1.gif"
+meta_image: "meta.png"
 authors: ["marc-holmes"]
 tags: ["features"]
 ---
@@ -12,8 +12,7 @@ the obvious question is "Where to start?". We hear you, and so we've
 built some new features to help you scaffold your app and program the
 cloud even faster than before.
 
-In this post, we'll look at how to use `pulumi new` and our [selection
-of templates](https://github.com/pulumi/templates) to build your Pulumi
+In this post, we'll look at how to use `pulumi new` and our [selection of templates](https://github.com/pulumi/templates) to build your Pulumi
 app. <!--more--> There is template support for:
 
 - AWS, Microsoft Azure, Google Cloud, Kubernetes, and OpenStack in
@@ -29,11 +28,11 @@ Head over to <https://app.pulumi.com> and - supposing you're logged in -
 you'll be presented with the usual homepage. But now we've added a
 shiny new 'Add New Project' button. Here's how that works:
 
-![new-project-ui-1](./new-project-ui-1.gif)
+![new-project-ui-1](https://www.pulumi.com/uploads/new-project-ui-1.gif)
 
 - Clicking the 'Add New Project' button takes you to a series of
   available templates - essentially a matrix of cloud provider and
-  language: from Go on GCP, through TypeScript on AWS, to Python on
+  language: from Go on Google Cloud, through TypeScript on AWS, to Python on
   OpenStack, and everything in-between.
 - Choosing an option will present a screen with some standard
   configuration options that you can change or leave defaulted.
@@ -81,6 +80,6 @@ We hope you like these helpers. If you're keen to get stuck in:
 - [Join the Slack conversation](https://slack.pulumi.com) - it's
   heating up in there.
 - Try out the [many examples we have](https://app.pulumi.com), and
-  [dive into the docs]({{< relref "/docs/reference" >}}).
+  [dive into the docs](/docs/).
 - [Submit new templates as PRs](https://github.com/pulumi/templates) -
   contribution == t-shirts at least.

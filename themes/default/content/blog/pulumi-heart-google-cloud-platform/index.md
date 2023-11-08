@@ -27,7 +27,7 @@ make it a joy to work with Pulumi + Google Cloud:
 - Working with Kubernetes and Google Container Engine (GKE)
 - Super Simple Serverless with Google Cloud Functions
 - Continuous Delivery with Google Cloud Build
-- Managing Deployment with the Pulumi Console
+- Managing Deployment with the Pulumi Service
 
 ## Infrastructure as Code for the Full Google Cloud Platform
 
@@ -96,7 +96,7 @@ will it proceed (with a full audit history):
     ...
 
 Learn more about working with Pulumi and Google Cloud infrastructure in
-this [GCE Web Server]({{< relref "/docs/tutorials/gcp/gce-webserver" >}})
+this [GCE Web Server](/registry/packages/gcp/how-to-guides/gce-webserver/)
 tutorial.
 
 ## Working with Kubernetes and Google Container Engine (GKE)
@@ -160,13 +160,13 @@ k8s_cluster = Cluster('gke-cluster',
 ```
 
 Learn more about using Pulumi with Kubernetes and GKE in this
-[Hello GKE]({{< relref "/docs/tutorials/kubernetes/gke" >}}) tutorial.
+[Hello GKE](/registry/packages/kubernetes/how-to-guides/gke/) tutorial.
 
 ## Super Simple Serverless with Google Cloud Functions
 
 Serverless has never been simpler than it is with Pulumi + Google Cloud
 Functions. Thanks to Pulumi's
-["magic functions"]({{< relref "lambdas-as-lambdas-the-magic-of-simple-serverless-functions" >}}),
+["magic functions"](/blog/lambdas-as-lambdas-the-magic-of-simple-serverless-functions),
 we can write callbacks in our language of choice, using a natural
 event-driven style, and Pulumi will handle the rest.
 
@@ -196,7 +196,7 @@ requests.onMessagePublished("newMessage", (data) => {
 ```
 
 And for quick inner loop development, the
-[`pulumi logs`]({{< relref "unified-logs-with-pulumi-logs" >}})
+[`pulumi logs`](/blog/unified-logs-with-pulumi-logs)
 command supports pulling logs for your Google Cloud Functions from
 StackDriver, aggregating all compute logs in your program into one
 unified stream:
@@ -222,7 +222,7 @@ lines to your CI/CD system.
 
 For teams working with Google Cloud Build, Pulumi deployments can be
 integrated into your continuous delivery with just
-[a few steps]({{< relref "/docs/guides/continuous-delivery/google-cloud-build" >}}). And
+[a few steps](/docs/using-pulumi/continuous-delivery/google-cloud-build/). And
 for teams working with GitHub, Pulumi's GitHub App gives you rich
 feedback on what changes will be deployed as part of a Pull Request, so
 you can see and approve infrastructure changes before they happen:
@@ -230,25 +230,25 @@ you can see and approve infrastructure changes before they happen:
 ![Pulumi in a Pull Request](./pulumi_pr.png)
 
 Learn more about integrating Pulumi with CI/CD in our
-[continuous delivery]({{< relref "/docs/guides/continuous-delivery" >}}) documentation.
+[continuous delivery](/docs/using-pulumi/continuous-delivery/) documentation.
 
-## Managing Deployment with the Pulumi Console
+## Managing Deployment with the Pulumi Service
 
 In addition to the `pulumi` CLI for deploying and updating GCP
-infrastructure, Pulumi is always connected to the [Pulumi Console](https://app.pulumi.com), which provides a rich interface for
+infrastructure, Pulumi is always connected to the [Pulumi Service](https://app.pulumi.com), which provides a rich interface for
 viewing the history of your stacks and deployments, management of access
 controls for teams, and details of all resources under management.
 
 With deep links into the Google Cloud Console, Pulumi provides quick
 access to all resources in your project.
 
-![Pulumi Console](./pulumi_console.png)
+![Pulumi Service](./pulumi_console.png)
 
 And because Pulumi works with both Google Cloud and Kubernetes resources
 at the same time, it's just as easy to deep link into resources in the
 Kubernetes console as well!
 
-You can check out the Pulumi Console at <https://app.pulumi.com> and
+You can check out the Pulumi Service at <https://app.pulumi.com> and
 create your first Pulumi GCP project with just a few clicks, with an
 array of New Project options to get you up and running quickly.
 
@@ -263,9 +263,9 @@ Pulumi is free and open source. You can get started with Pulumi today.
 Here are a few resources to learn more about working with Pulumi and
 GCP:
 
-- [Google Cloud Platform Getting Started Guide]({{< relref "/docs/get-started/gcp" >}})
-- [GKE Tutorial]({{< relref "/docs/tutorials/kubernetes/gke" >}})
-- [GCE Tutorial]({{< relref "/docs/tutorials/gcp/gce-webserver" >}})
+- [Google Cloud Platform Getting Started Guide](/docs/clouds/gcp/get-started/)
+- [GKE Tutorial](/registry/packages/kubernetes/how-to-guides/gke/)
+- [GCE Tutorial](/registry/packages/gcp/how-to-guides/gce-webserver/)
 - Example: [Serverless Slackbot with Cloud Functions in JavaScript](https://github.com/pulumi/examples/tree/master/gcp-ts-slackbot)
 - Example: [GKE + Kubernetes Pod Deployment in Python](https://github.com/pulumi/examples/tree/master/gcp-py-gke)
 - [Pulumi Community Slack](https://slack.pulumi.com/)

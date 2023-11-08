@@ -4,122 +4,286 @@
             <div class="dot-background"></div>
         </div>
         <div class="dot-overlay"></div>
-        <div class="home-page-hero-content">
-            <h1 class="relative">
-                <span class="rainbow-text" data-text={{index (.Params.hero.title) 0}}>{{ index (.Params.hero.title) 0 }}</span><br />
-                <span class="rainbow-text" data-text={{index (.Params.hero.title) 1}}>{{ index (.Params.hero.title) 1 }}</span>
+        <div class="home-page-hero-content pb-12">
+            <h1 class="flex flex-col items-center">
+                <span class="inline-block" data-text="{{ index (.Params.hero.title) 0 }}">{{ index (.Params.hero.title) 0 }}</span>
+                <span class="rainbow-text inline-block text-center" data-text="{{ index (.Params.hero.title) 1 }}">{{ index (.Params.hero.title) 1 }}</span>
             </h1>
-            <p class="text-center max-w-xl leading-7">{{ .Params.hero.description }}</p>
-            <div class="mt-8">
-                <a class="home-hero-btn-primary" href="{{ relref . "/docs/get-started" }}">{{ .Params.hero.cta_text }}</a>
+            <p class="text-center leading-7">{{ .Params.hero.description | markdownify }}</p>
+            <div class="overlay-middle mt-8 flex text-center justify-center items-center flex-col mx-auto lg:mx-0 md:flex-row">
+                <a class="home-hero-btn-primary mr-0 md:mr-4 mb-3 md:mb-0" href="{{ .Params.hero.cta_link }}">{{ .Params.hero.cta_text }}</a>
+                <a class="btn-secondary home-hero-btn-secondary rounded-full cursor-pointer" href="{{ .Params.hero.secondary_cta_link }}">{{ .Params.hero.secondary_cta_text }}</a>
             </div>
         </div>
     </header>
 {{ end }}
 
 {{ define "main" }}
-    <section class="container mx-auto mt-20">
-        <div class="flex flex-col lg:flex-row h-full">
-            <div class="w-full lg:w-1/2 mt-16 lg:mt-0 h-full flex items-center justify-center relative overflow-hidden">
-                <div class="slot-machine-overlay">
-                    <div class="overlay-top"></div>
-                    <div class="overlay-middle flex justify-center items-center">
-                        <div class="w-1/6 hidden lg:block"><object class="m-auto" data="/images/home/plus.svg"> </object></div>
-                        <div class="w-1/6"></div>
-                        <div class="w-1/6 hidden lg:block"><object class="m-auto" data="/images/home/plus.svg"> </object></div>
-                    </div>
-                    <div class="overlay-end"></div>
+    {{ $pageContext := . }}
+    <!-- Built by engineers + tweets -->
+    <section class="mt-8 mb-16 lg:mb-48 relative flex flex-col">
+        <div class="container mx-auto px-3 overflow-hidden lg:overflow-visible">
+            <div class="w-full bg-violet-600 rounded-xl shadow p-16 lg:pb-56 align-top">
+                <h2 class="text-white text-center">Built by engineers for engineers. Open source.</h2>
+                <div class="flex flex-col lg:flex-row items-center justify-center mb-4">
+                    <a class="text-white text-lg bold underline flex self-start lg:self-auto mt-4 lg:mt-0 mx-auto lg:mx-0 lg:pr-1" href="https://slack.pulumi.com/"
+                        >Join our community,
+                    </a>
+                    <p class="text-white text-lg mx-auto my-0 lg:mx-0 lg:my-auto">and let’s build together.</p>
                 </div>
-                <pulumi-slot-machine
-                    left-images="{{ delimit .Params.overview.logos.clouds "," }}"
-                    center-images="{{ delimit .Params.overview.logos.languages "," }}"
-                    right-images="{{ delimit .Params.overview.logos.identity "," }}"
-                >
-                </pulumi-slot-machine>
             </div>
 
-            <div class="w-full lg:w-1/2 order-first lg:order-last h-full flex flex-col justify-center items-center">
-                <div class="w-8/12 text-center">
-                    <h2>
-                        {{ index (.Params.overview.title) 0}}<br />
-                        {{ index (.Params.overview.title) 1}}<br />
-                        {{ index (.Params.overview.title) 2}}
-                    </h2>
-                    <p class="text-lg">{{ .Params.overview.description | markdownify }}</p>
-                    <div class="mt-16">
-                        {{ partial "cta/primary-get-started" . }}
-                    </div>
-                </div>
+            <div class="w-full order-first lg:hidden">
+                <pulumi-swiper slides="1" centered-slides="true" initial-slide="3" loop="true" autoplay="true" autoplay-delay="5000" speed="1000">
+                    {{ range $tweet := .Params.get_started.tweets }}
+                        <pulumi-swipeable>
+                            <div class="w-full px-4">
+                                <div class="flex flex-col card p-6 bg-white">
+                                    <p class="text-left mt-0 overflow-hidden">{{ $tweet.text }}</p>
+                                    <div class="flex flex-grow items-end">
+                                        <div>
+                                            <img class="rounded-full w-12 h-12" src="{{ $tweet.avatar }}" />
+                                        </div>
+                                        <p class="ml-4 text-gray-600">{{ $tweet.username }}</p>
+                                        <div class="flex-grow flex justify-end my-4">
+                                            <img src="/logos/tech/twitter.svg" alt="Twitter" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </pulumi-swipeable>
+                    {{ end }}
+                </pulumi-swiper>
+            </div>
+            <div class="large-container mx-auto absolute -bottom-12 left-0 pt-12 hidden lg:block">
+                <pulumi-swiper slides="3" centered-slides="true" initial-slide="3" loop="true" autoplay="true" autoplay-delay="4000" speed="1000">
+                    {{ range $tweet := .Params.get_started.tweets }}
+                        <pulumi-swipeable>
+                            <div class="w-full px-4 text-left">
+                                <div class="flex flex-col card p-6 bg-white h-60">
+                                    <p class="flex-grow mt-0">{{ $tweet.text }}</p>
+                                    <div class="flex items-center w-full pb-1">
+                                        <a href="{{ $tweet.link }}" target="_blank" rel="noopener noreferrer">
+                                            <!-- If the browser fails to load the Twitter avatar, just hide it. -->
+                                            <div class="rounded-full border-none w-12 h-12 mr-4 overflow-hidden">
+                                                <img src="{{ $tweet.avatar }}" onerror="$(this).hide();" />
+                                            </div>
+                                        </a>
+                                        <a href="{{ $tweet.link }}" class="flex-grow text-gray-600 hover:text-gray-600 hover:underline" target="_blank" rel="noopener noreferrer">
+                                            {{ $tweet.username }}
+                                        </a>
+
+                                        {{ if eq $tweet.source "twitter" }}
+                                            <img class="w-8 h-8" src="/logos/tech/twitter.svg" alt="Twitter" />
+                                        {{ end }}
+
+                                        {{ if eq $tweet.source "reddit" }}
+                                            <img class="w-8 h-8" src="/logos/tech/reddit.svg" alt="Reddit" />
+                                        {{ end }}
+
+                                        {{ if eq $tweet.source "linkedin" }}
+                                            <img class="w-8 h-8" src="/logos/tech/linkedin.svg" alt="LinkedIn" />
+                                        {{ end }}
+
+                                        {{ if eq $tweet.source "blog" }}
+                                            <i class="fas fa-blog text-gray-500 text-2xl"></i>
+                                        {{ end }}
+                                    </div>
+                                </div>
+                            </div>
+                        </pulumi-swipeable>
+                    {{ end }}
+                </pulumi-swiper>
             </div>
         </div>
     </section>
 
-    <section class="mb-8 mt-16 lg:my-32 px-6 lg:px-0 relative">
-        <div class="shape-background home-build-section">
-            <div class="shape-container">
+    <!-- Code and ship faster -->
+    <section class="mb-8 px-6 lg:px-0 relative">
+        <div class="shape-background home-background-yellow-left">
+            <div class="shape-container flex flex-row-reverse">
+                <div class="dot-background-container self-end">
+                    <div class="dot-background-overlay"></div>
+                    <div class="dot-background no-animate"></div>
+                </div>
                 <div class="circle-left"></div>
-                <div class="circle-center"></div>
                 <div class="circle-right"></div>
             </div>
         </div>
 
         <div class="container mx-auto">
             <div class="flex flex-col lg:flex-row">
-                <div class="w-full lg:w-1/2 lg:mr-32 z-10 bg-white px-8 rounded">
-                    <h2>{{ .Params.build.title }}</h2>
-                    <p class="text-lg">{{ .Params.build.description }}</p>
-
-                    {{ range $item := .Params.build.items }}
+                <div class="w-full my-auto lg:w-1/2 lg:mr-32 z-10 p-8">
+                    <h3>{{ .Params.code_faster.title }}</h3>
+                    <p class="text-lg">{{ .Params.code_faster.description | markdownify }}</p>
+                    {{ range $item := .Params.code_faster.items }}
                         <h6>{{ $item.title }}</h6>
-                        <p>{{ $item.description }}</p>
+                        <p>{{ $item.description | markdownify }}</p>
                     {{ end }}
+                </div>
+                <div class="w-full lg:w-1/2 block lg:flex lg:justify-center p-6 md:pl-24 xl:pl-0">
+                    <div>
+                        <pulumi-chooser type="language" options="typescript,python,go,csharp,java,yaml">
+                            <pulumi-choosable type="language" class="highlight" value="typescript">
+                                <img
+                                    class="mx-auto"
+                                    src="/images/home/typescript.svg"
+                                    alt="Pulumi code being written in TypeScript showing autocomplete for creating a new S3 bucket"
+                                />
+                            </pulumi-choosable>
 
-                    <div class="mt-16">
-                        {{ partial "cta/primary-get-started" . }}
+                            <pulumi-choosable type="language" class="highlight" value="python">
+                                <img class="mx-auto" src="/images/home/python.svg" alt="Pulumi code being written in Python showing autocomplete for creating a new S3 bucket" />
+                            </pulumi-choosable>
+
+                            <pulumi-choosable type="language" class="highlight" value="go">
+                                <img class="mx-auto" src="/images/home/go.svg" alt="Pulumi code being written in GO showing autocomplete for creating a new S3 bucket" />
+                            </pulumi-choosable>
+
+                            <pulumi-choosable type="language" class="highlight" value="csharp">
+                                <img class="mx-auto" src="/images/home/c-sharp.svg" alt="Pulumi code being written in C# showing autocomplete for creating a new S3 bucket" />
+                            </pulumi-choosable>
+
+                            <pulumi-choosable type="language" class="highlight" value="java">
+                                <img class="mx-auto" src="/images/home/java.svg" alt="Pulumi code being written in Java showing autocomplete for creating a new S3 bucket" />
+                            </pulumi-choosable>
+
+                            <pulumi-choosable type="language" class="highlight" value="yaml">
+                                <img class="mx-auto" src="/images/home/yaml.svg" alt="Pulumi code being written in YAML showing autocomplete for creating a new S3 bucket" />
+                            </pulumi-choosable>
+                        </pulumi-chooser>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="w-full lg:w-1/2 flex items-start justify-center mt-12 lg:mt-0">
-                    <pulumi-chooser type="language" options="typescript,javascript,python,go,csharp">
+    <!-- Panther quote -->
+    <section class="w-full md:w-2/3 lg:w-1/2 mx-auto">
+        {{ partial "home/quote.html" (dict "quote" .Params.customer_quotes.panther) }}
+    </section>
+
+    <!-- Boost productivity with AI -->
+    <section class="py-12 px-6 lg:px-0 relative">
+        <div class="shape-background home-background-salmon-right">
+            <div class="shape-container flex">
+                <div class="dot-background-container self-end">
+                    <div class="dot-background-overlay"></div>
+                    <div class="dot-background no-animate"></div>
+                </div>
+                <div class="circle-left"></div>
+                <div class="circle-right"></div>
+            </div>
+        </div>
+
+        <div class="container mx-auto flex flex-col lg:flex-row">
+            <div class="w-full lg:w-1/2 block lg:flex lg:justify-center p-6 md:pl-24 xl:pl-0">
+                <div>
+                    <pulumi-chooser type="language" options="typescript,python,go,csharp,java,yaml">
                         <pulumi-choosable type="language" class="highlight" value="typescript">
-                            <img src="/images/home/typescript.svg" alt="" />
-                        </pulumi-choosable>
-
-                        <pulumi-choosable type="language" class="highlight" value="javascript">
-                            <img src="/images/home/javascript.svg" alt="" />
+                            <img
+                                class="mx-auto"
+                                src="/images/home/ai-ts.svg"
+                                alt="AI prompted to 'Give me an AWS static website behind a CloudFront CDN' and outputting Pulumi code in TypeScript"
+                            />
                         </pulumi-choosable>
 
                         <pulumi-choosable type="language" class="highlight" value="python">
-                            <img src="/images/home/python.svg" alt="" />
+                            <img
+                                class="mx-auto"
+                                src="/images/home/ai-python.svg"
+                                alt="AI prompted to 'Give me an AWS static website behind a CloudFront CDN' and outputting Pulumi code in Python"
+                            />
                         </pulumi-choosable>
 
                         <pulumi-choosable type="language" class="highlight" value="go">
-                            <img src="/images/home/go.svg" alt="" />
+                            <img
+                                class="mx-auto"
+                                src="/images/home/ai-go.svg"
+                                alt="AI prompted to 'Give me an AWS static website behind a CloudFront CDN' and outputting Pulumi code in GO"
+                            />
                         </pulumi-choosable>
 
                         <pulumi-choosable type="language" class="highlight" value="csharp">
-                            <img src="/images/home/c-sharp.svg" alt="" />
+                            <img
+                                class="mx-auto"
+                                src="/images/home/ai-csharp.svg"
+                                alt="AI prompted to 'Give me an AWS static website behind a CloudFront CDN' and outputting Pulumi code in C#"
+                            />
+                        </pulumi-choosable>
+
+                        <pulumi-choosable type="language" class="highlight" value="java">
+                            <img
+                                class="mx-auto"
+                                src="/images/home/ai-java.svg"
+                                alt="AI prompted to 'Give me an AWS static website behind a CloudFront CDN' and outputting Pulumi code in Java"
+                            />
+                        </pulumi-choosable>
+
+                        <pulumi-choosable type="language" class="highlight" value="yaml">
+                            <img
+                                class="mx-auto"
+                                src="/images/home/ai-yaml.svg"
+                                alt="AI prompted to 'Give me an AWS static website behind a CloudFront CDN' and outputting Pulumi code in YAML"
+                            />
                         </pulumi-choosable>
                     </pulumi-chooser>
                 </div>
             </div>
-
-            <div class="flex flex-col lg:flex-row justify-center items-stretch my-8 lg:my-32 px-6 lg:px-0">
-                {{ range $item := .Params.use_cases }}
-                    <div class="card p-10 mx-4 text-center bg-white z-10 h-full my-6 lg:my-0">
-                        <div>
-                            {{ partial "color-icon.html" (dict "icon" $item.icon "icon_color" $item.icon_color) }}
-                        </div>
-                        <h5>{{ $item.title }}</h5>
-                        <p>{{ $item.description }}</p>
-                    </div>
-                {{ end }}
+            <div class="my-auto"></div>
+            <div class="w-full my-auto lg:w-1/2 order-first lg:order-last lg:ml-32 z-10 px-8">
+                <h3>{{ .Params.ai.title }}</h3>
+                <p class="text-lg">{{ .Params.ai.description | markdownify }}</p>
+                <div class="mt-8">
+                    <span class="text-lg text-gray-600">Try it out: </span>
+                    <a href="/ai" class="underline text-lg text-blue-600">Pulumi AI<i class="fa fa-arrow-right ml-2"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16 lg:my-32 px-6 lg:px-0 relative">
-        <div class="shape-background home-deploy-section">
+    <!-- Starburst quote -->
+    <section class="w-full md:w-2/3 lg:w-1/2 mx-auto">
+        {{ partial "home/quote.html" (dict "quote" .Params.customer_quotes.starburst) }}
+    </section>
+
+    <!-- Embed IaC Anywhere -->
+    <section class="my-12 lg:py-12 px-6 lg:px-0 relative">
+        <div class="shape-background home-background-purple-left">
+            <div class="shape-container">
+                <div class="dot-background-container">
+                    <div class="dot-background-overlay"></div>
+                    <div class="dot-background no-animate"></div>
+                </div>
+                <div class="circle-left"></div>
+                <div class="circle-right"></div>
+            </div>
+        </div>
+
+        <div class="container mx-auto flex flex-col lg:flex-row">
+            <div class="my-auto w-full lg:w-1/2 lg:mr-32 z-10 px-8">
+                <h3>{{ .Params.embed.title }}</h3>
+                <p class="text-lg">{{ .Params.embed.description | markdownify }}</p>
+                <div class="mt-8">
+                    <span class="text-lg text-gray-600">Learn more: </span>
+                    <a href="/automation" class="underline text-lg text-blue-600">Automation API<i class="fa fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-1/2 flex items-center justify-center mt-12 lg:mt-0">
+                <img src="{{ .Params.embed.image }}" alt="{{ .Params.embed.alt }}" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Snowflake quote -->
+    <section class="w-full md:w-2/3 lg:w-1/2 mx-auto">
+        {{ partial "home/quote.html" (dict "quote" .Params.customer_quotes.snowflake) }}
+    </section>
+
+    <!-- Tame configuration and secrets sprawl -->
+    <section class="py-12 lg:my-12 px-6 lg:px-0 relative">
+        <div class="shape-background home-background-yellow-right">
             <div class="shape-container">
                 <div class="dot-background-container">
                     <div class="dot-background-overlay"></div>
@@ -132,194 +296,76 @@
 
         <div class="container mx-auto flex flex-col lg:flex-row">
             <div class="w-full lg:w-1/2 flex items-center justify-center mt-12 lg:mt-0">
-                <img class="rounded-xl shadow-2xl" src="/images/home/deploy-graphic.svg" alt="Pulumi Pipeline" />
+                <img src="{{ .Params.secrets.image }}" alt="{{ .Params.secrets.alt }}" class="card" />
             </div>
-            <div class="w-full lg:w-1/2 order-first lg:order-last lg:ml-32 z-10 bg-white px-8 rounded">
-                <h2>{{ .Params.deploy.title }}</h2>
-                <p class="text-lg">{{ .Params.deploy.description }}</p>
+            <div class="my-auto"></div>
+            <div class="w-full my-auto lg:w-1/2 order-first lg:order-last lg:ml-32 z-10 px-8">
+                <h3>{{ .Params.secrets.title }}</h3>
+                <p class="text-lg">{{ .Params.secrets.description | markdownify }}</p>
+                <div class="mt-8">
+                    <span class="text-lg text-gray-600">Learn more: </span>
+                    <a href="/product/esc" class="underline text-lg text-blue-600">Pulumi ESC<i class="fa fa-arrow-right ml-2"></i></a>
+                </div>
 
-                {{ range $item := .Params.deploy.items }}
-                    <h6>{{ $item.title }}</h6>
-                    <p>{{ $item.description }}</p>
-                {{ end }}
-
-                <div class="mt-16">
-                    {{ partial "cta/primary-get-started" . }}
+                <div class="mt-6">
+                    <a href="https://www.producthunt.com/posts/pulumi-esc?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-pulumi&#0045;esc" target="_blank" rel="noopener noreferrer">
+                        <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=419631&theme=light" alt="Pulumi&#0032;ESC - Centralize&#0032;environments&#0044;&#0032;secrets&#0044;&#0032;and&#0032;configuration | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="my-16 lg:py-32 px-6 lg:px-0 relative">
-        <div class="shape-background home-manage-section">
-            <div class="shape-container">
-                <div class="dot-background-container">
-                    <div class="dot-background-overlay"></div>
-                    <div class="dot-background no-animate"></div>
-                </div>
-                <div class="circle-left"></div>
-                <div class="circle-right"></div>
-            </div>
-        </div>
+    <!-- Logos carousel -->
+    <section class="container mx-auto text-center overflow-hidden px-3 mt-24">
+        <h3 class="text-center mb-10">{{ .Params.customer_logos.title }}</h3>
 
-        <div class="container mx-auto flex flex-col lg:flex-row">
-            <div class="w-full lg:w-1/2 lg:mr-32 z-10 bg-white px-8 rounded">
-                <h2>{{ .Params.manage.title }}</h2>
-                <p class="text-lg">{{ .Params.manage.description }}</p>
-
-                {{ range $item := .Params.manage.items }}
-                    <h6>{{ $item.title }}</h6>
-                    <p>{{ $item.description }}</p>
-                {{ end }}
-
-                <div class="mt-16">
-                    {{ partial "cta/primary-get-started" . }}
-                </div>
-            </div>
-
-            <div class="w-full lg:w-1/2 flex items-center justify-center mt-12 lg:mt-0">
-                <img class="rounded-xl shadow-2xl" src="/images/home/pulumi-console.svg" alt="Pulumi Console" />
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits -->
-    <section class="container mx-auto my-16 lg:my-24 relative">
-
-        <h2 class="text-center">{{ .Params.benefits.title }}</h2>
-        <div class="benefits-section relative">
-            <div class="shape-background home-benefits-section">
-                <div class="shape-container">
-                    <div class="circle-left"></div>
-                    <div class="circle-right"></div>
-                </div>
-            </div>
-            {{ range $item := .Params.benefits.items }}
-                <div class="benefits-item card z-10 bg-white">
-                    <div class="icon-section">
-                        {{ partial "color-icon.html" (dict "icon" $item.icon "icon_color" $item.icon_color) }}
-                    </div>
-                    <div>
-                        <h5>{{ $item.title }}</h5>
-                    </div>
-                    <div class="description">
-                        <p>{{ $item.description }}</p>
-                    </div>
-                </div>
-            {{ end }}
-        </div>
-    </section>
-
-    <!-- Logos -->
-    <section class="container mx-auto text-center my-0 mb-16 lg:my-24 overflow-hidden px-3">
-        <h3 class="text-center mb-10 hidden lg:block">{{ .Params.customer_logos.title }}</h3>
-        <h6 class="text-center mb-10 lg:hidden">{{ .Params.customer_logos.title }}</h6>
-        <pulumi-swiper loop="true" autoplay="true" autoplay-delay="2500" speed="2000">
-            {{ range $logoBunch := .Params.customer_logos.logos }}
-                <pulumi-swipeable>
-                    <div class="flex flex-wrap items-center justify-center">
-                        {{ range $logo := $logoBunch.items }}
-                            <div class="w-1/3 lg:w-1/5 px-2 py-4 lg:py-0 lg:px-8">
-                                {{ partial "customer-logo.html" (dict "logo" $logo "hoverable" true) }}
-                            </div>
-                        {{ end }}
-                    </div>
-                </pulumi-swipeable>
-            {{ end }}
-        </pulumi-swiper>
-    </section>
-
-    <!-- Video -->
-    <section class="container mx-auto mt-28 relative">
-        <div class="shape-background home-video-section">
-            <div class="shape-container">
-                <div class="circle-left"></div>
-                <div class="circle-right"></div>
-            </div>
-        </div>
-        <div class="rounded-xl shadow-2xl w-3/4 mx-auto" style="position: relative; padding-bottom: 40.25%; height: 0; overflow: hidden;">
-            <iframe
-                src="//www.youtube.com/embed/6f8KF6UGN7g?rel=0"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;"
-                allowfullscreen=""
-                title="Introduction to Pulumi: Modern Infrastructure as Code"
-                srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img{position:absolute;width:100%;top:0;bottom:0;margin:auto}</style><a href=https://www.youtube.com/embed/6f8KF6UGN7g?autoplay=1><img src='/images/home/youtube-preview.svg' alt='Introduction to Pulumi: Modern Infrastructure as Code'></a>"
-            ></iframe>
-        </div>
-    </section>
-
-    <!-- Get Started -->
-    <section class="my-16 lg:my-32 lg:pt-48 relative overflow-hidden flex flex-col">
-        <div class="container mx-auto px-3">
-            <div class="w-full bg-violet-600 text-white rounded shadow p-16 lg:pt-56 text-center">
-                <h2 class="text-white">{{ .Params.get_started.title }}</h2>
-                <p class="text-white">{{ .Params.get_started.description }}</p>
-                <div class="mt-16">
-                    <a class="btn-secondary" href="{{ relref . "/docs/get-started" }}">{{ .Params.get_started.cta_text }}</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="w-full order-first pb-16 lg:hidden">
-            <pulumi-swiper
-                slides="1"
-                centered-slides="true"
-                initial-slide="3"
-                loop="true"
-                autoplay="true"
-                autoplay-delay="5000"
-                speed="1000"
-            >
-                {{ range $tweet := .Params.get_started.tweets }}
+        <div class="w-full order-first pb-16 items-center justify-center hidden lg:block">
+            <pulumi-swiper slides="6" centered-slides="true" loop="true" autoplay="true" autoplay-delay="500" speed="2000">
+                {{ range $logo := .Params.customer_logos.logos }}
                     <pulumi-swipeable>
-                        <div class="w-full px-4">
-                            <div class="flex flex-col card p-6 bg-white h-56">
-                                <p class="text-left mt-0">{{ $tweet.text }}</p>
-                                <div class="flex flex-grow items-end">
-                                    <div>
-                                        <img class="rounded-full w-12 h-12" src="{{ $tweet.avatar }}" />
-                                    </div>
-                                    <p class="ml-4 text-gray-600">{{ $tweet.username }}</p>
-                                    <div class="flex-grow flex justify-end my-4">
-                                        <img src="/logos/tech/twitter.svg" alt="Twitter" />
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="p-6 flex flex-col flex-grow items-end h-24 justify-center">
+                            {{ if $logo.link }}
+                                <a class="w-full h-full" href="{{ $logo.link }}" target="_blank">
+                                    {{ partial "customer-logo.html" (dict "logo" $logo.name) }}
+                                </a>
+                            {{ else }}
+                                {{ partial "customer-logo.html" (dict "logo" $logo.name) }}
+                            {{ end }}
                         </div>
                     </pulumi-swipeable>
                 {{ end }}
             </pulumi-swiper>
         </div>
-        <div class="large-container mx-auto absolute top-0 left-0 pt-16 hidden lg:block">
-            <pulumi-swiper
-                slides="3"
-                centered-slides="true"
-                initial-slide="3"
-                loop="true"
-                autoplay="true"
-                autoplay-delay="4000"
-                speed="1000"
-            >
-                {{ range $tweet := .Params.get_started.tweets }}
+
+        <div class="w-full order-first pb-16 items-center justify-center block lg:hidden">
+            <pulumi-swiper slides="3" centered-slides="true" loop="true" autoplay="true" autoplay-delay="500" speed="2000">
+                {{ range $logo := .Params.customer_logos.logos }}
                     <pulumi-swipeable>
-                        <div class="w-full px-4 text-left">
-                            <div class="flex flex-col card p-6 bg-white h-64">
-                                <p class="flex-grow mt-0">{{ $tweet.text }}</p>
-                                <div class="flex items-center w-full">
-                                    <a href="{{ $tweet.link }}" target="_blank" rel="noopener noreferrer">
-                                        <!-- If the browser fails to load the Twitter avatar, just hide it. -->
-                                        <img class="rounded-full border-none w-12 h-12 mr-4" src="{{ $tweet.avatar }}" onerror="$(this).hide();" />
-                                    </a>
-                                    <a href="{{ $tweet.link }}" class="flex-grow text-gray-600 hover:text-gray-600 hover:underline" target="_blank" rel="noopener noreferrer">
-                                        {{ $tweet.username }}
-                                    </a>
-                                    <img src="/logos/tech/twitter.svg" alt="Twitter" />
-                                </div>
-                            </div>
+                        <div class="p-6 flex flex-col flex-grow items-end h-24 justify-center">
+                            {{ if $logo.link }}
+                                <a class="w-full h-full" href="{{ $logo.link }}" target="_blank">
+                                    {{ partial "customer-logo.html" (dict "logo" $logo.name) }}
+                                </a>
+                            {{ else }}
+                                {{ partial "customer-logo.html" (dict "logo" $logo.name) }}
+                            {{ end }}
                         </div>
                     </pulumi-swipeable>
                 {{ end }}
             </pulumi-swiper>
+        </div>
+    </section>
+
+    <!-- CTAs -->
+    <section class="container mx-auto">
+        <div class="w-full lg:w-2/3 mx-auto mb-16 bg-violet-600 rounded-xl shadow p-16 flex flex-col items-center justify-center">
+            <h2 class="text-white font-light">Ready to deploy your first stack?</h2>
+            <p class="text-white text-xl description">See what Pulumi can do for you.</p>
+            <div class="mt-8 flex text-center justify-center items-center flex-col mx-auto lg:mx-0 md:flex-row">
+                <a class="btn-secondary mr-0 md:mr-4 mb-3 md:mb-0" href="https://app.pulumi.com/signup">{{ .Params.hero.cta_text }}</a>
+                <a class="btn-secondary-home-action" href="{{ relref . "/docs/install" }}">Download Open Source</a>
+            </div>
         </div>
     </section>
 {{ end }}

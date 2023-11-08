@@ -8,6 +8,7 @@ authors:
 tags:
     - development-environment
     - containers
+    - docker
 ---
 
 One of the major advantages of using containers for development is reducing the need to install software and associated dependencies. Developers can start writing code without configuring a development environment that emulates production. The Visual Studio Code Remote - Containers extension lets you develop inside a container. If you want to use Pulumi’s infrastructure as code engine without installing the Pulumi CLI, this blog post is for you!
@@ -48,11 +49,11 @@ Now we can start!
 
     ![Open directory](open_devcontainer_dir.png)
 
-1. Next, we’ll create the devcontainer configuration files. Click on the Remote Status button and select **Remote Container - Add Development Container Configuration Files ...**.
+1. Next, we’ll create the devcontainer configuration files. Click on the Remote Status button and select **Add Development Container Configuration Files ...**.
 
     ![A configuration files](add_devcontainer_config_files.png)
 
-1. Select **Debian 10 & Git**. We’ll replace the Dockerfile with the Pulumi Dockerfile.
+1. Select the latest version for **Alpine**. We’ll replace the Dockerfile with the Pulumi Dockerfile.
 
     ![Select config file](select_config_file.png)
 
@@ -64,14 +65,22 @@ In your project directory, you’ll see a *.devcontainer* directory with a Docke
 
 ## Dockerfile
 
-For this example, we’ll use the standard Pulumi Dockerfile, which includes the SDK for all the supported languages. Download the [Dockerfile](https://raw.githubusercontent.com/pulumi/pulumi/master/docker/pulumi/Dockerfile) and save it to the .devcontainer directory.
+For this example, we’ll use the standard Pulumi Dockerfile, which includes the SDK for all the supported languages. Download the [Dockerfile](https://raw.githubusercontent.com/pulumi/pulumi/master/.devcontainer/Dockerfile) and save it to the .devcontainer directory.
 
 ```bash
 $ cd .devcontainer
-$ curl "https://raw.githubusercontent.com/pulumi/pulumi/master/docker/pulumi/Dockerfile" -o Dockerfile
+$ curl "https://raw.githubusercontent.com/pulumi/pulumi/master/.devcontainer/Dockerfile" -o Dockerfile
 ```
 
 ## Container configuration
+
+Next, we'll clean up the `.devcontainer/devcontainer.json` file and set up the necessary credentials.
+
+First edit `devcontainer.json` as follows:
+
+- Replace the "name" field with `Pulumi`
+- Remove the "args" line
+- Replace the "remoteUser" value with `user`
 
 Regardless of your cloud provider, you will have to provide your credentials to deploy resources. If you want to save your project to Github or another repository, you don’t want your credentials stored in the repository. There are several ways to do this securely. Using AWS as an example, you can export them inside the container, e.g.,
 
@@ -141,12 +150,12 @@ There are many more [configuration options available](https://code.visualstudio.
 
 ## Try it out
 
-Again, use the command palette to start the container. Use the Remote Containers: Open Folder in Container... command, and select the project folder. If you’ve already got the folder open locally, you could also use the Remote-Containers: Reopen in Container command.
+Again, use the command palette to start the container. Use the **Open Folder in Container...** command, and select the project folder. If you’ve already got the folder open locally, you could also use the **Reopen in Container** command.
 
 Check to see if your credentials are set. Open a terminal in VS Code if it isn’t already open.
 
 ```bash
-$ root@973a612c1555:/workspaces/my_devcontainer# env | grep AWS
+$ user@973a612c1555:/workspaces/my_devcontainer# env | grep AWS
 AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 AWS_ACCESS_KEY_ID=AKIAI44QH8DHBEXAMPLE
 ```
@@ -188,9 +197,9 @@ Duration: 31s
 Permalink: https://app.pulumi.com/spara/my_project/dev/updates/1
 ```
 
-You can CMD + click on the link to open a browser and display the status of your project on the Pulumi console.
+You can CMD + click on the link to open a browser and display the status of your project on the Pulumi Service.
 
-![Pulumi console](pulumi-console.png)
+![Pulumi Service](pulumi-console.png)
 
 ## Build a Pulumi examples devcontainer
 

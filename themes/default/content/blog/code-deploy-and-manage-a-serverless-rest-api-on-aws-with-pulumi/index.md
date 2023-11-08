@@ -15,7 +15,7 @@ has been hit, using JavaScript to define both the infrastructure and
 application code.
 
 In Pulumi, you define your application infrastructure in regular code,
-using JavaScript, Python or Go, and you can target AWS, Azure, GCP, or
+using JavaScript, Python or Go, and you can target AWS, Azure, Google Cloud, or
 Kubernetes. The Pulumi command line tool transforms your into a
 declarative plan, following the best practices of immutable
 infrastructure. You can write your app code in any language supported by
@@ -54,7 +54,7 @@ If you're on Windows, run this:
     SET "PATH=%PATH%;%USERPROFILE%.pulumiin"
 
 You'll deploy this app to your own AWS account, so follow the steps to
-[configure your AWS account]({{< relref "/docs/get-started/aws" >}}).
+[configure your AWS account](/docs/clouds/aws/get-started/).
 
 Make sure you have [Node.js](https://nodejs.org/en/download/) installed,
 with a version of 6.10.x or later.
@@ -130,7 +130,7 @@ that will be created and prompts for confirmation.
 ![pulumi-update-preview](./pulumi-update-preview.png)
 
 Choose the "yes" option to deploy to AWS. At the end of the update,
-you'll see a link to the Pulumi Console that shows the details of the
+you'll see a link to the Pulumi Service that shows the details of the
 deployment.
 
 ![pulumi-update-complete](./pulumi-update-complete.png)
@@ -150,7 +150,7 @@ JavaScript code creates a **stack output**.
 exports.endpoint = endpoint.publish().url;
 ```
 
-You can view stack outputs in the Pulumi Console, or via
+You can view stack outputs in the Pulumi Service, or via
 `pulumi stack output`:
 
     $ pulumi stack output

@@ -93,7 +93,7 @@ webhook and fill in my information:
   [random.org](https://www.random.org/) to do so, but any random
   string will suffice. We'll use this string to validate that the
   request came from GitHub.
-- pulumi-events: I only care about `pull_request` events, so I picked "Let me
+- Events: I only care about `pull_request` events, so I picked "Let me
   select individual events" and then checked "Pull requests" and
   unchecked the other event types.
 - Active: Since we want GitHub to deliver events, we'll keep this
@@ -350,7 +350,7 @@ Yes, there is!
 
 ## Managing all the things with Pulumi
 
-Pulumi [uses gRPC](https://github.com/pulumi/pulumi/blob/master/sdk/proto/provider.proto)
+Pulumi [uses gRPC](https://github.com/pulumi/pulumi/blob/master/proto/pulumi/provider.proto)
 to define a contract between resource providers and the rest of Pulumi.
 So, we could go implement that contract in a language like go, like we
 do in our [Kubernetes](https://github.com/pulumi/pulumi-kubernetes)

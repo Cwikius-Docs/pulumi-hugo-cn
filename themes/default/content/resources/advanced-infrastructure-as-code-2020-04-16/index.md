@@ -20,6 +20,7 @@ preview_image: "/images/webinar/pulumi_workshop.jpg"
 
 # Webinars with unlisted as true will not be shown on the webinar list
 unlisted: true
+block_external_search_index: true
 
 # Gated webinars will have a registration form and the user will need
 # to fill out the form before viewing.
@@ -55,7 +56,7 @@ main:
     datetime: "THU APR 16, 2020 AT 11:00AM PDT"
     # Description of the webinar.
     description: |
-        This workshop will cover advanced infrastructure as code topics including using and authoring components, multi-stack architectures and testing - as well as how to apply infrastructure as code to Kubernetes - both for provisioning managed Kubernetes clusters and deploying Kubernetes applications and services on top of existing clusters.
+        This workshop will cover advanced [infrastructure as code](/what-is/what-is-infrastructure-as-code/) topics including using and authoring components, multi-stack architectures and testing - as well as how to apply infrastructure as code to Kubernetes - both for provisioning managed Kubernetes clusters and deploying Kubernetes applications and services on top of existing clusters.
 
         After completing this workshop, you’ll be up and running with IaC fundamentals, modern application architectures across many clouds, and Kubernetes best-practices that are ready for production environments. You’ll also be ready to empower your development teams to be more productive - continuously deploying both their applications and infrastructure.
 

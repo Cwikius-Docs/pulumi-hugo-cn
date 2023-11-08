@@ -1,4 +1,82 @@
 [[releases]]
+date = "11th October 2023"
+title = "Pulumi Gives Enterprises a Multi-Cloud Infrastructure Platform in a Box"
+summary = "Pulumi Gives Enterprises a Multi-Cloud Infrastructure Platform in a Box."
+url = "https://info.pulumi.com/press-release/announcing-pulumi-for-platform-teams"
+
+[[releases]]
+date = "10th October 2023"
+title = "Pulumi Makes Cloud Configuration Simple and Secure with Pulumi ESC"
+summary = "Pulumi Makes Cloud Configuration Simple and Secure with Pulumi ESC."
+url = "https://info.pulumi.com/press-release/announcing-pulumi-esc"
+
+[[releases]]
+date = "10th October 2023"
+title = "Pulumi Raises $41M in Series C Funding to Expand Infrastructure as Code Market"
+summary = "Pulumi Raises $41M in Series C Funding to Expand Infrastructure as Code Market."
+url = "https://info.pulumi.com/press-release/pulumi-raises-series-c"
+
+[[releases]]
+date = "13th April 2023"
+title = "Pulumi Launches Pulumi Insights - Intelligence for Infrastructure as Code"
+summary = "Advanced search, analytics, and AI delivers the world's smartest infrastructure platform."
+url = "https://info.pulumi.com/press-release/pulumi-insights"
+
+[[releases]]
+date = "2nd November 2022"
+title = "Pulumi Launches Deployments: The Fastest Way to Go from Code to Cloud"
+summary = "New Deployments-as-a-Service technology lets engineers manage ten times more infrastructure, unlocking innovation and scaling in the cloud"
+url = "https://info.pulumi.com/press-release/pulumi-launches-deployments"
+
+[[releases]]
+date = "4th May 2022"
+title = "Pulumi Infrastructure as Code Goes Universal"
+summary = "Pulumi CrossCode and support for new languages provides universal authoring of infrastructure using all popular programming languages and universal translation from any cloud format"
+url = "https://info.pulumi.com/press-release/pulumi-universal-iac"
+
+[[releases]]
+date = "4th May 2022"
+title = "Pulumi Named the Infrastructure-as-Code Product to Watch in 2022/23 by Enterprise Management Associates"
+summary = "Leading IT industry analysis firm cites Pulumi sharply outgrowing other Infrastructure as Code platforms along with native Kubernetes and Helm support, continuous compliance, increased developer productivity and consistency across languages and clouds as drivers for recognition"
+url = "https://info.pulumi.com/press-release/pulumi-ema-product-to-watch"
+
+[[releases]]
+date = "3rd March 2022"
+title = "Pulumi Business Critical Edition Addresses Rising Demand for Enterprise Modernization through Infrastructure as Code"
+summary = "Pulumi Business Critical Edition Addresses Rising Demand for Enterprise Modernization through Infrastructure as Code"
+url = "https://info.pulumi.com/press-release/business-critical"
+
+[[releases]]
+date = "7th December 2021"
+title = "Panther Labs Unleashes Innovation by Accelerating Delivery and Deployment of Modern Cloud Applications with Pulumi Cloud Engineering Platform"
+summary = "Fast-growth security analytics platform developer speeds cloud application deployments by 10X with increased reliability and agility by adopting cloud engineering practices enabled by Pulumi"
+url = "https://info.pulumi.com/press-release/panther-labs"
+
+[[releases]]
+date = "18th October 2021"
+title = "Pulumi Ushers in the Developer-first Infrastructure Era with New Package Registry Powering Software Sharing and Reuse"
+summary = "Growing collection of Pulumi Packages provides cloud building blocks and reusable cloud architectures for AWS, Azure, Google Cloud, Kubernetes, and top cloud software platforms in industry-standard languages"
+url = "http://info.pulumi.com/press-release/pulumi-registry"
+
+[[releases]]
+date = "30th September 2021"
+title = "Pulumi AWS Native Provider Speeds Users Into the Future of Modern Cloud Application Development on AWS"
+summary = "Pulumi now provides same-day support for new AWS Cloud Control API-supported services and features, allowing customers to harness modern cloud architectures using industry standard languages, software tools, and cloud engineering best practices"
+url = "https://info.pulumi.com/press-release/aws-native-provider"
+
+[[releases]]
+date = "3rd August 2021"
+title = "SANS Institute Selects Pulumi Cloud Engineering Platform to Radically Simplify and Automate Cloud Application and Infrastructure Delivery"
+summary = "Cybersecurity training and certification leader leverages cloud engineering best practices to increase deployment velocity by 3X"
+url = "https://info.pulumi.com/press-release/sans-institute-selects-pulumi"
+
+[[releases]]
+date = "15th July 2021"
+title = "Atlassian Makes Cloud Infrastructure Radically Simpler for its Bitbucket Developers with Pulumi Cloud Engineering Platform"
+summary = "Pulumi enables Atlassian Bitbucket team to streamline infrastructure management and provide self-service infrastructure, increasing developers’ productivity and reducing maintenance time by 50%"
+url = "https://info.pulumi.com/press-release/atlassian-simplifies-infrastructure-with-pulumi"
+
+[[releases]]
 date = "20th April 2021"
 title = "New Pulumi Cloud Engineering Platform Smashes Silos Among Developer, Infrastructure, and Security Teams"
 summary = "New capabilities -- including native providers for all major clouds, Pulumi Packages and an Automation API -- enable cloud engineering best practices, increase collaboration, and accelerate innovation with the freedom to use any language, for any workload, on any cloud"
@@ -75,6 +153,78 @@ date = "18th June 2018"
 title = "Pulumi Launches Cloud Development Platform to Help Teams Get Code to the Cloud Faster"
 summary = "Company funded by Madrona Venture Group and Tola Capital to help companies accelerate cloud application development and infrastructure delivery. "
 url = "https://info.pulumi.com/press-release/pulumi-launches-cloud-development-platform-to-help-teams-get-code-to-the-cloud-faster/"
+
+[[coverage]]
+date = "6th May 2022"
+title = "Pulumi Takes Infrastructure as Code Universal with CrossCode"
+img = "/logos/press/itprotoday.png"
+url = "https://www.itprotoday.com/cloudops/pulumi-takes-infrastructure-code-universal-crosscode"
+
+[[coverage]]
+date = "5th May 2022"
+title = "Pulumi Extends Infrastructure-as-Code Reach"
+img = "/logos/press/devops.png"
+url = "https://devops.com/pulumi-extends-infrastructure-as-code-reach/"
+
+[[coverage]]
+date = "5th May 2022"
+title = "Pulumi CrossCode Makes Cloud Infrastructure as Code Universal"
+img = "/logos/press/tfir.png"
+url = "https://www.tfir.io/pulumi-crosscode-makes-cloud-infrastructure-as-code-universal/"
+
+[[coverage]]
+date = "5th May 2022"
+title = "Pulumi broadens reach by adding Java, YAML, and CrossCode translator"
+img = "/logos/press/devclass.png"
+url = "https://devclass.com/2022/05/05/pulumi-broadens-reach-adding-java-yaml-crosscode-translator/"
+
+[[coverage]]
+date = "4th May 2022"
+title = "Pulumi infrastructure-as-code goes universal to build cloud apps"
+img = "/logos/press/venturebeat.png"
+url = "https://venturebeat.com/2022/05/04/pulumi-infrastructure-as-code-goes-universal-to-build-cloud-apps/"
+
+[[coverage]]
+date = "4th May 2022"
+title = "Pulumi extends infrastructure as code support for Java and YAML"
+img = "/logos/press/infoworld.png"
+url = "https://www.infoworld.com/article/3658857/pulumi-extends-infrastructure-as-code-support-for-java-and-yaml.html"
+
+[[coverage]]
+date = "2nd July 2021"
+title = "The 10 Coolest Open-Source Software Tools Of 2021 (So Far)"
+img = "/logos/press/crn.png"
+url = "https://www.crn.com/slide-shows/applications-os/the-10-coolest-open-source-software-tools-of-2021-so-far-/8"
+
+[[coverage]]
+date = "3rd May 2021"
+title = "The Next Step after DevOps and GitOps Is Cloud Engineering, Pulumi Says"
+img = "/logos/press/newstack.png"
+url = "https://thenewstack.io/the-next-step-after-devops-and-gitops-is-cloud-engineering-pulumi-says/"
+
+[[coverage]]
+date = "28th April 2021"
+title = "Using Pulumi 3.0 to manage Azure infrastructure"
+img = "/logos/press/infoworld.png"
+url = "https://www.infoworld.com/article/3616605/using-pulumi-30-to-manage-azure-infrastructure.html"
+
+[[coverage]]
+date = "20th April 2021"
+title = "Pulumi launches version 3.0 of its infrastructure-as-code platform"
+img = "/logos/press/techcrunch.png"
+url = "https://techcrunch.com/2021/04/20/pulumi-launches-version-3-0-of-its-infrastructure-as-code-platform/"
+
+[[coverage]]
+date = "20th April 2021"
+title = "Pulumi updates its infrastructure-as-code cloud engineering platform"
+img = "/logos/press/siliconangle.png"
+url = "https://siliconangle.com/2021/04/20/pulumi-updates-infrastructure-based-cloud-engineering-platform/"
+
+[[coverage]]
+date = "8th March 2021"
+title = "You can’t escape Pulumi and other IaC tools"
+img = "/logos/press/infoworld.png"
+url = "https://www.infoworld.com/article/3610701/you-cant-escape-pulumi-and-other-iac-tools.html"
 
 [[coverage]]
 date = "13th August 2020"
@@ -243,7 +393,6 @@ url = "https://blog.scottlowe.org/2019/05/05/a-sandbox-for-learning-pulumi/"
 date = "2nd May 2019"
 title = "ICYMI: 6 tips to master Kubernetes performance and management"
 img = "/logos/press/techtarget.png"
-url = "https://searchmicroservices.techtarget.com/tip/ICYMI-6-tips-to-master-Kubernetes-performance-and-management"
 
 [[coverage]]
 date = "1st May 2019"
@@ -285,7 +434,6 @@ url = "http://vmblog.com/archive/2019/02/04/kubecon-2018-video-prediction-series
 date = "31st January 2019"
 title = "Filling in the Dev and Ops Gap in Cloud Native Deployments"
 img = "/logos/press/newstack.png"
-url = "https://thenewstack.io/filling-in-the-dev-and-ops-gap-in-cloud-native-deployments/"
 
 [[coverage]]
 date = "11th December 2018"
@@ -357,7 +505,6 @@ url = "https://betakit.com/sw-the-saas-weekly-wasted-cloud-spend/"
 date = "24th October 2018"
 title = "In Kubernetes management, infrastructure work is tricky"
 img = "/logos/press/techtarget.png"
-url = "https://searchmicroservices.techtarget.com/feature/In-Kubernetes-management-infrastructure-work-is-tricky"
 
 [[coverage]]
 date = "22nd October 2018"
@@ -417,13 +564,11 @@ url = "https://techcrunch.com/2018/10/22/pulumi-raises-15m-for-its-infrastructur
 date = "22nd October 2018"
 title = "Pulumi Raises $15M For Its Infrastructure As Code Platform"
 img = "/logos/press/geekwire.png"
-url = "https://www.startupworld.com/news/pulumi-raises-15m-for-its-infrastructure-as-code-platform/"
 
 [[coverage]]
 date = "22nd October 2018"
 title = "Pulumi snags $15 mln Series A"
 img = "/logos/press/geekwire.png"
-url = "https://www.pehub.com/2018/10/pulumi-snags-15-mln-series-a/"
 
 [[coverage]]
 date = "18th October 2018"

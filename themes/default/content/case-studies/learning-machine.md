@@ -1,18 +1,17 @@
 ---
-title: Learning Machine
+title_tag: Learning Machine | Case Studies
+title: "Learning Machine: Expediting Customer Deployments"
 description: |
     Learning Machine used Pulumi and TypeScript to streamline its DevOps processes
     and eliminate several hundred thousand lines of configuration code.
-meta_desc: |
-    Learning Machine used Pulumi and TypeScript to streamline its DevOps processes
-    and eliminate several hundred thousand lines of configuration code.
+meta_desc: See how Learning Machine worked with Pulumi to streamline its DevOps processes and eliminate several hundred thousand lines of configuration code.
 
 customer_name: Learning Machine
 customer_logo: /logos/customers/learning-machine_logo.svg
-customer_url: https://www.learningmachine.com
+customer_url: https://www.hyland.com/
 
 exec_summary: |
-    [Learning Machine](https://www.learningmachine.com/) provides a secure platform, using the
+    [Learning Machine](https://www.hyland.com/) provides a secure platform, using the
     blockchain, to issue records in a format that is tamperproof, recipient owned, and
     independently verifiable. They are witnessing opportunities in several key industries ---
     Public Sector, Healthcare and Education --- and need to maximize their resources in order to

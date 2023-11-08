@@ -7,8 +7,10 @@ authors:
     - sophia-parafina
 tags:
     - data-and-analytics
-    - Automation API
-    - Python
+    - automation-api
+    - python
+    - jupyter
+    - data-science
 ---
 
 Data science has advanced because tools like Jupyter Notebook hide complexity by running high level code for the specific problem they are trying to solve. Increasing the level of abstraction lets a data scientist be more productive by reducing the effort to try multiple approaches to near zero, which encourages experimentation and better results.
@@ -35,7 +37,7 @@ Pulumi reduces the burden of creating and maintaining repeatable and robust depl
 
 As a data scientist, you might want to share data, charts, or graphs with remote team members and make them available through a shared website. You want to keep iterating on your model but don't want to update the site manually, or worse, let it get out of date.
 
-This [example](https://github.com/pulumi/automation-api-examples/blob/main/python/pulumi_via_jupyter/automation_api.ipynb) is a simple overview of Automation API that demonstrates a basic deployment of a static website from within a Jupyter notebook. This example uses an inline program to define infrastructure within a function alongside your other code. The function called `s3_static_site` creates an s3 bucket, sets it up as a basic static website, and exports the URL. This is the equivalent of creating a Pulumi [stack]({{< relref "/docs/intro/concepts/stack" >}}) using the CLI.
+This [example](https://github.com/pulumi/automation-api-examples/blob/main/python/pulumi_via_jupyter/automation_api.ipynb) is a simple overview of Automation API that demonstrates a basic deployment of a static website from within a Jupyter notebook. This example uses an inline program to define infrastructure within a function alongside your other code. The function called `s3_static_site` creates an s3 bucket, sets it up as a basic static website, and exports the URL. This is the equivalent of creating a Pulumi [stack](/docs/concepts/stack/) using the CLI.
 
 We've added code to the example to upload files written to the `www` directory. Every time you want to update the website, you can write a file to the directory and call the function to upload it to the s3 bucket. Pulumi maintains state, so it will only upload new files when the function is called.
 
@@ -91,15 +93,15 @@ You can view the resources that the function created in two ways. The standard m
 
 ![AWS Console](aws_console.png)
 
-You can also view them with the [Pulumi console](https://app.pulumi.com) as a resource graph.
+You can also view them with the [Pulumi Service](https://app.pulumi.com) as a resource graph.
 
 ![Pulumi resource graph](pulumi_resource_graph.png)
 
-The Pulumi console also displays updates to the static site and the changes made.
+The Pulumi Service also displays updates to the static site and the changes made.
 
 ![Pulumi updates](pulumi_updates.png)
 
-Now that the static site has been deployed, we want to get the site URL. The `s3_static_site` function exports the website url. Pulumi returns the s3_site as an object with [outputs]({{< relref "/docs/intro/concepts/inputs-outputs" >}}) that we use to retrieve the URL. There are several ways to check if the site is working, but a simple way is to open the URL in a web browser.
+Now that the static site has been deployed, we want to get the site URL. The `s3_static_site` function exports the website url. Pulumi returns the s3_site as an object with [outputs](/docs/concepts/inputs-outputs/) that we use to retrieve the URL. There are several ways to check if the site is working, but a simple way is to open the URL in a web browser.
 
 ```python
 import webbrowser
@@ -113,7 +115,7 @@ webbrowser.open(url)
 
 ## Data Science Your Way
 
-In this simple example, we demonstrated how to create a static website from an S3 bucket, write content into the bucket, and set the access policy as a Python function. We called the function, which created a stack for the website. The stack is returned as a Python object with the site URL as an output. You can manage the site and view updates using the Pulumi console.
+In this simple example, we demonstrated how to create a static website from an S3 bucket, write content into the bucket, and set the access policy as a Python function. We called the function, which created a stack for the website. The stack is returned as a Python object with the site URL as an output. You can manage the site and view updates using the Pulumi Service.
 
 Because it's code, you can create a separate module containing all the functions to create your infrastructure, import it into your notebooks, and reuse it. Pulumi lets you perform analysis and build models within a familiar environment while reducing the burden of managing infrastructure. You can find the complete example on [GitHub](https://github.com/pulumi/automation-api-examples/tree/main/python/pulumi_via_jupyter) including a Jupyter notebook for [database migration](https://github.com/pulumi/automation-api-examples/blob/main/python/pulumi_via_jupyter/database_migration.ipynb).
 

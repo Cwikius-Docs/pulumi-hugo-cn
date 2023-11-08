@@ -1,7 +1,7 @@
 ---
 title: "Creating and Reusing Cloud Components using Package Managers"
 authors: ["chris-smith"]
-tags: [packages]
+tags: ["packages", "architecture-as-code"]
 meta_desc: "Pulumi's code-centric approach to infrastructure can make you more productive programming the cloud. Package up, share, and reuse our code."
 date: "2018-08-09"
 
@@ -10,7 +10,7 @@ meta_image: "pulumi-resource-visualization.png"
 
 
 Hello! A few weeks back I wrote
-a post on [serving static websites on AWS with Pulumi]({{< relref "serving-a-static-website-on-aws-with-pulumi" >}})
+a post on [serving static websites on AWS with Pulumi](/blog/serving-a-static-website-on-aws-with-pulumi/)
 detailing how to host a static website on AWS. Pulumi allowed me to wire four
 different AWS products together in only 200 lines of code. It would be a
 shame, however if I needed to copy and paste that code every time I
@@ -83,7 +83,7 @@ become just a few lines of very simple, understandable code.
 ## Reusing Infrastructure as Code
 
 To use this new package, head on over to a Pulumi program, or
-[create a new one]({{< relref "/docs/get-started" >}})
+[create a new one](/docs/get-started/)
 (for instance, with `pulumi new aws-typescript`).
 Then just add a reference like any other dependency:
 
@@ -205,12 +205,12 @@ this.logsBucket = new aws.s3.Bucket(`${name }-logs`,
 Components are a powerful construct in Pulumi, and let you build larger
 first class resources out of smaller ones. There are other benefits,
 including seeing resource attribution in the CLI tree view, and the
-richer visualization in the [Pulumi Console](https://app.pulumi.com):
+richer visualization in the [Pulumi Service](https://app.pulumi.com):
 
 ![pulumi app graph](./pulumi-resource-visualization.png)
 
 If you want to learn more about components, see the
-[documentation]({{< relref "/docs/reference/pkg/nodejs/pulumi/pulumi" >}}).
+[documentation](/docs/reference/pkg/nodejs/pulumi/pulumi/).
 
 ## Package Everything!
 

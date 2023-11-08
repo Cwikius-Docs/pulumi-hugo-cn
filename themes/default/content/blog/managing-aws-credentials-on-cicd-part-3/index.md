@@ -18,17 +18,17 @@ last leg of the continuous delivery process to update your AWS resources and how
 
 Posts in this series:
 
-- [Create a dedicated IAM User for your CI/CD]({{< relref "/blog/managing-aws-credentials-on-cicd-part-1#create-new-iam-user" >}})
-- [Provide the IAM User’s credentials to your CI/CD system]({{< relref "/blog/managing-aws-credentials-on-cicd-part-2#providing-iam-credentials" >}})
-- [Comparison with using hosted secret managers]({{< relref "/blog/managing-aws-credentials-on-cicd-part-2#using-a-secrets-service" >}})
-- [Automate Rotating and Revoking AWS Credentials]({{< relref "/blog/managing-aws-credentials-on-cicd-part-2#automating-key-rotation" >}})
+- [Create a dedicated IAM User for your CI/CD](/blog/managing-aws-credentials-on-cicd-part-1#create-new-iam-user)
+- [Provide the IAM User’s credentials to your CI/CD system](/blog/managing-aws-credentials-on-cicd-part-2#providing-iam-credentials)
+- [Comparison with using hosted secret managers](/blog/managing-aws-credentials-on-cicd-part-2#using-a-secrets-service)
+- [Automate Rotating and Revoking AWS Credentials](/blog/managing-aws-credentials-on-cicd-part-2#automating-key-rotation)
 - [Assuming IAM Roles for performing updates](#assuming-iam-roles)
 - [Securing sensitive data using Pulumi](#secrets-in-pulumi)
 
 ## Recap
 
-In [part 1]({{< relref "/blog/managing-aws-credentials-on-cicd-part-1" >}}), we created a dedicated IAM User with
-limited privileges. Then in [part 2]({{< relref "/blog/managing-aws-credentials-on-cicd-part-2" >}}), we set up a simple,
+In [part 1](/blog/managing-aws-credentials-on-cicd-part-1/), we created a dedicated IAM User with
+limited privileges. Then in [part 2](/blog/managing-aws-credentials-on-cicd-part-2/), we set up a simple,
 serverless Pulumi program that periodically rotated the User's access keys and updated the CI/CD system.
 
 In this final post, we will _use_ those AWS credentials to update cloud resources as part of
@@ -36,7 +36,7 @@ a CI/CD workflow using Pulumi.
 
 We will cover AWS's [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) and how they can be
 used to safely manage the access Pulumi has to your AWS account. We will also cover how sensitive data in your
-stack is stored within the Pulumi Console.
+stack is stored within the Pulumi Service.
 
 ## Assuming IAM Roles for Performing Updates {#assuming-iam-roles}
 
@@ -75,7 +75,7 @@ And just to show a more real-world example, we'll do this using _multiple_ AWS a
 
 ### Creating the IAM Role
 
-The following snippet creates an [IAM Role]({{< ref "/docs/reference/pkg/aws/iam/role" >}}) resource using Pulumi. The
+The following snippet creates an [IAM Role](/registry/packages/aws/api-docs/iam/role/) resource using Pulumi. The
 most important input property of which is the `assumeRolePolicy` document, which defines _who_ can assume this role.
 
 > This is a situation where Pulumi's ability to declare the policy document in code is super-useful, as it makes it
@@ -150,11 +150,11 @@ to the `s3:*` actions.
 
 Unfortunately, Pulumi doesn't currently support generating a reasonable IAM Policy document for your stack. For a
 good introduction to some of the "worst-case scenarios" that could arise from a misconfigured IAM Policy,
-see [this blog post from BishopFox](https://know.bishopfox.com/research/privilege-escalation-in-aws).
+see [this blog post from BishopFox](https://know.bishopfox.com/blog/privilege-escalation-in-aws).
 
 The following is a hypothetical IAM policy that restricts the operations performed to just those for the
 AWS CloudFront and S3 products. (Which might be sufficient for
-[updating a CDN-based website hosted on AWS]({{< relref "serving-a-static-website-on-aws-with-pulumi" >}}), but
+[updating a CDN-based website hosted on AWS](/blog/serving-a-static-website-on-aws-with-pulumi/), but
 likely not much else.)
 
 ```typescript
@@ -205,7 +205,7 @@ const websiteUpdaterPolicy = new aws.iam.Policy("WebsiteUpdaterRolePolicy", {
 ```
 
 To actually associate the IAM Policy document with the new IAM Role, we need to create a
-[PolicyAttachment](https://www.pulumi.com/docs/reference/pkg/aws/iam/policyattachment/#policyattachment)
+[PolicyAttachment](https://www.pulumi.com/registry/packages/aws/api-docs/iam/policyattachment/#policyattachment)
 associating the two.
 
 ```typescript
@@ -274,7 +274,7 @@ along with the source code for a stack, so that builds and stack updates are rep
 However, what if those configuration settings contain secrets? Like you need to store an API key
 to use a 3rd party API.
 
-Pulumi supports [encrypting sensitive configuration data](https://www.pulumi.com/docs/intro/concepts/config/#secrets).
+Pulumi supports [encrypting sensitive configuration data](https://www.pulumi.com/docs/concepts/config/#secrets).
 You just need to add the `--secret` flag.
 
 ```bash
@@ -282,33 +282,33 @@ You just need to add the `--secret` flag.
 pulumi config set api-key "hunter2" --secret
 ```
 
-For stacks hosted on the [Pulumi Console](https://app.pulumi.com), the default is that your configuration
+For stacks hosted on the [Pulumi Service](https://app.pulumi.com), the default is that your configuration
 data is encrypted using a key specific to your stack. (So the ciphertext stored in the `Pulumi.yaml` file
 is safe to check into your source tree, since it cannot be copied/decrypted for another stack.)
 
 ### Secrets in Checkpoint Files
 
-Pulumi keeps track of your cloud resources in a something called a [checkpoint file]({{< ref "/docs/intro/concepts/state" >}}),
+Pulumi keeps track of your cloud resources in a something called a [checkpoint file](/docs/concepts/state/),
 and that too might contain sensitive information. For example, a Pulumi resource might have a `"password"` output property.
 
-Pulumi [has support]({{< ref "/docs/intro/concepts/resources#additionalsecretoutputs" >}}) to mark that resource
+Pulumi [has support](/docs/concepts/resources#additionalsecretoutputs) to mark that resource
 output as "secret" and make sure that it is encrypted within the checkpoint file. (So if you were to look at the checkpoint file
-contents via [`pulumi stack export`]({{< ref "/docs/reference/cli/pulumi_stack_export" >}}), you would not be able to recover
+contents via [`pulumi stack export`](/docs/cli/commands/pulumi_stack_export), you would not be able to recover
 the data.
 
-Just like for secret configuration values, the default for stacks hosted on the Pulumi Console is to encrypt
+Just like for secret configuration values, the default for stacks hosted on the Pulumi Service is to encrypt
 this data using a key that Pulumi manages and is specific to your stack.
 
 ### Custom Secrets Providers
 
 We at Pulumi take great care in safeguarding your data, especially configuration or checkpoint data that is marked as sensitive.
 However, you might feel more comfortable if your stack's data were encrypted using a key that _you_ controlled. (So even if the
-data stored on the Pulumi Console were available, it would be useless without your specific key.)
+data stored in the Pulumi Service were available, it would be useless without your specific key.)
 
-If that's the case, then you can use a configurable secrets provider, and swap out the default "Pulumi Console managed" encryption
+If that's the case, then you can use a configurable secrets provider, and swap out the default "Pulumi Service managed" encryption
 scheme for your own. (And we won't take it personally, promise.)
 
-When you create a new stack using [pulumi stack init]({{< ref "/docs/reference/cli/pulumi_stack_init" >}}), you can optionally
+When you create a new stack using [pulumi stack init](/docs/cli/commands/pulumi_stack_init/), you can optionally
 specify a `--secrets-provider` flag. That will determine where and how secrets get managed on your stack.
 
 For example, to use your own KMS key for encrypting data, you can pass the secrets provider
@@ -319,8 +319,8 @@ whenever it needs to encrypt or decrypt some data, it will refer to the custom p
 > no way to recover the encrypted data stored on your stack.
 
 For more information on custom secret providers, see
-[Peace of Mind with Cloud Secret Providers]({{< relref "peace-of-mind-with-cloud-secret-providers" >}}) or
-[Managing Secrets with Pulumi]({{< relref "managing-secrets-with-pulumi" >}}).
+[Peace of Mind with Cloud Secret Providers](/blog/peace-of-mind-with-cloud-secret-providers/) or
+[Managing Secrets with Pulumi](/blog/managing-secrets-with-pulumi/).
 
 ## Wrapping Up
 

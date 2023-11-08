@@ -1,7 +1,7 @@
 ---
 title: "Getting Started With Kubernetes: Application Basics"
 date: 2020-06-30
-meta_desc: "A tutorial for getting started with Kubernetes using Infrastructure as Code."
+meta_desc: "Part 2 of a 3-part tutorial for getting started with Kubernetes using Infrastructure as Code."
 meta_image: getting-started.png
 authors:
     - sophia-parafina
@@ -10,7 +10,7 @@ tags:
 
 ---
 
-Welcome to the second article in a series using infrastructure as code to deploy applications with Kubernetes. The series walks you through building a Kubernetes cluster on cloud providers, deploying applications, and “Day 2” activities such as migrating Node groups. In the [previous article]({{< relref "/blog/getting-started-with-k8s-part1" >}}), we showed how to create a Kubernetes cluster for AWS, Azure, and GCP. In this installment, we’ll learn how to deploy an application using Kubernetes objects.
+Welcome to the second article in a series using infrastructure as code to deploy applications with Kubernetes. The series walks you through building a Kubernetes cluster on cloud providers, deploying applications, and “Day 2” activities such as migrating Node groups. In the [previous article](/blog/getting-started-with-k8s-part1/), we showed how to create a Kubernetes cluster for AWS, Azure, and GCP. In this installment, we’ll learn how to deploy an application using Kubernetes objects.
 
 <!--more-->
 
@@ -34,7 +34,7 @@ Pods have a specific [lifecycle](https://kubernetes.io/docs/concepts/workloads/P
 
 When deploying an application, you can see the status of the Pods.
 
-![Deployment](kubectl-pod-status.gif)
+![Deployment](https://www.pulumi.com/uploads/content/blog/getting-started-with-k8s-part2/kubectl-pod-status.gif)
 
 ## Services
 
@@ -378,5 +378,5 @@ This article reviews the Kubernetes objects and abstractions used to deploy appl
 This is the second in a series of articles on using infrastructure as code for Kubernetes. In the next article, we'll examine a complex application deployment and a deployment using a Helm chart. Until the next post, learn more about Kubernetes with these resources.
 
 - Watch educational content on [Pulumi TV](https://www.youtube.com/pulumitv)
-- Learn more about Pulumi's [support for Kubernetes]({{< relref "/docs/intro/cloud-providers/kubernetes" >}})
-- Practice [Kubernetes Tutorials]({{< relref "/docs/tutorials/kubernetes" >}}) using Pulumi
+- Learn more about Pulumi's [support for Kubernetes](/registry/packages/kubernetes/)
+- Practice [Kubernetes Tutorials](/registry/packages/kubernetes/how-to-guides/) using Pulumi

@@ -1,12 +1,11 @@
 ---
-title: Menta Network
+title_tag: Menta Network | Case Studies
+title: "Menta Network: Reducing Operating Costs by 60%"
 layout: case-studies
 description: |
     Menta Network used Pulumi and GitLab to build ephemeral environments in Python and
     helped its customers to get ready for peak traffic.
-meta_desc: |
-    Menta Network used Pulumi and GitLab to build ephemeral environments in Python and
-    helped its customers to get ready for peak traffic.
+meta_desc: Learn how Menta Network worked with Pulumi and GitLab to build ephemeral environments in Python and help its customers to get ready for peak traffic.
 
 customer_name: Menta Network
 customer_logo: /logos/customers/menta_logo.svg
@@ -46,9 +45,8 @@ services and applications.
 
 In Menta Network's local market, there are multiple 'Black Friday'-style retail events
 including El Buen Fin ("The Good Weekend") in November, and "Hot Sale" in May. Together,
-these events capture a significant share of the [$22.6B total e-commerce revenue in
-Mexico](https://www.jpmorgan.com/merchant-services/insights/reports/mexico) and drive
-extremely high traffic to retailers' websites during sale events.
+these events capture a significant share of the $22.6B total e-commerce revenue in
+Mexico and drive extremely high traffic to retailers' websites during sale events.
 
 For Menta Network's retail clients, having a responsive and performant digital experience
 is the key to success during these sales. This is especially critical as Mexico has one of
@@ -89,8 +87,8 @@ entire development lifecycle, container registry and continuous integration / co
 deployment (CI/CD) process. Pulumi provided a unique alternative that allowed engineers to
 define both their load testing application and associated infrastructure in the same
 language and tooling --- perfectly fitting infrastructure into their existing [GitLab CI/CD
-pipeline]({{< relref "/docs/guides/continuous-delivery/gitlab-ci" >}}). [Support for
-GitLab login]({{< relref "/blog/welcoming-gitlab-users-to-pulumi" >}}) further simplified
+pipeline](/docs/using-pulumi/continuous-delivery/gitlab-ci). [Support for
+GitLab login](/blog/welcoming-gitlab-users-to-pulumi) further simplified
 engineering workflows.
 
 > "Using Pulumi and GitLab provides the Menta team with a simple and robust platform for

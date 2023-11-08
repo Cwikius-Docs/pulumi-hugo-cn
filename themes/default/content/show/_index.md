@@ -1,5 +1,5 @@
 ---
-title: Modern Infrastructure as Code
+title: Universal Infrastructure as Code
 meta_desc: Pulumi provides a cloud native programming model for container management. Any code, any cloud, any app.
 type: page
 layout: show
@@ -20,7 +20,7 @@ carousel:
       details:
         - title: Popular programming languages.
           description: >
-            Define infrastructure in JavaScript, TypeScript, Python, Go, or
+            Define infrastructure in JavaScript, TypeScript, Python, Go, Java, YAML, or
             any .NET language, including C#, F#, and VB.
         - title: Your favorite tools.
           description: Use familiar IDEs, test frameworks, and tools.
@@ -57,13 +57,13 @@ carousel:
 contact_us_form:
     section_id: contact
     hubspot_form_id: 8381e562-5fdf-4736-bb10-86096705e4ee
-    headline: Contact Us?
+    headline: Talk to a human
     quote:
         title: Learn how top engineering teams are using Pulumi to manage CI/CD in any cloud.
         name: Josh Imhoff
         name_title: Site Reliability Engineer, Cockroach Labs
         content: |
             We are building a distributed-database-as-a-service product that runs on Kubernetes clusters across multiple
-            public clouds including GCP, AWS and others. Pulumi's declarative model, the support for familiar programming
+            public clouds including Google Cloud, AWS and others. Pulumi's declarative model, the support for familiar programming
             languages, and the uniform workflow on any cloud make our SRE team much more efficient.
 ---

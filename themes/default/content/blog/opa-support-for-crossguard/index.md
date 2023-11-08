@@ -7,6 +7,7 @@ authors:
     - luke-hoban
 tags:
     - policy-as-code
+    - opa
 ---
 
 We're excited to announce the addition of Open Policy Agent (OPA) Rego language support to Pulumi's CrossGuard policy-as-code framework. This enables Pulumi CrossGuard policy to be authored in either JavaScript/TypeScript/Python or in the popular Rego language using OPA.
@@ -19,7 +20,7 @@ OPA-based rules for CrossGuard get all the core benefits of Pulumi's policy-as-c
 
 ## What is Pulumi CrossGuard?
 
-Pulumi [CrossGuard](https://www.pulumi.com/docs/guides/crossguard/) is a policy-as-code framework for enforcing policy across Pulumi infrastructure deployments on any cloud or in Kubernetes. CrossGuard can be used to enforce policy for compliance, security, best practices or cost control.
+Pulumi [CrossGuard](https://www.pulumi.com/docs/using-pulumi/crossguard/) is a policy-as-code framework for enforcing policy across Pulumi infrastructure deployments on any cloud or in Kubernetes. CrossGuard can be used to enforce policy for compliance, security, best practices or cost control.
 
 Pulumi's web console offers tools to manage and enforce CrossGuard policy across your organization, ensuring that every infrastructure project is held to a high bar on policy compliance.
 
@@ -153,9 +154,9 @@ Published as version 2
 Permalink: https://app.pulumi.com/lukehoban/policypacks/kubernetes/2
 ```
 
-You can now navigate into the Pulumi Console and configure the new policy to be part of the "default" policy pack (or create a new one), and applied to all stacks in your Organization (or select specify stacks to enforce the policy on).
+You can now navigate into the Pulumi Service and configure the new policy to be part of the "default" policy pack (or create a new one), and applied to all stacks in your Organization (or select specify stacks to enforce the policy on).
 
-![Pulumi Console Policy Configuration](./console-default-policy.png)
+![Policy Configuration](./console-default-policy.png)
 
 We can now run our deployment without the `--policy-pack` argument and our policy will still be enforced on this deployment (and any others done by any other users in our organization)!
 
@@ -191,11 +192,11 @@ Permalink: https://app.pulumi.com/lukehoban/simple-kubernetes/dev2/updates/1
 
 We can now navigate to the URL for our update and see that the policy was enforced. Note the badge showing that this deployment was protected by policy enforcement and the list of policy violations.
 
-![Pulumi Console Policy Enforcement](./console-policy-enforcement.png)
+![Policy Enforcement](./console-policy-enforcement.png)
 
 ## Using OPA Rego with Pulumi
 
-OPA-based rules are easy to write for Pulumi. The `input` object represents each individual resource that will be deployed by Pulumi, and the rules are applied independently to each Pulumi resource when it is deployed. The schema for each resource is the same as the properties available when defining the resource as defined in the [Pulumi API Reference]({{< relref "/docs/reference/pkg" >}}). Critically, although we highlighted Kubernetes above, Pulumi's resource model spans any cloud or Kubernetes, with providers for more than 50 Cloud and SaaS platforms available. And OPA-based rules can target any or all of these in a single deployment.
+OPA-based rules are easy to write for Pulumi. The `input` object represents each individual resource that will be deployed by Pulumi, and the rules are applied independently to each Pulumi resource when it is deployed. The schema for each resource is the same as the properties available when defining the resource. Critically, although we highlighted Kubernetes above, Pulumi's resource model spans any cloud or Kubernetes, with providers for more than 50 Cloud and SaaS platforms available. And OPA-based rules can target any or all of these in a single deployment.
 
 For example - the policy file above could be expanded to include:
 
@@ -223,4 +224,4 @@ With support in Visual Studio Code, authoring both your infrastructure and polic
 
 OPA support in Pulumi CrossGuard enables authoring cloud infrastructure policy using a familiar and popular policy authoring language while leveraging Pulumi's CrossGuard platform for policy enforcement from development to production. Along with existing support for TypeScript, JavaScript and Python - Pulumi CrossGuard offers a great breadth of authoring languages to meet the needs of any infrastructure team.
 
-Check out the open source [pulumi-policy-opa](https://github.com/pulumi/pulumi-policy-opa) project to learn more about the OPA integration with CrossGuard. And [get started]({{< relref "/docs/get-started" >}}) with Pulumi for your modern cloud infrastructure and policy today.
+Check out the open source [pulumi-policy-opa](https://github.com/pulumi/pulumi-policy-opa) project to learn more about the OPA integration with CrossGuard. And [get started](/docs/get-started/) with Pulumi for your modern cloud infrastructure and policy today.

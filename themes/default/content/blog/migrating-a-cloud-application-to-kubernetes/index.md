@@ -4,23 +4,27 @@ date: 2020-09-14
 meta_desc: Using Pulumi to integrate applications with Kubernetes for on-demand scalability and freedom of design.
 meta_image: meta.png
 authors: ["vova-ivanov"]
-tags: ["aws", "typescript", "containers", "kubernetes"]
+tags: ["aws", "typescript", "containers", "kubernetes", "docker"]
 ---
 
-In this blog post, we will explore and demonstrate the advantages of Kubernetes by converting and deploying our [PERN application]({{< relref "/blog/deploying-a-pern-stack-application-to-aws" >}}) to Amazon EKS. With the help of Pulumi, the process becomes greatly simplified and allows us to focus more on the big picture of designing our cloud architecture.
+{{% notes type="warning" %}}
+This post is outdated and contains references to a pre-release version of Pulumi Crosswalk (`@pulumi/awsx`). For updated AWSx documentation and examples, [see the AWS Guides](/docs/clouds/aws/guides/).
+{{% /notes %}}
+
+In this blog post, we will explore and demonstrate the advantages of Kubernetes by converting and deploying our [PERN application](/blog/deploying-a-pern-stack-application-to-aws/) to Amazon EKS. With the help of Pulumi, the process becomes greatly simplified and allows us to focus more on the big picture of designing our cloud architecture.
 
 <!--more-->
 
 Kubernetes offers several distinct advantages over individually deploying Docker containers to the cloud. Firstly, it's a robust system for minimizing downtime and rolling out updates. If a pod or node is shut down, a new one is automatically allocated to take its place. Secondly, Kubernetes can scale and distribute your infrastructure. By placing containers into pods, Kubernetes allows you to design the right cloud setup to fit your target effortlessly. And lastly, Kubernetes runs on many cloud providers, letting you choose your organization's best cloud service provider. Since AWS, Azure, and GCP all support deploying Kubernetes, you have the option of switching if the need arises.
 
-The first step to creating the app is to clone the [Typescript PERN example](https://github.com/pulumi/examples/tree/master/aws-pern-voting-app). We'll use a sparse clone to copy only the `aws-pern-voting-app` directory.
+The first step to creating the app is to clone the [Typescript PERN example](https://github.com/pulumi/examples/tree/master/aws-ts-pern-voting-app). We'll use a sparse clone to copy only the `aws-ts-pern-voting-app` directory.
 
 ```bash
 $ mkdir examples && cd examples
 $ git init
 $ git remote add origin -f https://github.com/pulumi/examples/
 $ git config core.sparseCheckout true
-$ echo aws-pern-voting-app >> .git/info/sparse-checkout
+$ echo aws-ts-pern-voting-app >> .git/info/sparse-checkout
 $ git pull origin master
 ```
 
@@ -52,8 +56,8 @@ Some of the components of our Kubernetes project are nearly identical to those i
 
 ```bash
 $ cd ..
-$ cp -r aws-pern-voting-app/clientside/ aws-ts-k8s-voting-app/clientside
-$ cp -r aws-pern-voting-app/serverside/ aws-ts-k8s-voting-app/serverside
+$ cp -r aws-ts-pern-voting-app/clientside/ aws-ts-k8s-voting-app/clientside
+$ cp -r aws-ts-pern-voting-app/serverside/ aws-ts-k8s-voting-app/serverside
 $ cd aws-ts-k8s-voting-app
 ```
 
@@ -236,7 +240,7 @@ const databaseDeployment = new k8s.apps.v1.Deployment(databaseAppName, {
                         volumeID: ebsVolume.id,
                     },
                 }],
-                affinity: {  
+                affinity: {
                     nodeAffinity: {
                         requiredDuringSchedulingIgnoredDuringExecution: {
                             nodeSelectorTerms: [{

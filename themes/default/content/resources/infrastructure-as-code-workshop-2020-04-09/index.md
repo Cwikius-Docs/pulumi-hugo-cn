@@ -23,6 +23,9 @@ preview_image: "/images/webinar/pulumi_workshop.jpg"
 
 # Webinars with unlisted as true will not be shown on the webinar list
 unlisted: true
+# don't index on unlisted resources
+block_external_search_index: true
+
 
 # Gated webinars will have a registration form and the user will need
 # to fill out the form before viewing.
@@ -58,7 +61,7 @@ main:
     datetime: "THU APR 09, 2020 AT 5:30PM PDT"
     # Description of the webinar.
     description: |
-        In this hands-on workshop, the Pulumi team will show you how to stand up basic services using Infrastructure as Code (IaC) through a series of hands-on labs. The techniques work for any cloud --- Azure, AWS, and GCP. You’ll be able to leverage your favorite languages including Python, Go, JavaScript, TypeScript, and C# instead of YAML or domain-specific languages.
+        In this hands-on workshop, the Pulumi team will show you how to stand up basic services using Infrastructure as Code (IaC) through a series of hands-on labs. The techniques work for any cloud --- Azure, AWS, and Google Cloud. You’ll be able to leverage your favorite languages including Python, Go, JavaScript, TypeScript, and C# instead of YAML or domain-specific languages.
 
         After completion of this webinar, you’ll be up and running with IaC fundamentals, modern application architectures across many clouds, and best-practices that are ready for production environments. You’ll also be ready to empower your development teams to be more productive --- continuously deploying both their applications and infrastructure.
 

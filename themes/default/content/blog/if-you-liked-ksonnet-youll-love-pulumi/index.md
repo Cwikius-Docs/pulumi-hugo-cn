@@ -2,17 +2,16 @@
 title: "If you liked ksonnet, you'll love Pulumi!"
 date: "2019-02-13"
 meta_desc: "Like ksonnet, Pulumi provides complete access to the raw Kubernetes API, and supports additional features like modules/imports, components, functions, and more."
-meta_image: "kube-update.gif"
+meta_image: "kube-update.png"
 authors: ["mike-metral"]
-tags: ["Kubernetes"]
+tags: ["Kubernetes", "cloud-native"]
 ---
 
 The Kubernetes landscape is constantly evolving as end users and
 developers search for the right tools, approaches, and abstractions to
 help them manage Cloud Native infrastructure in production.
 
-On Feb 5, Heptio (now part of VMWare)
-[announced](https://blogs.vmware.com/cloudnative/2019/02/05/welcoming-heptio-open-source-projects-to-vmware/)
+On Feb 5, Heptio (now part of VMWare) announced
 that work on [ksonnet](https://github.com/ksonnet), a project launched
 by Heptio, Box, Microsoft, and Bitnami, will stop. We're sad to see
 ksonnet winding down, but are thankful for the collaborative exchange of
@@ -115,7 +114,7 @@ Unlike with ksonnet though, Pulumi programs are deployed using the
 is making toward being complete (as well as feedback when things go
 wrong!).
 
-![KubeUpdate](./kube-update.gif)
+![KubeUpdate](https://www.pulumi.com/uploads/content/blog/if-you-liked-ksonnet-youll-love-pulumi/kube-update.gif)
 
 And finally, a major area where Pulumi goes beyond ksonnet in scope, it
 works with public and private cloud resources as well as
@@ -132,20 +131,20 @@ Another fun example is
 ## Learn More
 
 If you'd like to learn about Pulumi and how to manage your
-infrastructure and Kubernetes through code, [click here to get started today]({{< relref "/docs/get-started" >}}). Pulumi is open source and free to
+infrastructure and Kubernetes through code, [click here to get started today](/docs/get-started/). Pulumi is open source and free to
 use.
 
 If you'd like to go deeper on certain topics, here are some additional
 resources to check out:
 
-- [Overview of Pulumi Kubernetes Scenarios]({{< relref "/topics/kubernetes" >}})
+- [Overview of Pulumi Kubernetes Scenarios](/kubernetes/)
 - Tutorial: Create a Kubernetes cluster on a cloud provider
-  [Amazon EKS]({{< relref "/docs/tutorials/kubernetes/eks" >}}),
-  [Google GKE]({{< relref "/docs/tutorials/kubernetes/gke" >}}), or
+  [Amazon EKS](/registry/packages/kubernetes/how-to-guides/eks/),
+  [Google GKE](/registry/packages/kubernetes/how-to-guides/gke/), or
   [Azure AKS](https://github.com/pulumi/examples/tree/master/classic-azure-ts-aks-mean)
-- Tutorial: [Operate and deploy to a Kubernetes cluster]({{< relref "/docs/tutorials/kubernetes/exposed-deployment" >}})
-- Docs: [Pulumi docs]({{< relref "/docs/reference" >}}), including an
-  [overview of the programming model]({{< relref "/docs/intro/concepts" >}})
+- Tutorial: [Operate and deploy to a Kubernetes cluster](/registry/packages/kubernetes/how-to-guides/exposed-deployment/)
+- Docs: [Pulumi docs](/docs/), including an
+  [overview of the programming model](/docs/concepts/)
 - Video: In February, we were honored to have Joe Beda
 [show where Pulumi fits in on his TGIK livestream](https://www.youtube.com/watch?v=ILMK65YVSKw),
 highlighting how to use your favorite language and consistent workflows to create,
@@ -161,4 +160,4 @@ any questions, need support, or just want to say hello.
 
 If you'd like to chat with our team, or get hands-on assistance with
 migrating your existing configuration code (including ksonnet programs)
-to Pulumi, please don't hesitate to [drop us a line]({{< relref "/contact.md" >}}).
+to Pulumi, please don't hesitate to [drop us a line](/contact/).

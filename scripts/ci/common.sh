@@ -1,7 +1,14 @@
 #!/bin/bash
 
+# Returns the repository name. As GITHUB_REPOSITORY consists of <owner>/<repo>, we ignore everything
+# up to and including the last occurring slash.
+# https://docs.github.com/en/actions/learn-github-actions/environment-variables
 repo_name() {
-    echo "pulumi-hugo"
+    if [[ ! -z "$GITHUB_REPOSITORY" ]]; then
+        echo ${GITHUB_REPOSITORY##*/}
+    else
+        echo "pulumi-hugo"
+    fi
 }
 
 aws_region() {
@@ -124,6 +131,13 @@ set_bucket_for_commit() {
         --type String \
         --region $3 \
         --tags "$(aws_owner_tag)"
+}
+
+# Remove the parameter key associated with a specific commit.
+remove_param_for_commit() {
+    aws ssm delete-parameter \
+        --name "$(ssm_parameter_key_for_commit $1)" \
+        --region $2
 }
 
 # List the 100 most recent bucket in the current account, sorted descendingly by

@@ -10,6 +10,7 @@ authors:
 tags:
     - kubernetes
     - aws
+    - eks
 ---
 
 As Kubernetes grows in popularity, the number of options for Kubernetes users continues to increase. Providers of managed Kubernetes offerings will often learn lessons about operating large numbers of clusters at scale; it's increasingly common that they will contribute this knowledge back to the ecosystem, allowing those organizations who need more control and flexibility to reap the benefits.
@@ -30,7 +31,7 @@ If you're already a user of Amazon EKS, you're already getting all of the benefi
 
 Installing an Amazon EKS Distro cluster involves bootstrapping a Kubernetes cluster but with the images provided by the Amazon EKS team. The simplest way to provision a Kubernetes cluster is using [kops](https://kops.sigs.k8s.io/) and the Amazon EKS Distro team provides instructions on how to replace the default Kubernetes components with the Amazon EKS Distro built parts.
 
-It's possible to get all of the benefits of provisioning a Kubernetes cluster with kops while also taking part in the Pulumi resource lifecycle. Pulumi offers support for running arbitrary commands using [dynamic providers]({{< relref "/docs/intro/concepts/resources#dynamicproviders" >}}) (available in the JavaScript, Typescript and Python SDKs) and you can register the kops commands used to create and destroy clusters as dynamic provider callbacks. Once your Kubernetes cluster has been created, you can provision Kubernetes resources using Pulumi's Kubernetes provider, using the Pulumi resource model to set dependencies on the created cluster.
+It's possible to get all of the benefits of provisioning a Kubernetes cluster with kops while also taking part in the Pulumi resource lifecycle. Pulumi offers support for running arbitrary commands using [dynamic providers](/docs/concepts/resources#dynamicproviders) (available in the JavaScript, Typescript and Python SDKs) and you can register the kops commands used to create and destroy clusters as dynamic provider callbacks. Once your Kubernetes cluster has been created, you can provision Kubernetes resources using Pulumi's Kubernetes provider, using the Pulumi resource model to set dependencies on the created cluster.
 
 ### Creating an Amazon EKS Distro cluster with Pulumi
 

@@ -60,7 +60,7 @@ Slack. You can find the full code in the
 [examples repo](https://github.com/pulumi/examples/), under
 [aws-ts-pulumi-webhooks](https://github.com/pulumi/examples/tree/master/aws-ts-pulumi-webhooks).
 
-The code is very straight forward, thanks to the the
+The code is very straight forward, thanks to the
 [@pulumi/cloud](https://github.com/pulumi/pulumi-cloud) package.
 
 ```typescript
@@ -133,7 +133,7 @@ The stack emits the URL to the webhook handler in the stack's outputs.
 That URL is what will receive and process Pulumi webhooks.
 
 With the infrastructure in-place, we just need to register the webhook
-on the Pulumi Console. Organization administrators can do so under
+in the Pulumi Service. Organization administrators can do so under
 the organization's **SETTINGS** tab.
 
 ![webhooks3](./pulumi-webhooks-3.png)

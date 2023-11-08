@@ -3,7 +3,7 @@ title: Kubernetes with Pulumi
 layout: kubernetes
 url: /kubernetes
 
-meta_desc: Pulumi provides a cloud native programming model for Kubernetes deployments and orchestration. Any code, any cloud, any app.
+meta_desc: Pulumi provides a single infrastructure as code workflow for Kubernetes and underlying infrastructure, using general-purpose languages and YAML.
 
 aliases:
   - /cloudnative
@@ -11,10 +11,8 @@ aliases:
 hero:
     title: Kubernetes Superpowers
     body: >
-        Pulumi is the modern platform to manage all of your cloud native infrastructure using
-        familiar engineering tools and workflows. Avoid complex YAML, JSON, and DSLs by using
-        your favorite programming languages and automate deployments to AWS, Azure, GCP,
-        multi-cloud, hybrid and on-premises clusters.
+        Pulumi lets you use a single infrastructure as code workflow for managing cloud native resources and infrastructure with software engineering. Eliminate complex YAML, JSON, and DSLs by using your favorite programming languages and automate deployments to AWS, Azure, Google Coud,
+        and 100+ providers.
     cta_text: See what's new
 
 video_section:
@@ -148,18 +146,78 @@ kubernetes_overview:
                         });
                     }
                 }
+            - title: Main.java
+              language: java
+              code: |
+                package com.pulumi.example.infra;
+
+                import com.pulumi.Context;
+                import com.pulumi.Exports;
+                import com.pulumi.Pulumi;
+                import com.pulumi.kubernetes.core_v1.Namespace;
+                import com.pulumi.kubernetes.core_v1.NamespaceArgs;
+                import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+                import com.pulumi.kubernetes.helm.sh_v3.Release;
+                import com.pulumi.kubernetes.helm.sh_v3.ReleaseArgs;
+                import com.pulumi.kubernetes.helm.sh_v3.inputs.RepositoryOptsArgs;
+
+                public class Main {
+
+                    public static void main(String[] args) {
+                        Pulumi.run(Main::stack);
+                    }
+
+                    private static Exports stack(Context ctx) {
+                        var devNamespace = new Namespace("devNamespace", NamespaceArgs.builder()
+                                  .metadata(ObjectMetaArgs.builder()
+                                            .name("dev")
+                                            .build())
+                                  .build());
+
+                        var nginxIngress = new Release("nginx-ingress", ReleaseArgs.builder()
+                                  .chart("nginx-ingress)
+                                  .namespace(devNamespace.metadata.name)
+                                  .repositoryOpts(RepositoryOptsArgs.builder()
+                                            .repo("https://charts.helm.sh/stable/")
+                                            .build())
+                                  .build());
+
+                        return ctx.exports();
+                    }
+                }
+
+            - title: Pulumi.yaml
+              language: yaml
+              code: |
+                name: simple-kubernetes
+                runtime: yaml
+                resources:
+                  devNamespace:
+                    type: kubernetes:core:Namespace
+                    properties:
+                      metadata:
+                        name: "dev"
+                  nginxIngress:
+                    type: kubernetes:helm.sh:Chart
+                    properties:
+                      chart: "nginx-ingress"
+                      namespace: ${devNamespace.metadata.name}
+                      fetchOpts:
+                          repo: "https://charts.helm.sh/stable/"
+
     list:
         - Manage Kubernetes clusters on all major cloud providers.
         - Increase productivity using the full ecosystem of dev tools such as IDE auto-completion, type & error checking, linting, refactoring, and test frameworks to validate Kubernetes clusters, app workloads, or both.
-        - Automate Kubernetes deployments with CI/CD integrations for [Spinnaker](/blog/unlocking-spinnaker-with-pulumi/), [Octopus](/blog/deploying-with-octopus-and-pulumi/), [GitHub Actions](/blog/continuous-delivery-to-any-cloud-using-github-actions-and-pulumi/), [GitLab](/blog/continuous-delivery-with-gitlab-and-pulumi-on-amazon-eks/), [Azure DevOps](/blog/cd-made-easy-with-pulumi-and-azure-pipelines/) and [more](/docs/guides/continuous-delivery/).
-        - Seamlessly manage cloud resources with the [Pulumi Kubernetes Operator](/docs/guides/continuous-delivery/pulumi-kubernetes-operator/).
+        - Automate Kubernetes deployments with CI/CD integrations for [Flux](/blog/pulumi-kubernetes-new-2022/#integration-with-flux-sources), [Spinnaker](/blog/unlocking-spinnaker-with-pulumi/), [Octopus](/blog/deploying-with-octopus-and-pulumi/), [GitHub Actions](/blog/continuous-delivery-to-any-cloud-using-github-actions-and-pulumi/), [GitLab](/blog/continuous-delivery-with-gitlab-and-pulumi-on-amazon-eks/), [Azure DevOps](/blog/cd-made-easy-with-pulumi-and-azure-pipelines/) and [more](/docs/using-pulumi/continuous-delivery/).
+        - Seamlessly manage both Kubernetes and cloud resources using GitOps with the [Pulumi Kubernetes Operator](/docs/using-pulumi/continuous-delivery/pulumi-kubernetes-operator/).
+        - Use Kubernetes [Server-Side Apply](/registry/packages/kubernetes/how-to-guides/managing-resources-with-server-side-apply/) to safely manage shared Kubernetes resources with Pulumi and your existing controllers.
     cta: Learn More
     cta_url: "/blog/new-kubernetes-superpowers"
 
 superpowers:
     - title: Run On Any Cloud
       cta: Learn more
-      cta_url: "/docs/get-started/kubernetes"
+      cta_url: "/docs/clouds/kubernetes/get-started/"
       icon_type: cloud
       description: |
         Support for all clouds including Amazon Elastic Kubernetes Service (EKS), Azure
@@ -169,7 +227,7 @@ superpowers:
 
     - title: Reduce Provisioning Time
       cta: Learn more
-      cta_url: "/docs/get-started/kubernetes"
+      cta_url: "/docs/clouds/kubernetes/get-started/"
       icon_type: provisioning
       description: |
         With Pulumi you are able to take advantage of the features of programming languages,
@@ -178,7 +236,7 @@ superpowers:
 
     - title: Automate Delivery
       cta: Learn more
-      cta_url: "/docs/guides/continuous-delivery"
+      cta_url: "/docs/using-pulumi/continuous-delivery/"
       icon_type: delivery
       description: |
         You can integrate Pulumi directly with your favorite CI/CD and SCM systems to
@@ -187,7 +245,7 @@ superpowers:
 
     - title: Smart Architecture
       cta: Learn more
-      cta_url: "/docs/intro/concepts"
+      cta_url: "/docs/concepts/"
       icon_type: architecture
       description: |
         YAML and templated DSLs force you to write the same boilerplate code over and over.
@@ -196,7 +254,7 @@ superpowers:
 
     - title: Be Proactive, Not Reactive
       cta: Learn more
-      cta_url: "/docs/guides/crossguard"
+      cta_url: "/docs/using-pulumi/crossguard"
       icon_type: policy
       description: |
         When you enable Pulumi's Policy as Code feature, you instantly gain the power to
@@ -205,7 +263,7 @@ superpowers:
 
     - title: Reduce Deployment Complexity
       cta: Learn more
-      cta_url: "/docs/guides/testing"
+      cta_url: "/docs/using-pulumi/testing"
       icon_type: testing
       description: |
         Deploying untested code can lead to some unexpected results. Pulumi lets you take advantage
@@ -216,7 +274,7 @@ detail_sections:
     - title: Continue using the tools you love
       description: |
         Pulumi has first-class support for popular Kubernetes tools, such as Helm, Kustomize,
-        YAML, Secret Managers, Open Policy Agent (OPA) and Custom Resource Definitions (CRDs).
+        YAML, Secret Managers, Open Policy Agent (OPA), Custom Resource Definitions (CRDs), and Server-Side Apply (SSA).
       cta: Learn More
       cta_url: "/blog/new-kubernetes-superpowers"
       items:
@@ -238,13 +296,13 @@ detail_sections:
           - title: Pulumi Kubernetes Operator
             icon: pen
             icon_color: fuchsia
-            description: The Pulumi Kubernetes Operator gives you a Kubernetes controller that deploys cloud infrastructure for you and your team.
+            description: Deploy both Kubernetes resources and cloud infrastructure from within the Kubernetes resource model using a GitOps workflow. Use Pulumi's Flux integration and many other CI/CD integrations.
 
     - title: Kubernetes Best Practices with Pulumi Crosswalk
       description: |
         Create, deploy, and manage production-ready infrastructure leveraging hosted Kubernetes offerings such as Amazon Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), or Google Kubernetes Engine (GKE).
       cta: Learn More
-      cta_url: "/docs/guides/crosswalk/kubernetes"
+      cta_url: "/docs/clouds/kubernetes/guides/"
       items:
           - title: Day 2 and Beyond
             icon: cycle

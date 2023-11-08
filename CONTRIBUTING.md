@@ -16,15 +16,15 @@
 We generally use Hugo's [`relref` shortcode](https://gohugo.io/content-management/shortcodes/#ref-and-relref) when linking to other pages. Examples:
 
 ```markdown
-[Install]({{< relref "/docs/get-started/install" >}})
-[Outputs]({{< relref "/docs/intro/concepts/stack#outputs" >}})
+[Install]({{< relref "/docs/install" >}})
+[Outputs]({{< relref "/docs/concepts/stack#outputs" >}})
 ```
 
 Which, on a page inside the `./content/reference` directory, will generate:
 
 ```html
 <a href="/docs/install/">Install</a>
-<a href="/docs/intro/concepts/stack/#stack-outputs">Outputs</a>
+<a href="/docs/concepts/stack/#stack-outputs">Outputs</a>
 ```
 
 ### Hugo tips
@@ -62,7 +62,7 @@ Which, on a page inside the `./content/reference` directory, will generate:
 ### Referring to "things"
 
 - References to the Pulumi CLI or CLI commands should be enclosed in backticks (e.g., `pulumi up`).
-- References to UI elements within a webpage should be **bold**. (e.g., "Go to the **Account** page in the Pulumi Console and select **sync profile with GitHub**").
+- References to UI elements within a webpage should be **bold**. (e.g., "Go to the **Account** page in the Pulumi Service and select **sync profile with GitHub**").
 - Use arrows to indicate a navigation. (e.g., "Go to **FooPage** &gt; **BarItem**").
 
 ### Formatting

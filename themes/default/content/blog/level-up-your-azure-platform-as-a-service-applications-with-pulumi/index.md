@@ -56,7 +56,7 @@ the rescue.
 For this walkthrough, I took an existing application from Azure Samples
 GitHub: [.NET Core MVC sample for Azure App Service](https://github.com/azure-samples/dotnetcore-sqldb-tutorial).
 Predictably enough, it's a Todo List application, and this time it is a
-web app built with [ASP.NET](http://ASP.NET) Core, Entity Framework Core
+web app built with [ASP.NET](https://ASP.NET) Core, Entity Framework Core
 and a SQL database.
 [Build an ASP.NET Core and SQL Database app in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/tutorial-dotnetcore-sqldb-app)
 describes how to deploy such application to Azure App Service by means
@@ -91,7 +91,7 @@ The following snippet shows the essential elements of the solution:
 As a first step, I cloned the [Todo List
 app](https://github.com/azure-samples/dotnetcore-sqldb-tutorial) into
 the `src` folder. There's nothing specific to Pulumi here: it's just an
-[ASP.NET](http://ASP.NET) Core app. It could be your application
+[ASP.NET](https://ASP.NET) Core app. It could be your application
 instead.
 
 *Note: You can find the full code of the application, infrastructure
@@ -100,8 +100,8 @@ definition, and deployment pipeline in [Pulumi Examples repository](https://git
 ## Bootstrapping a Pulumi Program
 
 The Pulumi development experience is powered by the
-[Pulumi CLI]({{< relref "/docs/reference/cli" >}}). After
-[installing the CLI]({{< relref "/docs/get-started/install" >}}), I jump into an empty
+[Pulumi CLI](/docs/cli/). After
+[installing the CLI](/docs/install/), I jump into an empty
 `infra` folder and run `pulumi new azure-typescript` accepting all the
 default answers. The CLI bootstraps a skeleton of a TypeScript NodeJS
 application. The code looks like this:
@@ -139,7 +139,7 @@ that such an application will run in multiple environments: production,
 staging, development, and so on.
 
 Pulumi comes with a handy concept of
-[stacks]({{< relref "/docs/intro/concepts/stack" >}})--- isolated,
+[stacks](/docs/concepts/stack/)--- isolated,
 independently configurable instances of a Pulumi program. A separate
 stack can be designated for each deployment environment.
 
@@ -184,7 +184,7 @@ resources.
 ## Deploying the Application to App Service
 
 Now, it's time to define the infrastructure to host my
-[ASP.NET](http://ASP.NET) Core app. There are three pieces of the puzzle
+[ASP.NET](https://ASP.NET) Core app. There are three pieces of the puzzle
 to fit together.
 
 ### 1. App Service Plan
@@ -263,7 +263,7 @@ I'm using Azure SQL Database service.
 Setting up a SQL Server requires a couple of parameter values that might
 change between execution environments, for instance, a username and a
 password for the connection string. Pulumi provides
-[a way to configure]({{< relref "/docs/intro/concepts/config" >}}) the program's
+[a way to configure](/docs/concepts/config/) the program's
 parameters per stack.
 
 The configuration itself will happen in my CI/CD pipeline. For now, I
@@ -321,7 +321,7 @@ proper set of firewall rules.
 Additional firewall rules may be implemented to allow administrative
 access from outside the App Service.
 
-Finally, our [ASP.NET](http://ASP.NET) Core application expects a
+Finally, our [ASP.NET](https://ASP.NET) Core application expects a
 connection string with `MyDbConnection`. To create one, I join the
 database server and the database name to produce the connection string
 and add it to the App Service configuration:
@@ -344,7 +344,7 @@ Application Insights is an Application Performance Management (APM)
 service to be used for collecting metrics from cloud applications.
 
 After adding Application Insights NuGet packages into my
-[ASP.NET](http://ASP.NET) solution, I can go ahead and define the App
+[ASP.NET](https://ASP.NET) solution, I can go ahead and define the App
 Insights resource and link it to the App Service with an instrumentation
 key:
 
@@ -454,9 +454,9 @@ language.
 
 You can get going with these resources:
 
-- [Getting Started with Pulumi]({{< relref "/docs/get-started" >}})
-- [Setup Pulumi to work with Azure]({{< relref "/docs/get-started/azure" >}})
-- [Walkthroughs and Examples]({{< relref "/docs/get-started/azure" >}})
+- [Getting Started with Pulumi](/docs/get-started/)
+- [Setup Pulumi to work with Azure](/docs/clouds/azure/get-started/)
+- [Walkthroughs and Examples](/docs/clouds/azure/get-started/)
 
 Pulumi enables developers to define cloud infrastructure using general
 purpose programming languages. Pulumi works with multiple cloud

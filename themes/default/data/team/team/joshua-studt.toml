@@ -1,7 +1,9 @@
 id = "joshua-studt"
 name = "Joshua Studt"
-title = "Solutions Architect, Financial Independence Group"
+title = "Senior Backend Engineer"
+company = "Underdog Fantasy"
 status = "guest"
+role = "puluminary"
 
 [social]
 github = "orionstudt"

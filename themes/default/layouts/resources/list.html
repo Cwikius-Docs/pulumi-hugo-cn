@@ -1,17 +1,21 @@
 {{ define "hero" }}
-    {{ partial "hero" (dict "title" .Params.title )}}
+    {{ partial "hero" (dict "title" .Params.title ) }}
 {{ end }}
 
 {{ define "main" }}
     <!-- Set the page context in a variable in a loop. -->
     {{ $pageContext := . }}
 
+
     <!-- Grab the webinar and event page data. -->
     {{ $webinars := (where $.Site.Pages "Type" "webinars") }}
     {{ $events := (where $.Site.Pages "Type" "events") }}
+    {{ $aiAnswers := (where $.Site.Pages "Type" "ai-answers") }}
+
 
     <!-- Create dicts so we can sort the resources by start/publish date. -->
     {{ $resourcesWithDate := slice }}
+
 
     <!-- Create the resource data dicts for webinars. -->
     {{ range $webinars }}
@@ -30,6 +34,7 @@
         {{ end }}
     {{ end }}
 
+
     <!-- Create the resource data dicts for events. -->
     {{ range $events }}
         <!-- If the webinar is not marked as unlisted we will add it to the list. -->
@@ -37,6 +42,12 @@
             {{ $resourcesWithDate = $resourcesWithDate | append (dict "date" .Params.main.start_date "data" .) }}
         {{ end }}
     {{ end }}
+
+    <!-- Create the resource data dicts for AI answers. -->
+    {{ range $aiAnswers }}
+        {{ $resourcesWithDate = $resourcesWithDate | append (dict "date" .Date "data" .) }}
+    {{ end }}
+
 
     <div class="pulumi-event-list-container mt-5">
         <div class="container mx-auto pt-10">
@@ -46,57 +57,42 @@
             <span id="featured" class="hidden"></span>
             <span id="upcoming" class="hidden"></span>
             <span id="videos" class="hidden"></span>
-            <span id="pulumitv" class="hidden"></span>
+            <span id="ai-answers" class="hidden"></span>
+            <span id="whitepapers" class="hidden"></span>
 
             <!-- The event filter -->
-            <div class="w-full mb-5 text-center event-list-filter">
-                <ul class="flex flex-wrap items-center justify-center list-none p-0">
-                    <li class="mx-3 md:mx-6" data-filter-name="all">
-                        <a href="#all" class="flex flex-col text-violet-600">
-                            <i class="fas fa-asterisk text-3xl"></i>
-                            <p class="text-xs md:text-base m-0 pt-3">All</p>
-                        </a>
-                    </li>
-                    <li class="mx-3 md:mx-6" data-filter-name="featured">
-                        <a href="#featured" class="flex flex-col">
-                            <i class="fas fa-star text-3xl"></i>
-                            <p class="text-xs md:text-base m-0 pt-3">Featured</p>
-                        </a>
-                    </li>
-                    <li class="mx-3 md:mx-6" data-filter-name="upcoming">
-                        <a href="#upcoming" class="flex flex-col">
-                            <i class="fas fa-users text-3xl"></i>
-                            <p class="text-xs md:text-base m-0 pt-3">Upcoming</p>
-                        </a>
-                    </li>
-                    <li class="mx-3 md:mx-6" data-filter-name="videos">
-                        <a href="#videos" class="flex flex-col">
-                            <i class="fas fa-video text-3xl"></i>
-                            <p class="text-xs md:text-base m-0 pt-3">Videos</p>
-                        </a>
-                    </li>
-                    <li class="mx-3 md:mx-6" data-filter-name="pulumitv">
-                        <a href="#pulumitv" class="flex flex-col">
-                            <i class="fas fa-tv text-3xl"></i>
-                            <p class="text-xs md:text-base m-0 pt-3">PulumiTV</p>
-                        </a>
-                    </li>
+            <div class="pulumi-event-list-container justify-center event-list-filter container mx-auto flex">
+                <div class="scroll-container hidden lg:flex items-center">
+                    <button id="slideBackwards"><i class="text-gray-500 text-3xl fas fa-angle-left"></i></button>
+                </div>
+                <ul id="event-list-filter-nav">
+                    {{ range $item := .Params.sections }}
+                        <li data-filter-name="{{ $item.anchor }}">
+                            <a class="whitespace-nowrap" href="#{{ $item.anchor }}">
+                                <i class="fas fa-{{ $item.icon }} mr-2"></i>
+                                <span>{{ $item.label }}</span>
+                            </a>
+                        </li>
+                    {{ end }}
                 </ul>
+                <div class="scroll-container hidden lg:flex items-center">
+                    <button id="slideForward"><i class="text-gray-500 text-3xl fas fa-angle-right"></i></button>
+                </div>
             </div>
 
             <!-- Titles for the filtered section -->
-            <h3 class="ml-5" data-filter-title="all">All</h3>
-            <h3 class="hidden ml-5" data-filter-title="featured">Featured</h3>
-            <h3 class="hidden ml-5" data-filter-title="upcoming">Upcoming Sessions</h3>
-            <h3 class="hidden ml-5" data-filter-title="videos">Videos</h3>
-            <h3 class="hidden ml-5" data-filter-title="pulumitv">PulumiTV</h3>
-
+            <h3 class="ml-5 text-black" data-filter-title="all"><i class="fas fa-asterisk mr-8"></i>All</h3>
+            <h3 class="hidden ml-5 text-black" data-filter-title="featured"><i class="fas fa-star mr-8"></i>Featured</h3>
+            <h3 class="hidden ml-5 text-black" data-filter-title="upcoming"><i class="fas fa-users mr-8"></i>Upcoming Sessions</h3>
+            <h3 class="hidden ml-5 text-black" data-filter-title="videos"><i class="fas fa-video mr-8"></i>Videos</h3>
+            <h3 class="hidden ml-5 text-black" data-filter-title="ai-answers"><i class="fas fa-comments mr-8"></i>Pulumi AI Answers</h3>
+            <h3 class="hidden ml-5 text-black" data-filter-title="whitepapers"><i class="fas fa-book mr-8"></i>Whitepapers</h3>
             <!-- Resources list. -->
             <ul class="flex flex-wrap justify-center list-none p-0 sm:p-2 resource-list">
-
                 <!-- Loop over the resource items and create the tiles. -->
                 {{ range sort $resourcesWithDate "date" "desc" }}
                     {{ $data := .data }}
+
 
                     <!-- Create the values for rendering. -->
                     {{ $description := "" }}
@@ -106,10 +102,22 @@
                     {{ $icon := "users" }}
                     {{ $filters := slice "all" }}
 
+
+                    <!-- create values to determine if date is upcoming -->
+                    {{ $nowUnix := now.UnixMilli }}
+                    <!-- add 24 hours to event date to list it for an extra day -->
+                    {{ $eventDateUnix := (add (.date | time.AsTime).UnixMilli (duration "hour" 24).Milliseconds) }}
+
+
                     <!-- Set the values based on the type of the page. -->
                     {{ if eq $data.Type "webinars" }}
                         {{ $description = $data.Params.meta_desc }}
                         {{ $displayDate = dateFormat "January 2, 2006" .date }}
+
+                        {{ if $data.Params.main.hide_date }}
+                            {{ $displayDate = "To be announced" }}
+                        {{ end }}
+
 
                         <!-- Set the url to link to. -->
                         {{ if $data.Params.external }}
@@ -120,30 +128,40 @@
                         {{ end }}
 
                         {{ if isset $data.Params "multiple" }}
-                            {{ $link = printf "%s/?date=%s" $link  (dateFormat "2006/01/02" .date)}}
+                            {{ $link = printf "%s/?date=%s" $link  (dateFormat "2006/01/02" .date) }}
                         {{ end }}
+
 
                         <!-- If the webinar is featured add the feature filter. -->
                         {{ if $data.Params.featured }}
                             {{ $filters = $filters | append "featured" }}
-                        {{end }}
+                        {{ end }}
+
 
                         <!-- Set the icon and appropriate filters for the webinar. -->
-                        {{ if $data.Params.pulumi_tv }}
+                        {{ if $data.Params.whitepaper }}
+                            {{ $icon = "book" }}
+                            {{ $filters = $filters | append "whitepapers" }}
+                        {{ else if $data.Params.pulumi_tv }}
                             {{ $icon = "tv" }}
                             {{ $filters = $filters | append "pulumitv" }}
-                        {{ else if $data.Params.pre_recorded}}
+                        {{ else if $data.Params.pre_recorded }}
                             {{ $icon = "video" }}
                             {{ $filters = $filters | append "videos" }}
-                        {{ else }}
+                        {{ else if lt $nowUnix $eventDateUnix }}
                             {{ $filters = $filters | append "upcoming" }}
                         {{ end }}
 
-                    {{ else if eq $data.Type "events" }}
+                        {{ else if eq $data.Type "events" }}
                         <!-- Set the appropriate values for the event. -->
                         {{ $description = $data.Params.event.description }}
                         {{ $displayDate = dateFormat "January 2, 2006" $data.Params.event.start_date }}
-                        {{ $filters = $filters | append "upcoming"}}
+                        {{ $filters = $filters | append "upcoming" }}
+
+                        {{ if $data.Params.main.hide_date }}
+                            {{ $displayDate = "Date to be announced" }}
+                        {{ end }}
+
 
                         <!-- If the event has a redirect attribute it is external so set the link correctly. -->
                         {{ if $data.Params.redirect_to }}
@@ -152,9 +170,16 @@
                         {{ else }}
                             {{ $link = printf "/resources/%s" $data.Params.url_slug }}
                         {{ end }}
+
+                    {{ else if eq $data.Type "ai-answers" }}
+                        {{ $filters = $filters | append "ai-answers" }}
+                        {{ $icon = "comments" }}
+                        {{ $description = $data.Params.meta_desc }}
+                        {{ $displayDate = dateFormat "January 2, 2006" $data.Date }}
+                        {{ $link = $data.RelPermalink }}
                     {{ end }}
 
-                    {{ $tileOptions := (dict "multiple" $data.Params.multiple "pageContext" $pageContext "external" $external "filters" $filters "link" $link "icon" $icon "description" $description "displayDate" $displayDate "data" $data)}}
+                    {{ $tileOptions := (dict "multiple" $data.Params.multiple "pageContext" $pageContext "external" $external "filters" $filters "link" $link "icon" $icon "description" $description "displayDate" $displayDate "data" $data) }}
                     {{ partial "content-tile.html" $tileOptions }}
                 {{ end }}
             </ul>

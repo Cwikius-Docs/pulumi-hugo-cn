@@ -20,7 +20,7 @@ wired together as part of a larger set of infrastructure and application
 code.
 <!--more-->
 
-[Epsagon is a serverless monitoring solution](https://epsagon.com/) that
+[Epsagon is a serverless monitoring solution](https://www.cisco.com/site/us/en/solutions/full-stack-observability/index.html) that
 lets users observe entire serverless applications composed of many
 functions and other AWS infrastructure, instead of just looking at
 individual functions one at a time. This is a great fit for Pulumi
@@ -108,5 +108,5 @@ it easy to author and deploy these kinds of architectures, and Epsagon
 makes it easy to monitor them. Users get an application-centric view
 across their full serverless application infrastructure.
 
-Checkout the quickstart guides for [Pulumi]({{< relref "/docs/get-started" >}})
-and [Epsagon](https://docs.epsagon.com/#/quick-start-guide) now!
+Checkout the quickstart guides for [Pulumi](/docs/get-started/)
+and [Epsagon](https://www.cisco.com/site/us/en/solutions/full-stack-observability/index.html) now!

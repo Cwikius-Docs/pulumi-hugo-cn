@@ -1,5 +1,5 @@
 ---
-title: "Running Container Images in AWS Lambda"
+title: Running Container Images in AWS Lambda
 date: 2020-12-01
 draft: false
 meta_desc: AWS Lambda launches support for packaging and deploying functions as container images
@@ -10,7 +10,6 @@ tags:
     - aws
     - containers
     - serverless
-
 ---
 
 When AWS Lambda launched in 2014, it pioneered the concept of Function-as-a-Service. Developers could write a function in one of the supported programming languages, upload it to AWS, and Lambda executes the function on every invocation.
@@ -27,10 +26,9 @@ Today, AWS announced that AWS Lambda now supports packaging serverless functions
 
 Ready to get up and running quickly right away?
 
-1. Bootstrap a project `$ pulumi new https://github.com/pulumi/apps/lambda-containers`.
+1. Bootstrap a project `pulumi new https://github.com/pulumi/examples/tree/master/aws-ts-lambda-thumbnailer`.
 2. Add your Lambda's logic to `./app/Dockerfile` and `./app/index.js`.
 3. Deploy with `$ pulumi up`.
-4. Test with `$ curl $(pulumi stack output invokeUrl)`.
 
 For additional information on how Lambda Containers work, and more advanced options, please read on.
 
@@ -85,7 +83,7 @@ Overall, Lambda shines for unpredictable or inconsistent workloads and applicati
 
 ## Example: Serverless Video Thumbnailer with AWS Lambda and Pulumi
 
-Let's walk through the steps to build an example application with container-based AWS Lambda. In this scenario, a function runs every time a new video is uploaded to an Amazon S3 bucket. It relies on FFmpeg tools to produce a thumbnail of the uploaded video and uploads the thumbnail back to the same S3 bucket.
+Let's walk through the steps to build an example application with container-based AWS Lambda using [infrastructure as code](/what-is/what-is-infrastructure-as-code/). In this scenario, a function runs every time a new video is uploaded to an Amazon S3 bucket. It relies on FFmpeg tools to produce a thumbnail of the uploaded video and uploads the thumbnail back to the same S3 bucket.
 
 We'll use Pulumi to provision the necessary resources. You can check out the [full source code](https://github.com/pulumi/examples/tree/master/aws-ts-lambda-thumbnailer) in the Pulumi Examples.
 
@@ -99,7 +97,7 @@ Here are the key features of the container image for our Thumbnailer:
 - Copies the `index.js` with function implementation
 - Points the `index.handler` command
 
-You can find the full Dockerfile [here](https://github.com/pulumi/examples/blob/master/aws-ts-lambda-thumbnailer/docker-ffmpeg-thumb/Dockerfile).
+You can find the full Dockerfile [here](https://github.com/pulumi/examples/blob/master/aws-ts-lambda-thumbnailer/app/Dockerfile).
 
 ### Create an S3 Bucket
 
@@ -114,17 +112,22 @@ const bucket = new aws.s3.Bucket("bucket");
 
 ### Build the container image and publish it to ECR
 
-We can use [Pulumi Crosswalk for AWS](https://www.pulumi.com/docs/guides/crosswalk/aws/) to build the Docker image and publish it to a new ECR repository with just three lines of code.
+We can use [Pulumi Crosswalk for AWS](https://www.pulumi.com/docs/clouds/aws/guides/) to build the Docker image and publish it to a new ECR repository with just three lines of code.
 
 ```ts
 import * as awsx from "@pulumi/awsx";
 
-const image = awsx.ecr.buildAndPushImage("image", {
-   context: "./docker-ffmpeg-thumb",
+const repo = new awsx.ecr.Repository("repo", {
+    forceDelete: true,
+});
+
+const image = new awsx.ecr.Image("image", {
+    repositoryUrl: repo.url,
+    path: "./app",
 });
 ```
 
-The local `docker-ffmpeg-thumb` folder contains the application files (`Dockerfile` and `index.js`).
+The local `app` folder contains the application files (`Dockerfile` and `index.js`).
 
 ### Setup a role
 
@@ -132,11 +135,12 @@ Next, we define an IAM role and a policy attachment to grant AWS Lambda access t
 
 ```ts
 const role = new aws.iam.Role("thumbnailerRole", {
-   assumeRolePolicy: aws.iam.assumeRolePolicyForPrincipal({ Service: "lambda.amazonaws.com" }),
+    assumeRolePolicy: aws.iam.assumeRolePolicyForPrincipal({ Service: "lambda.amazonaws.com" }),
 });
+
 new aws.iam.RolePolicyAttachment("lambdaFullAccess", {
-   role: role.name,
-   policyArn: aws.iam.ManagedPolicy.AWSLambdaExecute,
+    role: role.name,
+    policyArn: aws.iam.ManagedPolicy.AWSLambdaExecute,
 });
 ```
 
@@ -146,10 +150,10 @@ It's time to define the AWS Lambda function itself! It's as simple as giving it 
 
 ```ts
 const thumbnailer = new aws.lambda.Function("thumbnailer", {
-   packageType: "Image",
-   imageUri: image.imageValue,
-   role: role.arn,
-   timeout: 900,
+    packageType: "Image",
+    imageUri: image.imageUri,
+    role: role.arn,
+    timeout: 900,
 });
 ```
 
@@ -178,4 +182,4 @@ Further steps:
 
 - Check out the full [Lambda + Docker example](https://github.com/pulumi/examples/tree/master/aws-ts-lambda-thumbnailer) in the Pulumi Examples.
 - [Sign-up](https://www.pulumi.com/resources/deplying-microservices-with-pulumi-and-aws-lambda/) for a hands-on Pulumi AWS Lambda Workshop.
-- [Get Started](https://www.pulumi.com/docs/get-started/aws/) with Pulumi for AWS today.
+- [Get Started](https://www.pulumi.com/docs/clouds/aws/get-started/) with Pulumi for AWS today.

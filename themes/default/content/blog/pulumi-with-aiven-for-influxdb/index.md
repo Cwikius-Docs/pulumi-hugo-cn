@@ -8,6 +8,7 @@ authors:
 tags:
     - aws
     - python
+    - aiven
 ---
 
 In this article, I’ll show how Pulumi can be used with Aiven’s services to create infrastructure that can be migrated from cloud to cloud with no downtime.
@@ -63,7 +64,7 @@ This tutorial is about as cheap as they come; all you need is some time to perfo
 
 ## Set up the environment
 
-Your first step is to install Python. Follow the [directions on this page]({{< relref "/docs/get-started/aws/begin" >}}) to install Python on your local system.
+Your first step is to install Python. Follow the [directions on this page](/docs/clouds/aws/get-started/) to install Python on your local system.
 
 Next, get the Aiven examples by cloning this [repo](https://github.com/aiven/aiven-examples) to your local machine.
 
@@ -92,7 +93,7 @@ $ pulumi plugin install resource aiven 3.3.2
 ```
 
 - To find out the current version numbers, go to
-[Pulumi changelog](https://github.com/pulumi/pulumi-aws/blob/master/CHANGELOG.md) or  [the Aiven changelog](https://github.com/pulumi/pulumi-aiven/blob/master/CHANGELOG.md).
+[Pulumi changelog](https://github.com/pulumi/pulumi-aws/releases) or the [Aiven changelog](https://github.com/pulumi/pulumi-aiven/releases).
 
 Set your preferred cloud regions and Aiven project name (these defaults are used in the setup script):
 
@@ -108,7 +109,7 @@ Example: google-us-central1
 $ pulumi config set aiven_project <Aiven project> Example: sa-demo
 ```
 
-- Supported regions/clouds for each service are listed on the [pricing page]( https://aiven.io/pricing).
+- Supported regions/clouds for each service are listed on the [pricing page](https://aiven.io/pricing).
 - Project names are on the top left corner of the Aiven console.
 
 ![Aiven console](./aiven_console.png)
@@ -259,7 +260,7 @@ These methods initiate the following logic:
 
 In this article, I’ve demonstrated one way to deploy infrastructure as code in a manner that allows services to be migrated between clouds without any downtime. We also showed how InfluxDB could be used as an open source time-series backend for collecting temperature metrics.
 
-This same approach can be utilized for any [Aiven’s](https://aiven.io/) services, including managed [Kafka](https://aiven.io/kafka) and [PostgreSQL](https://aiven.io/postgresql). Sign up for a [free 30-day trial](https://console.aiven.io/signup) and modify the lambda function to begin storing your own metrics data today.
+This same approach can be utilized for any [Aiven’s](https://aiven.io/) services, including managed [Kafka](https://aiven.io/kafka) and [PostgreSQL](https://aiven.io/postgresql). Sign up for a [free 14-day trial](https://console.aiven.io/signup) and modify the lambda function to begin storing your own metrics data today.
 
 > **About the Author**
 

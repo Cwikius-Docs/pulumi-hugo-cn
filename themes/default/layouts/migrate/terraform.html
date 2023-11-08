@@ -1,130 +1,61 @@
 {{ define "hero" }}
-    {{ partial "hero" (dict "title" "Migrating to Pulumi from Terraform") }}
+    {{ partial "hero" (dict "title" "Pulumi for Terraform Users") }}
 {{ end }}
 
 {{ define "main" }}
-    <section id="overview" class="max-w-4xl mx-auto px-2 my-16">
-        <div class="text-center px-3 container mx-auto">
-            <div>
-                <h2>Increase productivity with programming languages</h2>
-                <p>
-                    Terraform uses a proprietary DSL called HCL to describe and provision
-                    infrastructure resources.
-                </p>
-                <p>
-                    In Pulumi, you describe infrastructure using familiar
-                    languages and tools, providing productivity gains, better abstraction
-                    and reuse, and developer approachability &mdash; while still supporting
-                    robust infrastructure as code provisioning across many clouds.
-                </p>
+    <section id="overview" class="container mx-auto px-2 my-4 mb-20">
+        <div class="flex flex-wrap">
+            <div class="w-full lg:w-1/2 p-6">
+                <div>
+                    <h2>The open source infrastructure as code platform</h2>
+                    <p>
+                        Pulumi is fully open source while Terraform is committed to the Business Source License, a restrictive source available license.
+                        Pulumi uses general purpose programming languages and YAML that better help you tame cloud complexity and accelerate development velocity, rather than proprietary domain-specific languages (DSL) such as HashiCorp Configuration Language (HCL).
+                        See our <a href="/docs/concepts/vs/terraform">Pulumi vs. Terraform guide</a> for detailed differences between the two platforms.
+                    </p>
+                    <p>
+                        Migrate off of Terraform to a more modern and open source infrastructure as code platform.
+                    </p>
+                </div>
+                <div class="mt-8 flex justify-left">
+                    <a href="/get-started" class="btn-primary">Get Started with Pulumi</a>
+                </div>
             </div>
-            <div class="max-w-2xl mx-auto">
-                <div class="py-8 px-16" style="flex-direction: column">
-                    <h4>Automating your migration</h4>
-                    <ul class="text-left">
-                        <li class="my-4">
-                            <a href="{{ relref . "/blog/using-terraform-remote-state-with-pulumi" }}" class="link">
-                                <strong>Coexist</strong>
-                                with Terraform, by using remote state from Pulumi
-                            </a>
-                        </li>
-                        <li class="my-4">
-                            <a href="{{ relref . "/blog/from-terraform-to-infrastructure-as-software" }}" class="link">
-                                <strong>Convert</strong>
-                                HCL to Pulumi code
-                            </a>
-                        </li>
-                        <li class="my-4">
-                            <a href="{{ relref . "/blog/adopting-existing-cloud-resources-into-pulumi" }}" class="link">
-                                <strong>Adopt</strong>
-                                existing resource state into Pulumi
-                            </a>
-                        </li>
-                    </ul>
+
+            <div class="w-full lg:w-1/2 p-6">
+                <div class="rounded shadow-md" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                    <iframe
+                        src="//www.youtube.com/embed/PqAP4BunQZU?rel=0"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;"
+                        allowfullscreen=""
+                        title="Pulumi for Terraform Users"
+                    ></iframe>
                 </div>
             </div>
         </div>
+
     </section>
 
     {{ partial "benefits.html" .Params }}
+
 
     <section id="code" class="py-16 px-4">
         <div class="container mx-auto">
             <div class="md:flex my-8">
                 <div class="md:w-1/2 md:mr-4 md:pr-24">
                     <h3>Take advantage of real coding features with Pulumi</h3>
-                    <p>
-                        Pulumi provides a more expressive and efficient way to define cloud resources:
-                    </p>
+                    <p>Pulumi provides a more expressive and efficient way to define cloud resources:</p>
                     <ul>
                         <li>Use variable loops, not copy/paste</li>
                         <li>Use any Node libaries (or Python/Go)</li>
                         <li>On-the-fly error checking</li>
                         <li>Freeform code instead of complex interpolations</li>
                     </ul>
-                    <p class="my-8">
-                        <a class="link" href="https://github.com/pulumi/examples">Find many other examples here</a>.
-                    </p>
+                    <p class="my-8"><a class="link" href="https://github.com/pulumi/examples">Find many other examples here</a>.</p>
                 </div>
                 <div class="md:w-1/2 md:ml:4">
-
-                    <!-- Example 1 -->
-                    {{ $code := `import * as aws from "@pulumi/aws";
-import { readdirSync } from "fs";
-import { join as pathjoin } from "path";
-
-const bucket = new aws.s3.Bucket("mybucket");
-
-const folder = "./files";
-let files = readdirSync(folder);
-for (let file of files) {
-    const object = new aws.s3.BucketObject(file, {
-        bucket: bucket,
-        source: new pulumi.FileAsset(pathjoin(folder, file))
-    });
-}
-
-export const bucketname = bucket.id;` }}
-
-                    {{ partial "code" (dict "code" $code "lang" "js" "mode" "dark") }}
-
-                    <!-- Example 2 -->
-                    {{ $code := `resource "aws_s3_bucket" "mybucket" {
-    bucket_prefix = "mybucket"
-}
-
-resource "aws_s3_bucket_object" "data_txt" {
-    key        = "data.txt"
-    bucket     = "${aws_s3_bucket.mybucket.id}"
-    source     = "./files/data.txt"
-}
-
-resource "aws_s3_bucket_object" "index_html" {
-    key        = "index.html"
-    bucket     = "${aws_s3_bucket.mybucket.id}"
-    source     = "./files/index.html"
-}
-
-resource "aws_s3_bucket_object" "index_js" {
-    key        = "index.js"
-    bucket     = "${aws_s3_bucket.mybucket.id}"
-    source     = "./files/index.js"
-}
-
-resource "aws_s3_bucket_object" "main.css" {
-    key        = "main.css"
-    bucket     = "${aws_s3_bucket.mybucket.id}"
-    source     = "./files/main.css"
-}
-
-resource "aws_s3_bucket_object" "favicon.ico" {
-    key        = "favicon.ico"
-    bucket     = "${aws_s3_bucket.mybucket.id}"
-    source     = "./files/favicon.ico"
-}` }}
-
-                        {{ partial "code" (dict "code" $code "lang" "plain" "mode" "dark") }}
-                    </div>
+                    {{ partial "code" (dict "code" .Params.examples.one.ts "lang" "js" "mode" "dark") }}
+                    {{ partial "code" (dict "code" .Params.examples.one.tf "lang" "plain" "mode" "dark") }}
                 </div>
             </div>
         </div>
@@ -136,9 +67,8 @@ resource "aws_s3_bucket_object" "favicon.ico" {
                 <div class="md:w-1/2 md:mr-4 md:pr-24">
                     <h3>Productive cloud native programming</h3>
                     <p>
-                        Pulumi is designed with cloud native computing in mind - from
-                        containers to serverless, providing a productive model for quickly
-                        building and deploying apps:
+                        Pulumi is designed with cloud native computing in mind - from containers to serverless, providing a productive model for quickly building and deploying
+                        apps:
                     </p>
                     <ul>
                         <li>Rich, built in support for event handlers</li>
@@ -146,101 +76,38 @@ resource "aws_s3_bucket_object" "favicon.ico" {
                         <li>Use JavaScript for both infrastructure and Lambda callbacks</li>
                         <li>Avoid the need for significant boiler plate code</li>
                     </ul>
-                    <p class="my-8">
-                        <a class="link" href="https://github.com/pulumi/examples">Find many other examples here</a>.
-                    </p>
+                    <p class="my-8"><a class="link" href="https://github.com/pulumi/examples">Find many other examples here</a>.</p>
                 </div>
                 <div class="md:w-1/2 md:ml:4">
-
-                    <!-- Example 1 -->
-                    {{ $code := `import * as aws from "@pulumi/aws";
-
-// Create an S3 Bucket
-const bucket = new aws.s3.Bucket("mybucket");
-
-// Register a Lambda to handle Bucket Notification
-bucket.onObjectCreated("newObj", async (ev, ctx) => {
-    // Write code inline, or use a Zip
-    console.log(JSON.stringify(ev));
-});
-
-// Export the bucket name for easy scripting
-export const bucketName = bucket.id;` }}
-
-                    {{ partial "code" (dict "code" $code "lang" "js" "mode" "dark") }}
-
-                    <!-- Example 2 -->
-                    {{ $code := `resource "aws_s3_bucket" "mybucket" {
-    bucket_prefix = "mybucket"
-}
-
-data "archive_file" "lambda_zip" {
-    type        = "zip"
-    output_path = "lambda.zip"
-
-    source {
-    filename = "index.js"
-    content = < {
-    console.log(JSON.stringify(ev))
-}
-EOF
-    }
-}
-
-data "aws_iam_policy_document" "lambda-assume-role-policy" {
-    statement {
-        actions = ["sts:AssumeRole"]
-
-        principals {
-            type        = "Service"
-            identifiers = ["lambda.amazonaws.com"]
-        }
-    }
-}
-
-resource "aws_iam_role" "lambda" {
-    assume_role_policy = "${data.aws_iam_policy_document.lambda-assume-role-policy.json}"
-}
-
-resource "aws_lambda_function" "my_lambda" {
-    filename = "${data.archive_file.lambda_zip.output_path}"
-    source_code_hash = "${data.archive_file.lambda_zip.output_base64sha256}"
-    function_name = "my_lambda"
-    role = "${aws_iam_role.lambda.arn}"
-    handler = "index.handler"
-    runtime = "nodejs8.10"
-}
-
-resource "aws_lambda_permission" "allow_bucket" {
-    statement_id  = "AllowExecutionFromS3Bucket"
-    action        = "lambda:InvokeFunction"
-    function_name = "${aws_lambda_function.my_lambda.arn}"
-    principal     = "s3.amazonaws.com"
-    source_arn    = "${aws_s3_bucket.mybucket.arn}"
-}
-
-resource "aws_s3_bucket_notification" "bucket_notification" {
-    bucket = "${aws_s3_bucket.mybucket.id}"
-
-    lambda_function {
-        lambda_function_arn = "${aws_lambda_function.my_lambda.arn}"
-        events              = ["s3:ObjectCreated:*"]
-    }
-}
-
-output "bucket_name" {
-    value = "${aws_s3_bucket.mybucket.id}"
-}` }}
-
-                    {{ partial "code" (dict "code" $code "lang" "plain" "mode" "dark") }}
+                    {{ partial "code" (dict "code" .Params.examples.two.ts "lang" "js" "mode" "dark") }}
+                    {{ partial "code" (dict "code" .Params.examples.two.tf "lang" "plain" "mode" "dark") }}
                 </div>
             </div>
         </div>
     </section>
 
-    {{ partial "how-pulumi-works.html" . }}
-
-    {{ partial "get-started.html" . }}
-
-    {{ partial "form-section" (dict "form" .Params.contact_us_form) }}
+    <section id="migrate" class="container mx-auto w-full relative overflow-visible py-20 px-4">
+        <div class="flex justify-center mt-24">
+            <div class="card ready-cta w-full rounded-xl p-1 gradient">
+                <div class="flex justify-center rounded-xl bg-violet-100">
+                    <div class="p-8 md:p-16 lg:pt-28 lg:pb-28 inline-flex flex-col items-center">
+                        <h2 class="mb-12 text-center">Next Steps with Pulumi</h2>
+                        <p class="container mx-auto max-w-3xl text-lg text-center my-8">
+                            Follow our Get Started guide to begin using Pulumi. If you need help migrating from Terraform,
+                            our Expert Services team can help migrate your Terraform workspaces and train your team.
+                            Talk to a Pulumi team member to get started.
+                        </p>
+                        <div class="flex flex-col self-stretch items-center lg:flex-row">
+                            <div class="flex flex-col justify-center align-center text-center w-full md:w-2/4 lg:ml-14 lg:mr-14 mb-14 lg:mb-0 z-0">
+                                <a href="/get-started" class="btn-primary py-3">Get Started</a>
+                            </div>
+                            <div class="flex flex-col justify-center align-center text-center w-full md:w-2/4 lg:ml-14 lg:mr-14 mb-14 lg:mb-0 z-0">
+                                <a href="/contact/?form=tf-migration" class="btn-secondary py-3">Start Migration</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {{ end }}

@@ -9,13 +9,13 @@ tags:
   - azure
 ---
 
-Last September, we [announced the beta release of Pulumi Azure NextGen]({{< relref "/blog/announcing-nextgen-azure-provider" >}}): a new Microsoft Azure provider for Pulumi that combines same-day access to the entire [Azure API surface](https://docs.microsoft.com/en-us/rest/api/azure/) with the excellent Pulumi experience you know and love, including version-less resources, auto-naming, and auto-location.
+Last September, we [announced the beta release of Pulumi Azure NextGen](/blog/announcing-nextgen-azure-provider/): a new Microsoft Azure provider for Pulumi that combines same-day access to the entire [Azure API surface](https://docs.microsoft.com/en-us/rest/api/azure/) with the excellent Pulumi experience you know and love, including version-less resources, auto-naming, and auto-location.
 
-Today, we’re excited to announce that this new provider is now the default way to manage Azure resources with Pulumi. We’re also excited to announce its final name: the native Azure provider for Pulumi, or “Azure-Native” for short. You can get started with the new provider using our newly-updated [getting started guide]({{< relref "/docs/get-started/azure" >}}).
+Today, we’re excited to announce that this new provider is now the default way to manage Azure resources with Pulumi. We’re also excited to announce its final name: the native Azure provider for Pulumi, or “Azure-Native” for short. You can get started with the new provider using our newly-updated [getting started guide](/docs/clouds/azure/get-started/).
 
 <!--more-->
 
-Already use the [classic Pulumi-Azure provider](https://www.pulumi.com/docs/reference/pkg/azure/)? You can migrate to Azure-Native now using the [migration guide]({{< relref "/docs/intro/cloud-providers/azure/from-classic" >}}). If you prefer to wait until general availability, stay tuned for updates: we expect to reach general availability in the spring of this year.
+Already use the [classic Pulumi-Azure provider](/registry/packages/azure/api-docs/)? You can migrate to Azure-Native now using the [migration guide](/registry/packages/azure-native/from-classic/). If you prefer to wait until general availability, stay tuned for updates: we expect to reach general availability in the spring of this year.
 
 Alongside this announcement, we’re also formalizing a new concept: a Pulumi “native provider”. A native provider provides functionality mapped directly from the underlying API; in the case of the new Azure Provider, functionality is mapped directly from the Azure Resource Manager API surface. Going forward, you’ll be able to find these next-generation Pulumi providers directly from the name by looking for the “-Native” suffix.
 
@@ -196,7 +196,7 @@ Pass an explicit value to the `resourceGroupName` property if you want to contro
 
 However, suppose you create a sub-resource, e.g., a container under a storage account, a database under a database account, or a slot under a web app. In that case, Pulumi will not append a random suffix because those resources names don’t have to be globally unique.
 
-You can also apply [transformations](https://www.pulumi.com/docs/intro/concepts/resources/#transformations) to define your own naming schemas: see [this example](https://github.com/matwilko/Pulumi.AzureNextGen.Ambient/blob/434c4beccffdd8d1180e385ff5fe298867a285af/AutoNaming.cs) from our community.
+You can also apply [transformations](https://www.pulumi.com/docs/concepts/resources/#transformations) to define your own naming schemas: see [this example](https://github.com/matwilko/Pulumi.AzureNextGen.Ambient/blob/434c4beccffdd8d1180e385ff5fe298867a285af/AutoNaming.cs) from our community.
 
 ### Auto-Location
 
@@ -235,7 +235,7 @@ Note that the Azure resources are not affected by this migration.
 
 ## Getting Started
 
-If you are new to Pulumi, follow our [Get Started]({{< relref "/docs/get-started/azure" >}}) guide.
+If you are new to Pulumi, follow our [Get Started](/docs/clouds/azure/get-started/) guide.
 
 From now on, the `azure-*` templates will reference the native Azure provider. It's easier to get started than ever:
 
@@ -278,4 +278,4 @@ Several more extensive examples are available in the Pulumi Examples repo:
 - Web Application with Azure Container Instances: [TypeScript](https://github.com/pulumi/examples/tree/master/azure-ts-aci), [C#](https://github.com/pulumi/examples/tree/master/azure-cs-aci), [Python](https://github.com/pulumi/examples/tree/master/azure-py-aci), [Go](https://github.com/pulumi/examples/tree/master/azure-go-aci)
 - Web Server Using Azure Virtual Machine: [TypeScript](https://github.com/pulumi/examples/tree/master/azure-ts-webserver), [Python](https://github.com/pulumi/examples/tree/master/azure-py-webserver)
 
-You can browse [API reference docs](https://www.pulumi.com/docs/reference/pkg/azure-native/) with inline examples or explore the [Pulumi Azure-Native SDKs](https://github.com/pulumi/pulumi-azure-native) repository.
+You can browse [API reference docs](https://www.pulumi.com/registry/packages/azure-native/) with inline examples or explore the [Pulumi Azure-Native SDKs](https://github.com/pulumi/pulumi-azure-native) repository.

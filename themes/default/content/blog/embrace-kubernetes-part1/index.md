@@ -43,11 +43,7 @@ Given its widespread popularity, its many features, and its community support, i
 
 The first question to ask yourself is if your organization has the DNA required to support a broad-scale Kubernetes implementation. By “DNA,” we don’t mean only technical know-how. Bringing Kubernetes into an organization is a major effort that can affect many groups. For that effort to succeed, there must be good communication between those groups, trust, and a willingness to take on new challenges together. In particular, the relationship between the applications teams and the operations teams needs to be healthy. People must be willing to set aside rivalries and politics so they can collaborate with each other towards a common business goal.
 
-As you can imagine, this can become a heated topic. If you’re interested in what others in the community are saying, here are a couple Tweets to get you started:
-
-{{< tweet 978758781805895681 >}}
-
-{{< tweet 1021012140675813376 >}}
+As you can imagine, this can become a heated topic.
 
 Another way to look at this question is to ask yourself where your organization sits in terms of its adoption of DevOps. To quote the [2020 State of DevOps](https://puppet.com/resources/report/2020-state-of-devops-report/) report:
 
@@ -90,4 +86,4 @@ Architectures have to be shaped over time. It's never the case that was just cre
 
 ## Learn More
 
-This blog post talked about the many issues to consider before you dive headlong into a Kubernetes project. However, there are just as many reasons to choose Kubernetes for deploying your modern applications. Stay tuned for part 2 where we'll dive deeper into that topic. If you’re curious about just what a small project might look like (using your favorite programming language, whatever that is), check out Pulumi’s [Get Started with Kubernetes]({{< relref "/docs/get-started/kubernetes" >}}) and [Pulumi Crosswalk for Kubernetes]({{< relref "/docs/guides/crosswalk/kubernetes" >}}), playbooks with built in best practices that make Kubernetes accessible to everyone.
+This blog post talked about the many issues to consider before you dive headlong into a Kubernetes project. However, there are just as many reasons to choose Kubernetes for deploying your modern applications. Stay tuned for part 2 where we'll dive deeper into that topic. If you’re curious about just what a small project might look like (using your favorite programming language, whatever that is), check out Pulumi’s [Get Started with Kubernetes](/docs/clouds/kubernetes/get-started/) and [Pulumi Crosswalk for Kubernetes](/docs/clouds/kubernetes/guides/), playbooks with built in best practices that make Kubernetes accessible to everyone.

@@ -6,7 +6,7 @@ steps to make it happen.
 ## Set Up Your Development Environment
 
 If you haven't already, clone this repository and
-[follow the instructions in the README](https://github.com/pulumi/docs#pulumi-documentation-site)
+[follow the instructions in the README](https://github.com/pulumi/pulumi-hugo#running-hugo-locally)
 to set up your environment and run the development web server.
 
 Once you're able to run:
@@ -19,6 +19,8 @@ If you can browse the site locally at http://localhost:1313/ then you are ready 
 proceed to the next section.
 
 ## Make a New Post
+
+1. Move onto a new branch for your blog post using `git checkout -b initials/your-blog-post` (replace initials with your initials, and replace your-blog-post with the name of your blog post).
 
 1. Resist the temptation to copy-and-tweak an existing post! Instead, run the following
 command into the terminal (at the root of the project). This will generate a new file,
@@ -37,7 +39,6 @@ including all the required frontmatter parameters.
    ---
    title: "My New Post"
    date: 2019-07-17T14:26:50-07:00
-   draft: true
    meta_image: meta.png
    authors:
        - joe-duffy
@@ -50,18 +51,16 @@ including all the required frontmatter parameters.
 
    **Important**
 
-   The `title` will populate the `<title>` tag of the page, the `<h1>`, and the display value if it is linked to internally. This field has a strict 60 character limit because of SEO related limitations. If you would like to have a longer display title (i.e. the `<h1>` tag) then you will need to specify it by adding `h1: Whatever title you would like` to the front matter. If you would like to display different text on internal links than what the `title` value is, you can also specify a `linktitle` value. Both the `h1` and `linktitle` values can be of any length. Below is an example of this:
+   The `title` will populate the `<title>` tag of the page, the `<h1>`, and the display value if it is linked to internally. This field has a strict 60 character limit because of SEO related limitations. If you would like to have a longer display title (i.e. the `<h1>` tag) then you will need to specify it by adding `allow_long_title: True` to the front matter. If you would like to display different text on internal links than what the `title` value is, you can also specify a `linktitle` value. Both the `allow_long_title` and `linktitle` values can be of any length. Below is an example of this:
 
    ```
    ---
    title: This a Page Title
-   h1: This is the H1 for the page
+   allow_long_title: true
    linktitle: This is the link text
    ...
    ---
    ```
-
-   **Keep in mind that only posts dated prior to "now" (meaning the moment the build process begins) and _not_ marked as `draft`s will published to production.** The development server renders both future and draft content (so you can work on scheduled posts in advance), but the build process does not; see below for details on scheduling posts for future publishing.
 
    **Tags**
 
@@ -73,9 +72,12 @@ including all the required frontmatter parameters.
    - **Technology/scenario tags:** Similar to feature tags, but focused on user scenarios. Today, that means `cloud-engineering`, `cloud-native`, `containers`, `data-and-analytics`, `development-environment`, `github-actions`, `kubernetes`, `serverless`.
    - **Language tags:** Any post that is language/ecosystem specific should have one or more of `.net`, `go`, `javascript`, `python`, `typescript`.
 
-2. If you don't already have a [TOML](https://github.com/toml-lang/toml) file [in the `team` directory](https://github.com/pulumi/docs/tree/master/data/team/team) of the repo, create one now. For Pulumi employees, that file should look something like this:
+   **Canonical link**
+   If you are posting a blog that originated somewhere else (for example, a syndicated community post) you will want to add the setting `canonical_url` for the URL where the blog post originated.
 
-   ```
+1. If you don't already have a [TOML](https://github.com/toml-lang/toml) file [in the `team` directory](https://github.com/pulumi/pulumi-hugo/tree/master/themes/default/data/team/team) of the repo, create one now. For Pulumi employees, that file should look something like this (your `id` can be any string, but we recommend `firstname-lastname`):
+
+   ```toml
    id = "christian-nunciato"
    name = "Christian Nunciato"
    title = "Software Engineer"
@@ -89,7 +91,7 @@ including all the required frontmatter parameters.
 
    For community contributors, it's mostly the same, but with a `status` of `guest`, and a more informative `title`:
 
-   ```
+   ```toml
    id = "mikhail-shilkov"
    name = "Mikhail Shilkov"
    title = "Microsoft Azure MVP and early Pulumi user"
@@ -99,7 +101,9 @@ including all the required frontmatter parameters.
 
    The `social` section, and the items within it, are optional.
 
-   Once your team-member file's been created, update the new post's `authors` property to refer to your team member `id` string. If you're still running the development server, you should see the change reflected in the browser immediately.
+   Once your team-member file's been created, add your author image at [`themes/default/static/images/team`](https://github.com/pulumi/pulumi-hugo/tree/master/themes/default/static/images/team). The image should be a square JPG (400x400 max) named with your author `id` (e.g., `christian-nunciato.jpg`).
+
+   Update the new post's `authors` property to use your author `id`. If you're still running the development server, you should see the change reflected in the browser immediately.
 
 ## Write Your Post
 
@@ -156,9 +160,20 @@ For best results, we suggest the following specs for the `meta_image`, largely b
 
 | Aspect Ratio | Recommended Size | Format | Background               |
 | ------------ | ---------------- | ------ | ------------------------ |
-| 2:1          | 1200×600         | PNG    | Opaque (No Transparency) |
+| 2:1          | 1200×628         | PNG    | Opaque (No Transparency) |
 
 Remember to replace the `meta_image` placeholder (or remove the property altogether and delete the placeholder `meta.png` file) before submitting your post.
+
+For help creating your `meta_image`, check out our [Build Your Own Meta Image file](https://www.figma.com/file/TnD7nxjIxVvXq8w0W7awPG/Build-Your-Own-Meta-Image?node-id=0%3A1) in Figma. There you’ll find backgrounds, images, and logos to assemble the `meta_image` for your blog post.
+
+To use Pulumi's primary brand font Gilroy in your `meta_image`, first [download Gilroy](https://drive.google.com/file/d/1893zFNypEQTvZU0J2Bz5_mVx6xa_7Zxh/view?usp=sharing) and install the file to your local font folder. Then [download the Figma font installer](https://www.figma.com/downloads/) to access your local fonts in Figma.
+
+A few things to keep in mind when designing a `meta image`:
+
+   - Avoid placing important text or graphic elements too close to the edges of the frame — elements at the edges may get cropped at some display ratios
+   - Try to include at least one Pulumi identifier (word mark, Pulumipus) so viewers can tell at a glance that the image belongs to the Pulumi blog
+   - Use dark text on light backgrounds, and light text on dark backgrounds to ensure readability
+   - Remember to zoom out from your image and confirm it looks as you intend at a thumbnail size
 
 #### Video
 
@@ -170,34 +185,34 @@ To embed a YouTube video, you can use Hugo's built-in [`youtube` shortcode](http
 
 For videos belonging to the [Pulumi YouTube channel](https://www.youtube.com/channel/UC2Dhyn4Ev52YSbcpfnfP0Mw), you'll usually want to append the `?rel=0` query parameter as well (as above), which tells YouTube to limit the suggestions it makes at the end of a video to those from the same YouTube channel. [Learn more about player parameters here](https://developers.google.com/youtube/player_parameters).
 
-#### Tweets
+#### Animated GIFs
 
-There's a Hugo [shortcode for Tweets](https://gohugo.io/content-management/shortcodes/#tweet), too, which accepts a Tweet ID, accessible [from its permalink](https://twitter.com/jcreed/status/1147203941609984002):
+GIFs are welcome, but should be optimized. In general, animated GIFs should be no more than 1200 pixels wide and 3 MB in size. If you need help optimizing your GIF, consider [Gifsicle](https://www.lcdf.org/gifsicle/); it's available through Homebrew and has an easy-to-use command-line API. For example, to resize (e.g., downscale) and optimize a GIF in place:
 
+```bash
+gifsicle ./my-animation.gif --resize-width=1200 --optimize=3 --batch
 ```
-{{< tweet 1147203941609984002 >}}
-```
-
-For more Hugo shortcode fun, [go here](https://gohugo.io/content-management/shortcodes).
 
 ## Done? Submit!
 
-When you're ready to submit your post for review, issue a Pull Request against the `master` branch of the repo, and the team will have a look. Once merged &mdash; provided its `date` has passed and its `draft` status is no longer `true` &mdash; the post will be deployed to https://www.pulumi.com/.
+When you're ready to submit your post for review, issue a Pull Request against the `master` branch of the repo, and the team will have a look. Once merged, the post will be deployed to https://www.pulumi.com/.
+
+## Publicize your blog
+
+When you create an awesome blog post, we want to make sure it reaches as many people as possible.
+After your Pull Request is approved, but before merge/publication date, reach out in #blogs so that Marketing can broadcast your publication via social media.
 
 ## A Note on Dates and Scheduling for Future Publishing
 
-If you'd like your post to be published at some future date or time, you have a couple of options.
-
-Since the build process is triggered by (and so requires) a commit to `master`, you can either wait for the post's `date` to pass, remove its `draft` setting (or change it to `false`), and _then_ merge it, or leave its `draft` property `true`, merge, then change the property to `false` once the `date`'s gone by. If a post happens to get merged with `draft: false` and a future date, the resulting build will exclude the post, requiring a commit of some sort to occur _after_ its `date` in order to trigger a build and get the post published.
-
-For this reason, leaving the `draft` property `true` until you're actually ready to publish gives you an easy way to kick off a build when the time comes.
+Because the website is deployed in response to a commit to pulumi/docs `master`, it isn't possible to schedule a post to be released automatically at a precise date and time. (The `date` frontmatter property is used only for sorting and display purposes; it has no effect on whether or when a post gets published.) You can, however, influence the timing of the publishing process manually. See the [Merging and Releasing section of the README](README.md#merging-and-releasing) for details.
 
 ## Publishing Check List
 
 - [ ] As mentioned, use the Hugo blog-post generator instead of copying another post: `make new-blog-post` (or alternatively, the more verbose but equivalent `hugo new --kind blog-post "themes/default/content/blog/[your-slug]"`)
-- [ ] Drafts will not be published, so either set `draft: false` or or delete it.
 - [ ] Spell and grammar check. Consider using a service such as [Grammarly](http://grammarly.com).
 - [ ] Check for a break `<!--more-->` after the first paragraph, and ensure that your post's introduction looks right on the blog home page.
 - [ ] Check that your meta_image appears properly on the blog home page. Do not use animated GIFs for preview images.
+- [ ] Check that your meta_image is using the current Pulumi logo.
 - [ ] Preview locally. Check formatting, links, and images for appearance.
 - [ ] Use the [Twitter card validator](https://cards-dev.twitter.com/validator) to check the how the blog appears in a tweet (use the preview provided in the PR).
+- [ ] Reach out in #blogs to make Marketing aware that your post is about to go live!

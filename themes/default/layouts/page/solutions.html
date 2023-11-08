@@ -1,5 +1,5 @@
 {{ define "hero" }}
-    {{ partial "hero" (dict "title" .Params.title )}}
+    {{ partial "hero" (dict "title" .Params.title ) }}
 {{ end }}
 
 {{ define "main" }}
@@ -32,11 +32,13 @@
                             {{ $itemClass = "border-t-2 border-b-2" }}
                         {{ end }}
 
+
                         <li class="accordion-item {{ $itemClass }} py-6">
                             {{ partial "accordian-header" (dict "text" $item.name) }}
 
-                            <div class="accordion-item-body">
-                                <p class="mt-6">{{ $item.description }}</p>
+
+                            <div class="accordion-item-body-no-animation">
+                                <p class="mt-6">{{ $item.description | markdownify }}</p>
 
                                 {{ if $item.case_studies }}
                                     <ul class="list-none mt-6 pl-0">
@@ -94,7 +96,7 @@
                                 <h5>{{ $item.title }}</h5>
                             </div>
                             <div class="flex items-end flex-grow">
-                                <p>{{ $item.description }}</p>
+                                <p>{{ $item.description | markdownify }}</p>
                             </div>
                         </div>
                     {{ end }}
@@ -112,7 +114,7 @@
                                 <h5>{{ $item.title }}</h5>
                             </div>
                             <div class="flex items-end flex-grow">
-                                <p>{{ $item.description }}</p>
+                                <p>{{ $item.description | markdownify }}</p>
                             </div>
                         </div>
                     {{ end }}
@@ -130,7 +132,7 @@
                                 <h5>{{ $item.title }}</h5>
                             </div>
                             <div class="flex items-end flex-grow">
-                                <p>{{ $item.description }}</p>
+                                <p>{{ $item.description | markdownify }}</p>
                             </div>
                         </div>
                     {{ end }}
@@ -148,21 +150,34 @@
                                 <h5>{{ $item.title }}</h5>
                             </div>
                             <div class="flex items-end flex-grow">
-                                <p>{{ $item.description }}</p>
+                                <p>{{ $item.description | markdownify }}</p>
                             </div>
                         </div>
                     {{ end }}
                 </div>
             </pulumi-choosable>
         </pulumi-chooser>
-        <h2 class="mb-2 lg:mb-8 order-first">
-            {{ .Params.personas.title }} <span class="rainbow-text">
-                <span class="developers hidden">for Developers</span>
-                <span class="devops hidden">for DevOps & Infra Teams</span>
-                <span class="security hidden">for Security Engineers</span>
-                <span class="leader hidden">for Engineering Leaders</span>
-            </span>
-        </h2>
+        <div class="mb-2 lg:mb-8 order-first">
+            <h2>
+                <span class="inline-block">
+                    {{ .Params.personas.title }}
+                </span>
+                <span class="rainbow-text inline-block">
+                    <pulumi-choosable type="persona" value="developer">
+                        <span>for Developers</span>
+                    </pulumi-choosable>
+                    <pulumi-choosable type="persona" value="devops">
+                        <span>for DevOps & Infra Teams</span>
+                    </pulumi-choosable>
+                    <pulumi-choosable type="persona" value="security">
+                        <span>for Security Engineers</span>
+                    </pulumi-choosable>
+                    <pulumi-choosable type="persona" value="leader">
+                        <span>for Engineering Leaders</span>
+                    </pulumi-choosable>
+                </span>
+            </h2>
+        </div>
     </section>
 
     <section class="container mx-auto my-12 md:my-24 p-6 lg:p-0">

@@ -7,6 +7,11 @@ authors:
 - komal-ali
 tags:
 - features
+- enums
+- python
+- go
+- c#
+- typescript
 ---
 
 Here at Pulumi, we believe in leveraging the best features of programming languages to create a delightful development experience for our users. Today, we continue our contributions in this area by announcing cross-language support for `enum` types in our provider SDKs, available in all Pulumi languages - Python, TypeScript, .NET and Go.
@@ -88,7 +93,7 @@ func main() {
 
 In the above code, the S3 `Bucket` resource has a property called `acl`, where we pass in the string `private` to indicate that this is a private bucket.
 
-If we look at the [resource docs](https://www.pulumi.com/docs/reference/pkg/aws/s3/bucket/#acl_nodejs), we can see that the `acl` property can only be set to one of a few different values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, and `log-delivery-write`. The `acl` property is the perfect candidate for an enum type and is emitted as one, so you can use the following code instead.
+If we look at the [resource docs](/registry/packages/aws/api-docs/s3/bucket/#acl_nodejs), we can see that the `acl` property can only be set to one of a few different values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, and `log-delivery-write`. The `acl` property is the perfect candidate for an enum type and is emitted as one, so you can use the following code instead.
 
 {{< chooser language "typescript,python,csharp,go" >}}
 {{% choosable language typescript %}}
@@ -164,22 +169,22 @@ Using the provided constants, you can avoid referring back to the documentation 
 
 {{% choosable language typescript %}}
 
-![ENUM_TYPESCRIPT](ts-enum.gif)
+![ENUM_TYPESCRIPT](https://www.pulumi.com/uploads/content/blog/announcing-enum-support/ts-enum.gif)
 
 {{% /choosable %}}
 {{% choosable language python %}}
 
-![ENUM_PYTHON](python-enum.gif)
+![ENUM_PYTHON](https://www.pulumi.com/uploads/content/blog/announcing-enum-support/python-enum.gif)
 
 {{% /choosable %}}
 {{% choosable language csharp %}}
 
-![ENUM_CSHARP](csharp-enum.gif)
+![ENUM_CSHARP](https://www.pulumi.com/uploads/content/blog/announcing-enum-support/csharp-enum.gif)
 
 {{% /choosable %}}
 {{% choosable language go %}}
 
-![ENUM_GO](go-enum.gif)
+![ENUM_GO](https://www.pulumi.com/uploads/content/blog/announcing-enum-support/go-enum.gif)
 
 {{% /choosable %}}
 
@@ -191,7 +196,7 @@ While some properties make sense as "strict" enums (i.e., the input value **must
 
 A property is a "strict" enum when the input value **must** be one of the enumerated values. In this case, the property type is specified as the enum type.
 
-We will use "strict" enums when we are sure that the enum will include all legal values, such as when a provider is auto-generated from a cloud provider specification (like our [Azure-Native]({{< relref "/blog/full-coverage-of-azure-resources-with-azure-native" >}}) or [Kubernetes](https://www.pulumi.com/docs/intro/cloud-providers/kubernetes/#pulumi-kubernetes-provider) providers).
+We will use "strict" enums when we are sure that the enum will include all legal values, such as when a provider is auto-generated from a cloud provider specification (like our [Azure-Native](/blog/full-coverage-of-azure-resources-with-azure-native/) or [Kubernetes](https://www.pulumi.com/registry/packages/kubernetes/#pulumi-kubernetes-provider) providers).
 
 {{< chooser language "typescript,python,csharp,go" >}}
 {{% choosable language typescript %}}
@@ -349,7 +354,7 @@ type BucketArgs struct {
 
 ## Try them out!
 
-You can find enum types integrated into `v3.19.0` of the [AWS provider](https://www.pulumi.com/docs/reference/pkg/aws/) and `v0.7.1` of the [Azure-Native provider](https://www.pulumi.com/docs/reference/pkg/azure-native/), and we will be adding enums to other providers in the coming weeks and months.
+You can find enum types integrated into `v3.19.0` of the [AWS provider](/registry/packages/aws/api-docs/) and `v0.7.1` of the [Azure-Native provider](/registry/packages/azure-native/api-docs/), and we will be adding enums to other providers in the coming weeks and months.
 
 **Azure-Native**: In the native Azure provider, all properties labeled as enums in the OpenAPI spec are represented as such. In all, there are over 1300 enums provided in the SDKs. The native Azure provider uses both "strict" and "relaxed" enums since the OpenAPI specification explicitly defines its properties as such.
 

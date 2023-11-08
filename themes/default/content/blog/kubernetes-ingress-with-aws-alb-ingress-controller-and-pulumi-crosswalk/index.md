@@ -5,7 +5,7 @@ date: "2019-07-09"
 meta_desc: "In this post, we work through a simple example of running ALB based Kubernetes Ingresses with Pulumi EKS, AWS, and AWSX packages."
 meta_image: "featured-img-albingresscontroller.png"
 authors: ["nishi-davidson"]
-tags: ["Kubernetes"]
+tags: ["Kubernetes", "eks"]
 ---
 
 [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
@@ -28,10 +28,10 @@ necessary supporting AWS resources whenever a Kubernetes user declares
 an Ingress resource on the cluster.
 [TargetGroups](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
 are created for each backend specified in the Ingress resource.
-[Listeners](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
+[Listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
 are created for every port specified as Ingress resource annotation.
 When no port is specified, sensible defaults (80 or 443) are used.
-[Rules](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/listener-update-rules.html)
+[Rules](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/listener-update-rules.html)
 are created for each path specified in your ingress resource. This
 ensures that traffic to a specific path is routed to the correct
 TargetGroup.
@@ -40,23 +40,23 @@ In this post, we will work through a simple example of running ALB based
 Kubernetes Ingresses with Pulumi
 [EKS](https://github.com/pulumi/pulumi-eks),
 [AWS](https://github.com/pulumi/pulumi-aws), and
-[AWSX](https://github.com/pulumi/pulumi-awsx/tree/master/nodejs/awsx)
+[AWSX](https://github.com/pulumi/pulumi-awsx/tree/master/sdk/nodejs)
 packages.
 
 <!--more-->
 
 ## Step 1: Initialize Pulumi project and stack
 
-[Install pulumi CLI]({{< relref "/docs/get-started" >}})
-and set up your [AWS credentials]({{< relref "/docs/get-started/aws" >}}).
-Initialize a new [Pulumi project]({{< relref "/docs/intro/concepts/project" >}})
-and [Pulumi stack]({{< relref "/docs/reference/cli/pulumi_stack" >}}) from
+[Install pulumi CLI](/docs/get-started/)
+and set up your [AWS credentials](/docs/clouds/aws/get-started/).
+Initialize a new [Pulumi project](/docs/concepts/projects/)
+and [Pulumi stack](/docs/cli/commands/pulumi_stack/) from
 available programming [language
 templates](https://github.com/pulumi/templates). We will use the
 `aws-typescript` template here and install all library
 dependencies.
 
-    $ brew install pulumi # download pulumi CLI
+    $ brew install pulumi/tap/pulumi # download pulumi CLI
     $ mkdir eks-alb-ingress && cd eks-alb-ingress
     $ pulumi new aws-typescript
     $ npm install --save @pulumi/kubernetes @pulumi/eks
@@ -108,7 +108,7 @@ export const nodesubnetId = cluster.core.subnetIds;
 ```
 
 Configure the Public subnets in the console as defined in
-[this guide](https://kubernetes-sigs.github.io/aws-load-balancer-controller/guide/controller/subnet_discovery/).
+[this guide](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/deploy/subnet_discovery/).
 
 ## Step 3: Deploy AWS ALB Ingress Controller
 
@@ -395,6 +395,6 @@ be to access your newly deployed 2048 game -- have fun!
 Pulumi is open source and free to use. For more information on our
 product platform, check out the following resources:
 
-- [Pulumi Crosswalk for AWS Announcement]({{< relref "introducing-pulumi-crosswalk-for-aws-the-easiest-way-to-aws" >}})
-- [Mapbox IOT-as-Code with Pulumi Crosswalk for AWS]({{< relref "mapbox-iot-as-code-with-pulumi-crosswalk-for-aws" >}})
-- [Pulumi Crosswalk for AWS Documentation for ECS, EKS, ELB, and more]({{< relref "/docs/guides/crosswalk/aws" >}})
+- [Pulumi Crosswalk for AWS Announcement](/blog/introducing-pulumi-crosswalk-for-aws-the-easiest-way-to-aws/)
+- [Mapbox IOT-as-Code with Pulumi Crosswalk for AWS](/blog/mapbox-iot-as-code-with-pulumi-crosswalk-for-aws/)
+- [Pulumi Crosswalk for AWS Documentation for ECS, EKS, ELB, and more](/docs/clouds/aws/guides/)
